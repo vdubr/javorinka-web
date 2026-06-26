@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Javořinka – Chata v Javoří horách</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@10.9.0/ol.css" />
   <style>
     /* ─── RESET & BASE ───────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -210,6 +211,56 @@
       display: block;
     }
 
+    /* OpenLayers mapa polohy */
+    .map-section #locmap {
+      width: 100%;
+      height: 100%;
+      background: var(--bg2);
+    }
+    /* ovládání OL doladěné do tmavého motivu */
+    .map-section .ol-zoom {
+      top: calc(var(--nav-h) + 1rem);
+      right: 1rem;
+      left: auto;
+      background: transparent;
+    }
+    .map-section .ol-zoom button {
+      background: rgba(10,10,10,.85);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      font-size: 1.1rem;
+    }
+    .map-section .ol-zoom button:hover { background: var(--accent); color: var(--bg); }
+    .map-section .ol-attribution {
+      background: rgba(10,10,10,.7);
+      border-radius: 6px 0 0 0;
+    }
+    .map-section .ol-attribution a, .map-section .ol-attribution { color: var(--muted); }
+    /* povinné logo Mapy.cz */
+    .map-section .mapy-logo {
+      position: absolute;
+      left: 10px; bottom: 10px;
+      z-index: 5;
+      background: #fff;
+      padding: 2px 5px;
+      border-radius: 4px;
+      line-height: 0;
+    }
+    .map-section .mapy-logo img { height: 18px; display: block; }
+    /* nebublající vizuální nápověda nad OL mapou */
+    .map-hint {
+      position: absolute;
+      inset: 0;
+      z-index: 540;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0);
+      pointer-events: none;
+      transition: background .25s;
+    }
+    .map-hint.show-hint { background: rgba(0,0,0,.55); }
+
     .map-overlay {
       position: absolute;
       top: calc(var(--nav-h) + 2rem);
@@ -270,7 +321,8 @@
       text-shadow: 0 2px 14px rgba(0,0,0,.8);
       pointer-events: none;
     }
-    .map-shield.show-hint .map-shield-hint { opacity: 1; transform: none; }
+    .map-shield.show-hint .map-shield-hint,
+    .map-hint.show-hint .map-shield-hint { opacity: 1; transform: none; }
 
     /* ─── SEKCE obecné ───────────────────────────────────────── */
     section {
@@ -934,13 +986,8 @@
 <!-- ═══ MAPA ═════════════════════════════════════════════════════ -->
 <span class="anc" id="mapa"></span>
 <div class="map-section">
-  <iframe
-    src="https://frame.mapy.cz/turisticka?source=addr&amp;id=9786851&amp;ds=1&amp;x=16.3711580&amp;y=50.6004763&amp;z=16"
-    title="Turistická mapa Mapy.cz s polohou chaty Javořinka"
-    loading="lazy"
-    allowfullscreen
-  ></iframe>
-  <div class="map-shield"><span class="map-shield-hint">🖱️ Kliknutím aktivujete mapu</span></div>
+  <div id="locmap" role="application" aria-label="Turistická mapa Mapy.cz s polohou chaty Javořinka"></div>
+  <div class="map-hint"><span class="map-shield-hint"></span></div>
   <div class="map-overlay">
     <h2>Javořinka</h2>
     <p>Rožmitál 151<br>549 62 Rožmitál u Broumova</p>
@@ -1414,6 +1461,76 @@
     <p style="margin-top:1.5rem; color:#444;">© 2026 Chata Javořinka</p>
   </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/ol@10.9.0/dist/ol.js"></script>
+<script>
+  // ═══ MAPA POLOHY (OpenLayers + dlaždice Mapy.cz) ════════════════
+  // API klíč Mapy.cz pro web. použití. Klíč je ve zdroji viditelný –
+  // omez ho v účtu Mapy.cz (developer.mapy.com) na doménu vdubr.github.io.
+  const MAPY_API_KEY = 'HYUzTuVHlMEllPWNQueeqfZnhY7Hvpw9tcNdF1SbkSs';
+
+  (function initLocationMap() {
+    if (typeof ol === 'undefined' || !document.getElementById('locmap')) return;
+    const LON = 16.3711580, LAT = 50.6004763;
+
+    const map = new ol.Map({
+      target: 'locmap',
+      controls: ol.control.defaults.defaults({ attributionOptions: { collapsible: false } }),
+      // posun tažením zůstává nativní; zoom kolečkem jen s Ctrl/⌘
+      interactions: ol.interaction.defaults.defaults({ mouseWheelZoom: false }),
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.XYZ({
+            url: `https://api.mapy.com/v1/maptiles/outdoor/256/{z}/{x}/{y}?lang=cs&apikey=${MAPY_API_KEY}`,
+            attributions: '<a href="https://api.mapy.com/copyright" target="_blank" rel="noopener">© Seznam.cz a.s. a další</a>',
+            maxZoom: 19,
+          }),
+        }),
+      ],
+      view: new ol.View({ center: ol.proj.fromLonLat([LON, LAT]), zoom: 15 }),
+    });
+
+    // zoom kolečkem POUZE s Ctrl/⌘ (jinak scrolluje stránka)
+    map.addInteraction(new ol.interaction.MouseWheelZoom({
+      condition: ol.events.condition.platformModifierKeyOnly,
+    }));
+
+    // marker na chatě
+    const pin = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 30 42">' +
+      '<path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 27 15 27s15-16.5 15-27C30 6.7 23.3 0 15 0z" fill="#b5956a"/>' +
+      '<circle cx="15" cy="15" r="5.5" fill="#0e0e0e"/></svg>'
+    );
+    map.addLayer(new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: [new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([LON, LAT])))],
+      }),
+      style: new ol.style.Style({ image: new ol.style.Icon({ src: pin, anchor: [0.5, 1] }) }),
+    }));
+
+    // povinné logo Mapy.cz
+    const logo = document.createElement('div');
+    logo.className = 'mapy-logo';
+    logo.innerHTML = '<a href="https://mapy.com/" target="_blank" rel="noopener">' +
+      '<img src="https://api.mapy.com/img/api/logo.svg" alt="Mapy.com"></a>';
+    document.getElementById('locmap').appendChild(logo);
+
+    // kooperativní nápověda: kolečko bez modifikátoru → ukázat hlášku
+    const section = document.getElementById('locmap').closest('.map-section');
+    const hintBox = section && section.querySelector('.map-hint');
+    const hintTxt = hintBox && hintBox.querySelector('.map-shield-hint');
+    const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || '');
+    const modLabel = isMac ? '⌘' : 'Ctrl';
+    let hideTimer;
+    map.getViewport().addEventListener('wheel', e => {
+      if (e.ctrlKey || e.metaKey || !hintBox) return;
+      hintTxt.textContent = 'Pomocí ' + modLabel + ' + rolování přiblížíte mapu';
+      hintBox.classList.add('show-hint');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => hintBox.classList.remove('show-hint'), 1300);
+    }, { passive: true });
+  })();
+</script>
 
 <script>
   // Scroll progress bar

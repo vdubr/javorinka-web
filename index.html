@@ -241,6 +241,7 @@
       position: absolute;
       inset: 0;
       z-index: 550;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -249,7 +250,9 @@
     }
     /* při scrollu bez modifikátoru ztmavíme a ukážeme nápovědu */
     .map-shield.show-hint { background: rgba(0,0,0,.55); }
-    /* drží-li se Ctrl/⌘ (nebo 2 prsty), clona propustí gesta do mapy */
+    /* po aktivaci (klik), při držení Ctrl/⌘ nebo 2 prsty → clona propustí
+       gesta do mapy (posun, zoom, tlačítka fungují nativně) */
+    .map-shield.is-active,
     .map-zoom-key .map-shield,
     .map-shield.passthru { pointer-events: none; }
     .map-shield-hint {
@@ -1438,26 +1441,39 @@
         if (hintEl) hintEl.textContent = msg;
         shield.classList.add('show-hint');
         clearTimeout(hideTimer);
-        hideTimer = setTimeout(() => shield.classList.remove('show-hint'), 1300);
+        hideTimer = setTimeout(() => shield.classList.remove('show-hint'), 1400);
       }
 
+      // klik/ťuk → aktivace: mapa se stane plně ovladatelnou (posun i zoom)
+      shield.addEventListener('click', () => shield.classList.add('is-active'));
+      // odjezd z mapy → clona se vrátí, aby scroll stránky zase nezoomoval
+      section.addEventListener('mouseleave', () => shield.classList.remove('is-active'));
+
+      // scroll bez Ctrl/⌘ přes neaktivní mapu → výzva (stránka scrolluje)
       shield.addEventListener('wheel', () => {
-        flash('Pomocí ' + modLabel + ' + rolování přiblížíte mapu');
+        flash('Kliknutím aktivujete mapu · ' + modLabel + ' + rolování přiblíží');
       }, { passive: true });
 
+      // dotyk: dva prsty ovládají mapu rovnou, jeden prst → výzva k aktivaci
       shield.addEventListener('touchstart', e => {
-        if (e.touches.length >= 2) {
-          shield.classList.add('passthru');
-        } else {
-          flash('K posunutí mapy použijte dva prsty');
-        }
+        if (e.touches.length >= 2) shield.classList.add('passthru');
+        else flash('Klepnutím aktivujete mapu');
       }, { passive: true });
       shield.addEventListener('touchend', e => {
         if (e.touches.length < 2) shield.classList.remove('passthru');
       }, { passive: true });
     });
 
-    // Ctrl/⌘ držený → clony propustí kolečko do mapy (mapa zoomuje)
+    // Spolehlivý návrat clony: jakmile myš najede na obsah mimo mapu
+    // (po opuštění iframu), aktivní clonu zase zavřeme.
+    document.addEventListener('mouseover', e => {
+      document.querySelectorAll('.map-shield.is-active').forEach(sh => {
+        const sec = sh.closest('.map-section');
+        if (sec && !sec.contains(e.target)) sh.classList.remove('is-active');
+      });
+    });
+
+    // Ctrl/⌘ držený → clony propustí kolečko do mapy (mapa zoomuje bez aktivace)
     const setZoom = on => document.body.classList.toggle('map-zoom-key', on);
     addEventListener('keydown', e => { if (e.key === 'Control' || e.key === 'Meta') setZoom(true); });
     addEventListener('keyup',   e => { if (e.key === 'Control' || e.key === 'Meta') setZoom(false); });

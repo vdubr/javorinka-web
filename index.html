@@ -211,11 +211,25 @@
       display: block;
     }
 
-    /* OpenLayers mapa polohy */
-    .map-section #locmap {
+    /* OpenLayers mapy (poloha + zajímavosti) */
+    .map-section #locmap,
+    .map-section #poimap {
       width: 100%;
       height: 100%;
       background: var(--bg2);
+    }
+    /* popup s názvem bodu zájmu */
+    .ol-poi-popup {
+      display: none;
+      background: rgba(10,10,10,.92);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: .4rem .7rem;
+      font-size: .8rem;
+      white-space: nowrap;
+      transform: translate(-0);
+      box-shadow: 0 4px 16px rgba(0,0,0,.5);
     }
     /* ovládání OL doladěné do tmavého motivu */
     .map-section .ol-zoom {
@@ -286,26 +300,7 @@
       line-height: 1.4;
     }
 
-    /* clona nad mapou – „kooperativní gesta" ve stylu Google Maps:
-       scroll posouvá stránku + zobrazí hlášku, zoom až s Ctrl/⌘ */
-    .map-shield {
-      position: absolute;
-      inset: 0;
-      z-index: 550;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0);
-      transition: background .25s;
-    }
-    /* při scrollu bez modifikátoru ztmavíme a ukážeme nápovědu */
-    .map-shield.show-hint { background: rgba(0,0,0,.55); }
-    /* po aktivaci (klik), při držení Ctrl/⌘ nebo 2 prsty → clona propustí
-       gesta do mapy (posun, zoom, tlačítka fungují nativně) */
-    .map-shield.is-active,
-    .map-zoom-key .map-shield,
-    .map-shield.passthru { pointer-events: none; }
+    /* text kooperativní nápovědy nad mapou (styl Google overlay) */
     .map-shield-hint {
       color: #fff;
       font-size: 1.15rem;
@@ -321,7 +316,6 @@
       text-shadow: 0 2px 14px rgba(0,0,0,.8);
       pointer-events: none;
     }
-    .map-shield.show-hint .map-shield-hint,
     .map-hint.show-hint .map-shield-hint { opacity: 1; transform: none; }
 
     /* ─── SEKCE obecné ───────────────────────────────────────── */
@@ -1337,13 +1331,8 @@
 
 <!-- ═══ MAPA ZAJÍMAVOSTÍ (fullscreen) ════════════════════════════ -->
 <div class="map-section">
-  <iframe
-    src="https://frame.mapy.cz/turisticka?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=11"
-    title="Mapa zajímavostí v okolí chaty Javořinka – Mapy.cz"
-    loading="lazy"
-    allowfullscreen
-  ></iframe>
-  <div class="map-shield"><span class="map-shield-hint">🖱️ Kliknutím aktivujete mapu</span></div>
+  <div id="poimap" role="application" aria-label="Mapa zajímavostí v okolí chaty – Mapy.cz"></div>
+  <div class="map-hint"><span class="map-shield-hint"></span></div>
   <div class="map-overlay">
     <h2>Zajímavosti v okolí</h2>
     <p>Tipy na výlety a místa v okolí chaty</p>
@@ -1464,19 +1453,18 @@
 
 <script src="https://cdn.jsdelivr.net/npm/ol@10.9.0/dist/ol.js"></script>
 <script>
-  // ═══ MAPA POLOHY (OpenLayers + dlaždice Mapy.cz) ════════════════
+  // ═══ MAPY (OpenLayers + dlaždice Mapy.cz) ═══════════════════════
   // API klíč Mapy.cz pro web. použití. Klíč je ve zdroji viditelný –
-  // omez ho v účtu Mapy.cz (developer.mapy.com) na doménu vdubr.github.io.
+  // je omezen v účtu Mapy.cz (developer.mapy.com) na doménu webu.
   const MAPY_API_KEY = 'HYUzTuVHlMEllPWNQueeqfZnhY7Hvpw9tcNdF1SbkSs';
 
-  (function initLocationMap() {
-    if (typeof ol === 'undefined' || !document.getElementById('locmap')) return;
-    const LON = 16.3711580, LAT = 50.6004763;
-
+  // OL mapa s dlaždicemi Mapy.cz a kooperativním ovládáním:
+  // posun tažením kdykoliv, zoom kolečkem jen s Ctrl/⌘ (jinak hláška + scroll stránky).
+  function createMapyMap(target, lon, lat, zoom) {
+    const el = document.getElementById(target);
     const map = new ol.Map({
-      target: 'locmap',
+      target,
       controls: ol.control.defaults.defaults({ attributionOptions: { collapsible: false } }),
-      // posun tažením zůstává nativní; zoom kolečkem jen s Ctrl/⌘
       interactions: ol.interaction.defaults.defaults({ mouseWheelZoom: false }),
       layers: [
         new ol.layer.Tile({
@@ -1487,25 +1475,11 @@
           }),
         }),
       ],
-      view: new ol.View({ center: ol.proj.fromLonLat([LON, LAT]), zoom: 15 }),
+      view: new ol.View({ center: ol.proj.fromLonLat([lon, lat]), zoom }),
     });
-
-    // zoom kolečkem POUZE s Ctrl/⌘ (jinak scrolluje stránka)
+    // zoom kolečkem POUZE s Ctrl/⌘
     map.addInteraction(new ol.interaction.MouseWheelZoom({
       condition: ol.events.condition.platformModifierKeyOnly,
-    }));
-
-    // marker na chatě
-    const pin = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 30 42">' +
-      '<path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 27 15 27s15-16.5 15-27C30 6.7 23.3 0 15 0z" fill="#b5956a"/>' +
-      '<circle cx="15" cy="15" r="5.5" fill="#0e0e0e"/></svg>'
-    );
-    map.addLayer(new ol.layer.Vector({
-      source: new ol.source.Vector({
-        features: [new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([LON, LAT])))],
-      }),
-      style: new ol.style.Style({ image: new ol.style.Icon({ src: pin, anchor: [0.5, 1] }) }),
     }));
 
     // povinné logo Mapy.cz
@@ -1513,10 +1487,10 @@
     logo.className = 'mapy-logo';
     logo.innerHTML = '<a href="https://mapy.com/" target="_blank" rel="noopener">' +
       '<img src="https://api.mapy.com/img/api/logo.svg" alt="Mapy.com"></a>';
-    document.getElementById('locmap').appendChild(logo);
+    el.appendChild(logo);
 
     // kooperativní nápověda: kolečko bez modifikátoru → ukázat hlášku
-    const section = document.getElementById('locmap').closest('.map-section');
+    const section = el.closest('.map-section');
     const hintBox = section && section.querySelector('.map-hint');
     const hintTxt = hintBox && hintBox.querySelector('.map-shield-hint');
     const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || '');
@@ -1529,6 +1503,74 @@
       clearTimeout(hideTimer);
       hideTimer = setTimeout(() => hintBox.classList.remove('show-hint'), 1300);
     }, { passive: true });
+
+    return map;
+  }
+
+  // ── mapa polohy: marker na chatě ──
+  (function () {
+    if (typeof ol === 'undefined' || !document.getElementById('locmap')) return;
+    const LON = 16.3711580, LAT = 50.6004763;
+    const map = createMapyMap('locmap', LON, LAT, 15);
+    const pin = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 30 42">' +
+      '<path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 27 15 27s15-16.5 15-27C30 6.7 23.3 0 15 0z" fill="#b5956a"/>' +
+      '<circle cx="15" cy="15" r="5.5" fill="#0e0e0e"/></svg>'
+    );
+    map.addLayer(new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: [new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([LON, LAT])))],
+      }),
+      style: new ol.style.Style({ image: new ol.style.Icon({ src: pin, anchor: [0.5, 1] }) }),
+    }));
+  })();
+
+  // ── mapa zajímavostí: body z exportu „moje mapy" (GPX) ──
+  (function () {
+    if (typeof ol === 'undefined' || !document.getElementById('poimap')) return;
+    const map = createMapyMap('poimap', 16.33, 50.60, 11);
+
+    const source = new ol.source.Vector({
+      url: 'data/zajimavosti.gpx',
+      format: new ol.format.GPX(),
+    });
+    map.addLayer(new ol.layer.Vector({
+      source,
+      style: new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 6,
+          fill: new ol.style.Fill({ color: '#b5956a' }),
+          stroke: new ol.style.Stroke({ color: '#0e0e0e', width: 2 }),
+        }),
+      }),
+    }));
+
+    // po načtení bodů srovnat výřez mapy na ně
+    source.once('featuresloadend', () => {
+      const ext = source.getExtent();
+      if (ext && isFinite(ext[0])) {
+        map.getView().fit(ext, { padding: [70, 70, 70, 70], maxZoom: 13 });
+      }
+    });
+
+    // popup s názvem po kliknutí na bod
+    const popupEl = document.createElement('div');
+    popupEl.className = 'ol-poi-popup';
+    const overlay = new ol.Overlay({ element: popupEl, offset: [0, -14], positioning: 'bottom-center', stopEvent: false });
+    map.addOverlay(overlay);
+    map.on('click', e => {
+      const feat = map.forEachFeatureAtPixel(e.pixel, f => f);
+      if (feat && feat.getGeometry()) {
+        popupEl.textContent = feat.get('name') || '';
+        overlay.setPosition(feat.getGeometry().getCoordinates());
+        popupEl.style.display = 'block';
+      } else {
+        popupEl.style.display = 'none';
+      }
+    });
+    map.on('pointermove', e => {
+      map.getTargetElement().style.cursor = map.hasFeatureAtPixel(e.pixel) ? 'pointer' : '';
+    });
   })();
 </script>
 
@@ -1539,63 +1581,6 @@
     const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
     el.style.width = Math.min(pct, 100) + '%';
   });
-
-  // Kooperativní gesta nad mapami (styl Google Maps):
-  //  – kolečko bez Ctrl/⌘ → stránka scrolluje + hláška „použijte Ctrl…"
-  //  – Ctrl/⌘ + kolečko    → clona se otevře a mapa (iframe) zoomuje
-  //  – dotyk: 1 prst scrolluje stránku + hláška, 2 prsty ovládají mapu
-  (function cooperativeMaps() {
-    const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || '');
-    const modLabel = isMac ? '⌘' : 'Ctrl';
-
-    document.querySelectorAll('.map-section').forEach(section => {
-      const shield = section.querySelector('.map-shield');
-      if (!shield) return;
-      const hintEl = shield.querySelector('.map-shield-hint');
-      let hideTimer;
-
-      function flash(msg) {
-        if (hintEl) hintEl.textContent = msg;
-        shield.classList.add('show-hint');
-        clearTimeout(hideTimer);
-        hideTimer = setTimeout(() => shield.classList.remove('show-hint'), 1400);
-      }
-
-      // klik/ťuk → aktivace: mapa se stane plně ovladatelnou (posun i zoom)
-      shield.addEventListener('click', () => shield.classList.add('is-active'));
-      // odjezd z mapy → clona se vrátí, aby scroll stránky zase nezoomoval
-      section.addEventListener('mouseleave', () => shield.classList.remove('is-active'));
-
-      // scroll bez Ctrl/⌘ přes neaktivní mapu → výzva (stránka scrolluje)
-      shield.addEventListener('wheel', () => {
-        flash('Kliknutím aktivujete mapu · ' + modLabel + ' + rolování přiblíží');
-      }, { passive: true });
-
-      // dotyk: dva prsty ovládají mapu rovnou, jeden prst → výzva k aktivaci
-      shield.addEventListener('touchstart', e => {
-        if (e.touches.length >= 2) shield.classList.add('passthru');
-        else flash('Klepnutím aktivujete mapu');
-      }, { passive: true });
-      shield.addEventListener('touchend', e => {
-        if (e.touches.length < 2) shield.classList.remove('passthru');
-      }, { passive: true });
-    });
-
-    // Spolehlivý návrat clony: jakmile myš najede na obsah mimo mapu
-    // (po opuštění iframu), aktivní clonu zase zavřeme.
-    document.addEventListener('mouseover', e => {
-      document.querySelectorAll('.map-shield.is-active').forEach(sh => {
-        const sec = sh.closest('.map-section');
-        if (sec && !sec.contains(e.target)) sh.classList.remove('is-active');
-      });
-    });
-
-    // Ctrl/⌘ držený → clony propustí kolečko do mapy (mapa zoomuje bez aktivace)
-    const setZoom = on => document.body.classList.toggle('map-zoom-key', on);
-    addEventListener('keydown', e => { if (e.key === 'Control' || e.key === 'Meta') setZoom(true); });
-    addEventListener('keyup',   e => { if (e.key === 'Control' || e.key === 'Meta') setZoom(false); });
-    addEventListener('blur', () => setZoom(false));
-  })();
 
   // ═══════════════════════════════════════════════════════════════
   //  KONFIGURACE OBSAZENOSTI

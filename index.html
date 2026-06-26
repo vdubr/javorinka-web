@@ -235,6 +235,39 @@
       line-height: 1.4;
     }
 
+    /* clona nad mapou – „kooperativní gesta" ve stylu Google Maps:
+       scroll posouvá stránku + zobrazí hlášku, zoom až s Ctrl/⌘ */
+    .map-shield {
+      position: absolute;
+      inset: 0;
+      z-index: 550;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0);
+      transition: background .25s;
+    }
+    /* při scrollu bez modifikátoru ztmavíme a ukážeme nápovědu */
+    .map-shield.show-hint { background: rgba(10,10,10,.5); }
+    /* drží-li se Ctrl/⌘ (nebo 2 prsty), clona propustí gesta do mapy */
+    .map-zoom-key .map-shield,
+    .map-shield.passthru { pointer-events: none; }
+    .map-shield-hint {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: .02em;
+      text-align: center;
+      padding: 0 1.5rem;
+      max-width: 90%;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity .25s, transform .25s;
+      text-shadow: 0 2px 12px rgba(0,0,0,.7);
+      pointer-events: none;
+    }
+    .map-shield.show-hint .map-shield-hint { opacity: 1; transform: none; }
+
     /* ─── SEKCE obecné ───────────────────────────────────────── */
     section {
       padding: 6rem 0;
@@ -903,6 +936,7 @@
     loading="lazy"
     allowfullscreen
   ></iframe>
+  <div class="map-shield"><span class="map-shield-hint">🖱️ Kliknutím aktivujete mapu</span></div>
   <div class="map-overlay">
     <h2>Javořinka</h2>
     <p>Rožmitál 151<br>549 62 Rožmitál u Broumova</p>
@@ -1250,6 +1284,24 @@
   </div>
 </section>
 
+<!-- ═══ MAPA ZAJÍMAVOSTÍ (fullscreen) ════════════════════════════ -->
+<div class="map-section">
+  <iframe
+    src="https://frame.mapy.cz/turisticka?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=11"
+    title="Mapa zajímavostí v okolí chaty Javořinka – Mapy.cz"
+    loading="lazy"
+    allowfullscreen
+  ></iframe>
+  <div class="map-shield"><span class="map-shield-hint">🖱️ Kliknutím aktivujete mapu</span></div>
+  <div class="map-overlay">
+    <h2>Zajímavosti v okolí</h2>
+    <p>Tipy na výlety a místa v okolí chaty</p>
+    <a href="https://mapy.com/cs/zakladni?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=10"
+       target="_blank" rel="noopener"
+       style="pointer-events:auto; display:inline-block; margin-top:.8rem; font-size:.76rem; letter-spacing:.05em; color:var(--accent); border:1px solid var(--border); padding:.4rem .8rem; border-radius:5px;">Otevřít v Mapy.cz →</a>
+  </div>
+</div>
+
 <!-- ═══ STRAVOVÁNÍ ════════════════════════════════════════════════ -->
 <span class="anc" id="stravovani"></span>
 <section style="background:var(--bg);">
@@ -1366,6 +1418,50 @@
     const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
     el.style.width = Math.min(pct, 100) + '%';
   });
+
+  // Kooperativní gesta nad mapami (styl Google Maps):
+  //  – kolečko bez Ctrl/⌘ → stránka scrolluje + hláška „použijte Ctrl…"
+  //  – Ctrl/⌘ + kolečko    → clona se otevře a mapa (iframe) zoomuje
+  //  – dotyk: 1 prst scrolluje stránku + hláška, 2 prsty ovládají mapu
+  (function cooperativeMaps() {
+    const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || '');
+    const modLabel = isMac ? '⌘' : 'Ctrl';
+
+    document.querySelectorAll('.map-section').forEach(section => {
+      const shield = section.querySelector('.map-shield');
+      if (!shield) return;
+      const hintEl = shield.querySelector('.map-shield-hint');
+      let hideTimer;
+
+      function flash(msg) {
+        if (hintEl) hintEl.textContent = msg;
+        shield.classList.add('show-hint');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => shield.classList.remove('show-hint'), 1300);
+      }
+
+      shield.addEventListener('wheel', () => {
+        flash('K přiblížení mapy použijte ' + modLabel + ' + rolování');
+      }, { passive: true });
+
+      shield.addEventListener('touchstart', e => {
+        if (e.touches.length >= 2) {
+          shield.classList.add('passthru');
+        } else {
+          flash('Mapu ovládejte dvěma prsty');
+        }
+      }, { passive: true });
+      shield.addEventListener('touchend', e => {
+        if (e.touches.length < 2) shield.classList.remove('passthru');
+      }, { passive: true });
+    });
+
+    // Ctrl/⌘ držený → clony propustí kolečko do mapy (mapa zoomuje)
+    const setZoom = on => document.body.classList.toggle('map-zoom-key', on);
+    addEventListener('keydown', e => { if (e.key === 'Control' || e.key === 'Meta') setZoom(true); });
+    addEventListener('keyup',   e => { if (e.key === 'Control' || e.key === 'Meta') setZoom(false); });
+    addEventListener('blur', () => setZoom(false));
+  })();
 
   // ═══════════════════════════════════════════════════════════════
   //  KONFIGURACE OBSAZENOSTI

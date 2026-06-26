@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Javořinka – Chata v Javoří horách</title>
+  <style>
+    /* ─── RESET & BASE ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0e0e0e;
+      --bg2:       #141414;
+      --bg3:       #1a1a1a;
+      --accent:    #b5956a;
+      --accent2:   #7a9e5a;
+      --text:      #f0ede8;
+      --muted:     #8a8a7a;
+      --border:    rgba(181,149,106,.18);
+      --nav-h:     64px;
+      --serif:     'Georgia', 'Times New Roman', serif;
+      --sans:      system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: .04em;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(10,10,10,.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 1000;
+    }
+
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      color: var(--accent);
+      letter-spacing: .1em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: .82rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    .nav-links a.active {
+      color: var(--accent);
+      position: relative;
+    }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0; right: 0;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* hamburger */
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--muted); transition: .3s; }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      height: 100vh;
+      min-height: 600px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,.25) 35%, rgba(0,0,0,.6) 100%),
+        url('images/chata-exterier-predni.jpg');
+      background-size: cover;
+      background-position: center 40%;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 75% 65% at 50% 45%, transparent 0%, rgba(0,0,0,.4) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: .8rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      color: var(--text);
+      line-height: 1;
+      letter-spacing: .06em;
+      text-shadow: 0 4px 40px rgba(0,0,0,.5);
+    }
+
+    .hero-desc {
+      margin-top: 1.4rem;
+      color: var(--muted);
+      font-size: 1rem;
+      letter-spacing: .05em;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      color: var(--muted);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    .photo-label {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      background: rgba(0,0,0,.5);
+      color: var(--muted);
+      font-size: .65rem;
+      letter-spacing: .08em;
+      padding: .3rem .6rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      pointer-events: none;
+    }
+
+    /* ─── MAPA ───────────────────────────────────────────────── */
+    .map-section {
+      height: 100vh;
+      min-height: 500px;
+      position: relative;
+    }
+
+    .map-section iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .map-overlay {
+      position: absolute;
+      top: calc(var(--nav-h) + 2rem);
+      left: 2.5rem;
+      background: rgba(10,10,10,.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      pointer-events: none;
+      z-index: 600;
+    }
+
+    .map-overlay h2 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: .3rem;
+    }
+
+    .map-overlay p {
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ─── SEKCE obecné ───────────────────────────────────────── */
+    section {
+      padding: 6rem 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .8rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .section-line {
+      width: 48px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    /* ─── PŘEHLED CHATY ──────────────────────────────────────── */
+    .prehled-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+
+    .prehled-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .prehled-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 2rem;
+    }
+
+    .pill-link {
+      display: inline-block;
+      padding: .45rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: .78rem;
+      letter-spacing: .06em;
+      color: var(--accent);
+      transition: background .2s, border-color .2s;
+    }
+    .pill-link:hover {
+      background: var(--accent);
+      color: var(--bg);
+      text-decoration: none;
+    }
+
+    /* foto pás */
+    .photo-strip {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: .8rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .photo-strip::-webkit-scrollbar { height: 4px; }
+    .photo-strip::-webkit-scrollbar-track { background: transparent; }
+    .photo-strip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* placeholder foto buňka */
+    .ph-card {
+      flex: 0 0 auto;
+      width: 280px;
+      height: 200px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ph-card .ph-icon { font-size: 2rem; opacity: .35; }
+    .ph-card .ph-lbl { font-size: .72rem; color: var(--muted); letter-spacing: .06em; text-align: center; }
+
+    /* foto buňka pro obrázky (budoucí) */
+    .img-card {
+      flex: 0 0 auto;
+      width: 280px;
+      height: 200px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .img-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .img-card .img-cap {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 1.2rem .7rem .5rem;
+      background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
+      color: var(--text);
+      font-size: .72rem;
+      letter-spacing: .06em;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    /* obrázek vyplňující velké placeholdery */
+    .big-ph img,
+    .apt-main-photo img,
+    .space-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .big-ph, .apt-main-photo { overflow: hidden; }
+
+    /* barvy placeholder */
+    .ph-green { background: linear-gradient(135deg, #1a2a12, #232e18); }
+    .ph-warm  { background: linear-gradient(135deg, #241a10, #2e2218); }
+    .ph-blue  { background: linear-gradient(135deg, #10182a, #181e2e); }
+    .ph-grey  { background: linear-gradient(135deg, #181818, #202020); }
+
+    /* ─── APARTMÁNY ──────────────────────────────────────────── */
+    .apt-block {
+      margin-top: 4rem;
+      padding-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+    .apt-block:first-of-type { margin-top: 3rem; padding-top: 0; border-top: none; }
+
+    .apt-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .apt-num {
+      font-family: var(--serif);
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--accent);
+      opacity: .35;
+      letter-spacing: -.02em;
+    }
+
+    .apt-header h3 {
+      font-size: 2rem;
+      letter-spacing: .03em;
+    }
+
+    .apt-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .apt-main-photo {
+      width: 100%;
+      height: 380px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: .8rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .apt-main-photo .ph-icon { font-size: 2.5rem; opacity: .3; }
+    .apt-main-photo .ph-lbl  { font-size: .75rem; color: var(--muted); }
+
+    .apt-info { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .apt-meta {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: .3rem;
+      flex-wrap: wrap;
+    }
+
+    .apt-badge {
+      font-size: .72rem;
+      letter-spacing: .05em;
+      color: var(--accent2);
+      background: rgba(122,158,90,.12);
+      border: 1px solid rgba(122,158,90,.25);
+      padding: .2rem .6rem;
+      border-radius: 100px;
+    }
+
+    .apt-info p { font-size: .92rem; color: var(--muted); line-height: 1.7; }
+
+    .apt-detail-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      margin-top: .5rem;
+    }
+    .apt-detail-list li {
+      font-size: .85rem;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .apt-detail-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .apt-strip-label {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 2rem 0 .8rem;
+    }
+
+    @media (max-width: 900px) {
+      .apt-layout { grid-template-columns: 1fr; }
+      .apt-main-photo { height: 280px; }
+    }
+
+    /* ─── SPOLEČNÉ PROSTORY ──────────────────────────────────── */
+    .spaces-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .space-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .space-photo {
+      flex: 0 0 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+    }
+
+    .space-body { padding: 1.5rem; flex: 1; }
+    .space-body h3 { font-size: 1.05rem; margin-bottom: .5rem; }
+    .space-body p { font-size: .83rem; color: var(--muted); line-height: 1.5; }
+
+    /* ─── VÝLETY ─────────────────────────────────────────────── */
+    .poi-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    .poi-intro p { color: var(--muted); }
+
+    .poi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .poi-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      transition: border-color .2s, background .2s;
+    }
+
+    .poi-card:hover {
+      border-color: var(--accent);
+      background: rgba(181,149,106,.06);
+    }
+
+    .poi-icon { font-size: 1.6rem; margin-bottom: .5rem; }
+    .poi-card h3 { font-size: .95rem; font-family: var(--sans); font-weight: 600; margin-bottom: .3rem; }
+    .poi-card p { font-size: .78rem; color: var(--muted); line-height: 1.4; }
+
+    .btn-outline {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: .7rem 1.8rem;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      color: var(--accent);
+      font-size: .82rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: background .2s, color .2s;
+    }
+    .btn-outline:hover { background: var(--accent); color: var(--bg); text-decoration: none; }
+
+    /* ─── STRAVOVÁNÍ ─────────────────────────────────────────── */
+    .food-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .food-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+    }
+
+    .food-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .food-card h3 { font-size: 1.15rem; margin-bottom: .7rem; }
+    .food-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    .restaurant-list {
+      margin-top: 1rem;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+
+    .restaurant-list li {
+      font-size: .83rem;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .restaurant-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ─── ZAHRADA ────────────────────────────────────────────── */
+    .zahrada-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .zahrada-text p { color: var(--muted); margin-bottom: 1rem; }
+
+    .zahrada-feats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .zahrada-feat { display: flex; align-items: flex-start; gap: .7rem; }
+    .zahrada-feat .fi { font-size: 1.4rem; margin-top: .1rem; }
+    .zahrada-feat h4 { font-size: .88rem; font-family: var(--sans); font-weight: 600; margin-bottom: .15rem; }
+    .zahrada-feat p { font-size: .77rem; color: var(--muted); margin: 0; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: #080808;
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--accent);
+      letter-spacing: .1em;
+      margin-bottom: .5rem;
+    }
+
+    footer p { font-size: .78rem; color: var(--muted); margin-bottom: .3rem; }
+
+    /* ─── PROGRESS BAR ───────────────────────────────────────── */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: var(--accent);
+      z-index: 2000;
+      width: 0;
+      transition: width .1s;
+    }
+
+    /* ─── DIVIDER ────────────────────────────────────────────── */
+    .divider { width: 100%; height: 1px; background: var(--border); margin: 3rem 0; }
+
+    /* ─── ANCHOR OFFSET ──────────────────────────────────────── */
+    .anc {
+      display: block;
+      height: var(--nav-h);
+      margin-top: calc(-1 * var(--nav-h));
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    /* ─── BIG PLACEHOLDER (hero-like) ───────────────────────── */
+    .big-ph {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: .8rem;
+    }
+    .big-ph .ph-icon { font-size: 3rem; opacity: .35; }
+    .big-ph .ph-lbl  { font-size: .78rem; color: var(--muted); letter-spacing: .06em; }
+
+    /* ─── PŮDORYSY ──────────────────────────────────────────── */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .plan-card {
+      background: #f4f1ec;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .plan-card img { width: 100%; height: auto; display: block; }
+    .plan-cap {
+      padding: .7rem 1rem;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      background: var(--bg2);
+    }
+    @media (max-width: 700px) { .plan-grid { grid-template-columns: 1fr; } }
+
+    /* ─── KALENDÁŘ ──────────────────────────────────────────── */
+    .cal-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .cal-month-name {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      letter-spacing: .04em;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+
+    .cal-dow {
+      text-align: center;
+      font-size: .6rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: .5rem 0;
+    }
+
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      border-radius: 4px;
+      transition: background .15s;
+    }
+
+    .cal-day.past { opacity: .28; }
+
+    /* podbarvy dle obsazenosti */
+    .cal-day.occ-full    { background: #5c1a16; }
+    .cal-day.occ-partial { background: #4a3d08; }
+    .cal-day.occ-free    { background: #0e3318; }
+
+    .cal-day-num {
+      font-size: .8rem;
+      line-height: 1;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .cal-dots {
+      display: flex;
+      gap: 3px;
+    }
+
+    .cal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .cal-dot.free { background: rgba(255,255,255,.12); }
+    .cal-dot.apt1 { background: #d4a96a; box-shadow: 0 0 4px rgba(212,169,106,.6); }
+    .cal-dot.apt2 { background: #82b85a; box-shadow: 0 0 4px rgba(130,184, 90,.6); }
+    .cal-dot.apt3 { background: #6a9fd4; box-shadow: 0 0 4px rgba(106,159,212,.6); }
+
+    .cal-legend {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cal-legend-item {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    .cal-legend-item .cal-dot { width: 8px; height: 8px; }
+
+    /* ─── FOOTER KONTAKTY ────────────────────────────────────── */
+    .footer-contacts {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin: 1.8rem 0;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .3rem;
+    }
+
+    .footer-contact .fc-icon { font-size: 1.3rem; }
+    .footer-contact .fc-label { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .footer-contact .fc-value { font-size: .9rem; color: var(--accent); }
+    .footer-contact a { color: var(--accent); }
+    .footer-contact a:hover { color: var(--text); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .prehled-grid,
+      .poi-intro,
+      .zahrada-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .spaces-grid,
+      .food-grid { grid-template-columns: 1fr; }
+      .cal-wrap { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .space-card { flex-direction: column; }
+      .space-photo { flex: 0 0 120px; }
+      .zahrada-feats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════ -->
+<nav>
+  <span class="nav-brand">Javořinka</span>
+  <ul class="nav-links">
+    <li><a href="#dostupnost">Termíny</a></li>
+    <li><a href="#mapa">Mapa</a></li>
+    <li><a href="#prehled">O chatě</a></li>
+    <li><a href="#apartmany">Apartmány</a></li>
+    <li><a href="#spolecne">Prostory</a></li>
+    <li><a href="#vylety">Okolí</a></li>
+    <li><a href="#stravovani">Stravování</a></li>
+    <li><a href="#zahrada">Zahrada</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-subtitle">Javoří hory &nbsp;·&nbsp; Rožmitál u Broumova</p>
+    <h1 class="hero-title">Javořinka</h1>
+    <p class="hero-desc">Tři apartmány &nbsp;·&nbsp; Zahrada &nbsp;·&nbsp; Klid v přírodě</p>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ═══ DOSTUPNOST / KALENDÁŘ ════════════════════════════════════ -->
+<span class="anc" id="dostupnost"></span>
+<section style="background:var(--bg); min-height:100vh;">
+  <div class="container">
+    <p class="section-label">Sezóna 2026</p>
+    <h2 class="section-title">Termíny</h2>
+    <div class="section-line"></div>
+    <p style="color:var(--muted); max-width:640px;">Přehled obsazenosti apartmánů na léto a podzim 2026. Každá tečka odpovídá jednomu apartmánu – zlatá je obsazeno, tmavá je volno.</p>
+
+    <div class="cal-legend">
+      <div class="cal-legend-item"><span class="cal-dot apt1"></span> Apartmán 1</div>
+      <div class="cal-legend-item"><span class="cal-dot apt2"></span> Apartmán 2</div>
+      <div class="cal-legend-item"><span class="cal-dot apt3"></span> Apartmán 3</div>
+      <div class="cal-legend-item">
+        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(80,160,80,.25);"></span> Volno
+      </div>
+      <div class="cal-legend-item">
+        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(200,175,50,.3);"></span> Částečně obsazeno
+      </div>
+      <div class="cal-legend-item">
+        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(200,70,60,.35);"></span> Plně obsazeno
+      </div>
+    </div>
+
+    <div class="cal-wrap" id="calWrap"></div>
+  </div>
+</section>
+
+<!-- ═══ MAPA ═════════════════════════════════════════════════════ -->
+<span class="anc" id="mapa"></span>
+<div class="map-section">
+  <iframe
+    src="https://frame.mapy.cz/turisticka?x=16.3335&amp;y=50.5742&amp;z=14"
+    title="Turistická mapa Mapy.cz s polohou chaty Javořinka"
+    loading="lazy"
+    allowfullscreen
+  ></iframe>
+  <div class="map-overlay">
+    <h2>Javořinka</h2>
+    <p>Rožmitál 151<br>549 62 Rožmitál u Broumova</p>
+    <a href="https://mapy.com/cs/zakladni?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=10"
+       target="_blank" rel="noopener"
+       style="pointer-events:auto; display:inline-block; margin-top:.8rem; font-size:.76rem; letter-spacing:.05em; color:var(--accent); border:1px solid var(--border); padding:.4rem .8rem; border-radius:5px;">Zajímavosti v okolí →</a>
+  </div>
+</div>
+
+<!-- ═══ PŘEHLED CHATY ════════════════════════════════════════════ -->
+<span class="anc" id="prehled"></span>
+<section style="background:var(--bg2);">
+  <div class="container">
+    <div class="prehled-grid">
+      <div class="prehled-text">
+        <p class="section-label">O chatě</p>
+        <h2 class="section-title">Tři apartmány<br>v srdci přírody</h2>
+        <div class="section-line"></div>
+        <p>Chata Javořinka nabízí tři samostatné apartmány, každý s vlastní kuchyňkou a koupelnou. Ideální pro rodiny, skupiny přátel nebo ty, kdo hledají klidné místo pro odpočinek v Javoří horách.</p>
+        <p>K dispozici je také prostorná společenská místnost – skvělá pro společné večery, stolní hry nebo posezení u nápoje po celodenním výletu.</p>
+        <p>Rozlehlá zahrada, klid venkova a bezprostřední blízkost turistických tras dělají z Javořinky ideální základnu pro aktivní dovolenou i líné odpočívání.</p>
+        <div class="prehled-links">
+          <a href="#apartman-1" class="pill-link">Apartmán 1</a>
+          <a href="#apartman-2" class="pill-link">Apartmán 2</a>
+          <a href="#apartman-3" class="pill-link">Apartmán 3</a>
+          <a href="#zahrada" class="pill-link">Zahrada</a>
+          <a href="#vylety" class="pill-link">Výlety v okolí</a>
+        </div>
+      </div>
+      <div>
+        <div class="big-ph ph-green" style="height:340px;">
+          <img src="images/chata-exterier-predni.jpg" alt="Chata Javořinka – pohled zepředu" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-bottom:1rem;">Chata a okolí</p>
+    <div class="photo-strip">
+      <div class="ph-card ph-green"><span class="ph-icon">🌲</span><span class="ph-lbl">Výhled z terasy</span></div>
+      <div class="img-card"><img src="images/spolecenska-mistnost.jpg" alt="Společenská místnost" loading="lazy"><span class="img-cap">Společenská místnost</span></div>
+      <div class="img-card"><img src="images/chata-exterier-bocni.jpg" alt="Zahrada u chaty" loading="lazy"><span class="img-cap">Zahrada</span></div>
+      <div class="ph-card ph-grey"><span class="ph-icon">🚲</span><span class="ph-lbl">Okolní terén</span></div>
+      <div class="ph-card ph-blue"><span class="ph-icon">⛰️</span><span class="ph-lbl">Výhled na Javoří hory</span></div>
+      <div class="img-card"><img src="images/zahrada-ohniste.jpg" alt="Grilovací místo s ohništěm" loading="lazy"><span class="img-cap">Grilovací místo</span></div>
+    </div>
+
+    <div class="divider"></div>
+    <p class="section-label" style="margin-bottom:1rem;">Dispozice chaty</p>
+    <div class="plan-grid">
+      <div class="plan-card">
+        <img src="images/pudorys-1np.png" alt="Půdorys 1. nadzemního podlaží" loading="lazy">
+        <div class="plan-cap">1. nadzemní podlaží</div>
+      </div>
+      <div class="plan-card">
+        <img src="images/pudorys-2np.png" alt="Půdorys 2. nadzemního podlaží" loading="lazy">
+        <div class="plan-cap">2. nadzemní podlaží</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ APARTMÁNY ════════════════════════════════════════════════ -->
+<span class="anc" id="apartmany"></span>
+<section style="background:var(--bg);">
+  <div class="container">
+    <p class="section-label">Ubytování</p>
+    <h2 class="section-title">Apartmány</h2>
+    <div class="section-line"></div>
+    <p style="color:var(--muted); max-width:660px;">Každý apartmán je samostatná jednotka s vlastní koupelnou a kuchyňkou vybavenou vším potřebným. Hosté mají plné soukromí a přímý přístup do společných prostor i zahrady.</p>
+
+    <!-- ── APARTMÁN 1 ── -->
+    <span class="anc" id="apartman-1"></span>
+    <div class="apt-block">
+      <div class="apt-header">
+        <span class="apt-num">01</span>
+        <h3>Apartmán 1</h3>
+      </div>
+      <div class="apt-layout">
+        <div class="apt-main-photo ph-warm">
+          <img src="images/apartman-loznice.jpg" alt="Apartmán 1 – ložnice" loading="lazy">
+        </div>
+        <div class="apt-info">
+          <div class="apt-meta">
+            <span class="apt-badge">👤 až 4 osoby</span>
+            <span class="apt-badge">🛁 Vlastní koupelna</span>
+            <span class="apt-badge">🍳 Kuchyňka</span>
+            <span class="apt-badge">🌿 Přístup na zahradu</span>
+          </div>
+          <p>
+            Přízemní apartmán s přímým vstupem na zahradu – ideální pro rodiny s dětmi nebo ty, kdo chtějí mít přírodu na dosah ruky. Světlý, útulný interiér s veškerým pohodlím.
+          </p>
+          <ul class="apt-detail-list">
+            <li>Dvoulůžko + rozkládací pohovka (2 osoby)</li>
+            <li>Vlastní koupelna se sprchovým koutem a WC</li>
+            <li>Kuchyňka: varná deska, mikrovlnná trouba, lednice, nádobí</li>
+            <li>Přímý výstup do zahrady</li>
+            <li>TV, Wi-Fi</li>
+          </ul>
+        </div>
+      </div>
+      <p class="apt-strip-label">Fotografie apartmánu 1</p>
+      <div class="photo-strip">
+        <div class="img-card"><img src="images/apartman-loznice.jpg" alt="Apartmán 1 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
+        <div class="ph-card ph-warm"><span class="ph-icon">🛁</span><span class="ph-lbl">Koupelna</span></div>
+        <div class="img-card"><img src="images/apartman-kuchyn-obyvak.jpg" alt="Apartmán 1 – kuchyňka a obývací část" loading="lazy"><span class="img-cap">Kuchyňka a obývací část</span></div>
+        <div class="ph-card ph-warm"><span class="ph-icon">🌿</span><span class="ph-lbl">Výstup do zahrady</span></div>
+      </div>
+    </div>
+
+    <!-- ── APARTMÁN 2 ── -->
+    <span class="anc" id="apartman-2"></span>
+    <div class="apt-block">
+      <div class="apt-header">
+        <span class="apt-num">02</span>
+        <h3>Apartmán 2</h3>
+      </div>
+      <div class="apt-layout">
+        <div class="apt-main-photo ph-green">
+          <img src="images/apartman-jidelna.jpg" alt="Apartmán 2 – jídelní kout a kuchyňka" loading="lazy">
+        </div>
+        <div class="apt-info">
+          <div class="apt-meta">
+            <span class="apt-badge">👤 až 4 osoby</span>
+            <span class="apt-badge">🛁 Vlastní koupelna</span>
+            <span class="apt-badge">🍳 Kuchyňka</span>
+            <span class="apt-badge">🪟 Výhled do přírody</span>
+          </div>
+          <p>
+            Apartmán v prvním patře nabízí výhled do zahrady a okolní krajiny Javoří hor. Dvě oddělené ložnice zajišťují soukromí – vhodné pro dvě páry nebo rodinu.
+          </p>
+          <ul class="apt-detail-list">
+            <li>Dvě oddělené ložnice (2 × dvoulůžko)</li>
+            <li>Vlastní koupelna se sprchovým koutem a WC</li>
+            <li>Plně vybavená kuchyňka</li>
+            <li>Výhled do zahrady a přírody</li>
+            <li>TV, Wi-Fi</li>
+          </ul>
+        </div>
+      </div>
+      <p class="apt-strip-label">Fotografie apartmánu 2</p>
+      <div class="photo-strip">
+        <div class="img-card"><img src="images/apartman-jidelna.jpg" alt="Apartmán 2 – jídelní kout" loading="lazy"><span class="img-cap">Jídelní kout</span></div>
+        <div class="img-card"><img src="images/apartman-kuchyn-podkrovi.jpg" alt="Apartmán 2 – kuchyňka" loading="lazy"><span class="img-cap">Kuchyňka</span></div>
+        <div class="ph-card ph-green"><span class="ph-icon">🛏️</span><span class="ph-lbl">Ložnice</span></div>
+        <div class="ph-card ph-green"><span class="ph-icon">🛁</span><span class="ph-lbl">Koupelna</span></div>
+        <div class="ph-card ph-green"><span class="ph-icon">🪟</span><span class="ph-lbl">Výhled z okna</span></div>
+      </div>
+    </div>
+
+    <!-- ── APARTMÁN 3 ── -->
+    <span class="anc" id="apartman-3"></span>
+    <div class="apt-block">
+      <div class="apt-header">
+        <span class="apt-num">03</span>
+        <h3>Apartmán 3</h3>
+      </div>
+      <div class="apt-layout">
+        <div class="apt-main-photo ph-blue">
+          <img src="images/apartman-kuchyn-roh.jpg" alt="Apartmán 3 – kuchyňka" loading="lazy">
+        </div>
+        <div class="apt-info">
+          <div class="apt-meta">
+            <span class="apt-badge">👤 až 6 osob</span>
+            <span class="apt-badge">🛁 Vlastní koupelna</span>
+            <span class="apt-badge">🍳 Kuchyňka</span>
+            <span class="apt-badge">👨‍👩‍👧‍👦 Rodinný</span>
+          </div>
+          <p>
+            Největší apartmán s kapacitou pro celou rodinu nebo skupinu přátel. Prostorný interiér se třemi lůžky a extra místem na rozkládací sedačce – nikdo nespí na zemi.
+          </p>
+          <ul class="apt-detail-list">
+            <li>Tři lůžka + rozkládací sedačka (2 osoby)</li>
+            <li>Vlastní koupelna se sprchovým koutem a WC</li>
+            <li>Prostorná kuchyňka se vším vybavením</li>
+            <li>Jídelní kout pro celou skupinu</li>
+            <li>TV, Wi-Fi</li>
+          </ul>
+        </div>
+      </div>
+      <p class="apt-strip-label">Fotografie apartmánu 3</p>
+      <div class="photo-strip">
+        <div class="img-card"><img src="images/apartman-kuchyn-roh.jpg" alt="Apartmán 3 – kuchyňka" loading="lazy"><span class="img-cap">Kuchyňka</span></div>
+        <div class="ph-card ph-blue"><span class="ph-icon">🛏️</span><span class="ph-lbl">Ložnice</span></div>
+        <div class="ph-card ph-blue"><span class="ph-icon">🛋️</span><span class="ph-lbl">Obývací část</span></div>
+        <div class="ph-card ph-blue"><span class="ph-icon">🛁</span><span class="ph-lbl">Koupelna</span></div>
+        <div class="ph-card ph-blue"><span class="ph-icon">🍽️</span><span class="ph-lbl">Jídelní kout</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SPOLEČNÉ PROSTORY ════════════════════════════════════════ -->
+<span class="anc" id="spolecne"></span>
+<section style="background:var(--bg3);">
+  <div class="container">
+    <p class="section-label">Zázemí</p>
+    <h2 class="section-title">Společné prostory</h2>
+    <div class="section-line"></div>
+
+    <div class="spaces-grid">
+
+      <div class="space-card">
+        <div class="space-photo ph-warm"><img src="images/spolecenska-mistnost.jpg" alt="Společenská místnost s cihlovou klenbou" loading="lazy"></div>
+        <div class="space-body">
+          <h3>Společenská místnost</h3>
+          <p>Prostorná místnost s cihlovou klenbou pro společná setkání, stolní hry nebo večeře. Vybavena TV, jídelním stolem, společnou kuchyní s troubou a myčkou nádobí.</p>
+        </div>
+      </div>
+
+      <div class="space-card">
+        <div class="space-photo ph-blue"></div>
+        <div class="space-body">
+          <h3>Záchod se sprchou</h3>
+          <p>Společné hygienické zázemí dostupné ze společných prostor – vhodné doplněk při větší skupině hostů.</p>
+        </div>
+      </div>
+
+      <div class="space-card">
+        <div class="space-photo ph-green"><img src="images/zahrada-ohniste.jpg" alt="Venkovní ohniště a posezení" loading="lazy"></div>
+        <div class="space-body">
+          <h3>Místo pro grilování</h3>
+          <p>Venkovní ohniště s posezením a výhledem do krajiny – ideální pro letní večeře pod širým nebem.</p>
+        </div>
+      </div>
+
+      <div class="space-card">
+        <div class="space-photo ph-grey"></div>
+        <div class="space-body">
+          <h3>Garáž pro kola a motorky</h3>
+          <p>Uzamykatelná garáž pro bezpečné uložení jízdních kol, elektrokol nebo motorek.</p>
+        </div>
+      </div>
+
+      <div class="space-card" style="grid-column: span 2;">
+        <div class="space-photo ph-grey"></div>
+        <div class="space-body">
+          <h3>Sklep a úložné prostory</h3>
+          <p>Chlazený sklep pro uložení zásob nebo nápojů. Dostatek prostoru pro sportovní vybavení a turistické batohy.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+    <p class="section-label" style="margin-bottom:1rem;">Fotografie prostor</p>
+    <div class="photo-strip">
+      <div class="img-card"><img src="images/spolecenska-mistnost.jpg" alt="Společná kuchyň ve společenské místnosti" loading="lazy"><span class="img-cap">Spol. místnost a kuchyň</span></div>
+      <div class="img-card"><img src="images/zahrada-ohniste.jpg" alt="Grilovací místo" loading="lazy"><span class="img-cap">Grilovací místo</span></div>
+      <div class="ph-card ph-grey"><span class="ph-icon">🚲</span><span class="ph-lbl">Garáž na kola</span></div>
+      <div class="ph-card ph-blue"><span class="ph-icon">🚿</span><span class="ph-lbl">Záchod se sprchou</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VÝLETY V OKOLÍ ════════════════════════════════════════════ -->
+<span class="anc" id="vylety"></span>
+<section style="background:var(--bg2);">
+  <div class="container">
+    <div class="poi-intro">
+      <div>
+        <p class="section-label">Turistika a výlety</p>
+        <h2 class="section-title">Zajímavosti<br>v okolí</h2>
+        <div class="section-line"></div>
+      </div>
+      <div>
+        <p>Chata Javořinka leží v srdci Javoří hor na hranici s Polskem, obklopena hustými lesy a panoramatickými výhledy. Z chaty se snadno dostanete pěšky nebo na kole ke skalním městům, klášterům i příhraničním zajímavostem.</p>
+        <a href="https://mapy.com/cs/zakladni?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=10" target="_blank" rel="noopener" class="btn-outline">Otevřít mapu se zajímavostmi →</a>
+      </div>
+    </div>
+
+    <div class="poi-grid">
+      <div class="poi-card">
+        <div class="poi-icon">⛰️</div>
+        <h3>Javoří hory</h3>
+        <p>Hřeben s rozhlednami přímo za humny. Skvělé trasy pro turisty i cyklisty.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">🏛️</div>
+        <h3>Broumov – Klášter</h3>
+        <p>Benediktinský klášter s barokní architekturou, prohlídky celoročně.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">⛪</div>
+        <h3>Dřevěný kostel</h3>
+        <p>Přenesený dřevěný kostelík v Broumově – unikátní kulturní skvost.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">🌊</div>
+        <h3>Broumovské stěny</h3>
+        <p>Impozantní skalní útvar s vyhlídkami a sítí turistických stezek.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">🪨</div>
+        <h3>Adršpašské skály</h3>
+        <p>Jedno z nejkrásnějších skalních měst v Čechách, ~25 km od chaty.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">🪨</div>
+        <h3>Teplické skály</h3>
+        <p>Skalní labyrint propojený s Adršpachem – soutěsky a vyhlídky.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">⭐</div>
+        <h3>Hvězda</h3>
+        <p>Rozhledna a turistický uzel na hřebenu Javoří hor.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">🔭</div>
+        <h3>Skalní okno</h3>
+        <p>Přírodní skalní okno s panoramatickým výhledem do Polska.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">🌸</div>
+        <h3>Včelinec</h3>
+        <p>Malebná vesnička a turistické zázemí v Broumovské vrchovině.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">🏘️</div>
+        <h3>Nová Ruda</h3>
+        <p>Polský příhraniční charakter, tradiční zástavba a klidná atmosféra.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">🏰</div>
+        <h3>Stříbrná hora</h3>
+        <p>Pevnostní komplex s prohlídkami a výhledem do polských Hor Stołowych.</p>
+      </div>
+      <div class="poi-card">
+        <div class="poi-icon">🏙️</div>
+        <h3>Meziměstí</h3>
+        <p>Historické říční město na hranici, vlakové spojení a místní restaurace.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <p class="section-label" style="margin-bottom:1rem;">Fotografie z okolí</p>
+    <div class="photo-strip">
+      <div class="ph-card ph-green"><span class="ph-icon">⛰️</span><span class="ph-lbl">Javoří hory</span></div>
+      <div class="ph-card ph-blue"><span class="ph-icon">🌊</span><span class="ph-lbl">Broumovské stěny</span></div>
+      <div class="ph-card ph-grey"><span class="ph-icon">🪨</span><span class="ph-lbl">Adršpach</span></div>
+      <div class="ph-card ph-warm"><span class="ph-icon">🏛️</span><span class="ph-lbl">Klášter Broumov</span></div>
+      <div class="ph-card ph-green"><span class="ph-icon">🔭</span><span class="ph-lbl">Skalní okno</span></div>
+      <div class="ph-card ph-blue"><span class="ph-icon">⭐</span><span class="ph-lbl">Hvězda – rozhledna</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STRAVOVÁNÍ ════════════════════════════════════════════════ -->
+<span class="anc" id="stravovani"></span>
+<section style="background:var(--bg);">
+  <div class="container">
+    <p class="section-label">Jídlo a pití</p>
+    <h2 class="section-title">Stravování</h2>
+    <div class="section-line"></div>
+
+    <div class="food-grid">
+      <div class="food-card">
+        <div class="food-icon">🍳</div>
+        <h3>Vlastní vaření</h3>
+        <p>Každý apartmán má plně vybavenou kuchyňku – varná deska, mikrovlnná trouba, lednice, nádobí. Ve společenské místnosti je navíc <strong style="color:var(--text);">trouba a myčka nádobí</strong>.</p>
+      </div>
+
+      <div class="food-card">
+        <div class="food-icon">🥩</div>
+        <h3>Grilování na zahradě</h3>
+        <p>Venkovní grilovací koutek je k dispozici celý den. Ideální pro letní večeře v příjemném prostředí zahrady.</p>
+      </div>
+
+      <div class="food-card" style="grid-column: span 2;">
+        <div class="food-icon">🍽️</div>
+        <h3>Restaurace v okolí</h3>
+        <p>Pokud se vám nechce vařit, v okolí chaty najdete:</p>
+        <ul class="restaurant-list">
+          <li><strong style="color:var(--text);">Restaurace Alka – Broumov</strong> &nbsp;– tradiční česká kuchyně v centru Broumova</li>
+          <li><strong style="color:var(--text);">Střelnice – Broumov</strong> &nbsp;– pivnice a restaurace se širokým jídelním lístkem</li>
+          <li><strong style="color:var(--text);">Restaurace Otovice</strong> &nbsp;– lokální hospoda v blízké obci, domácí vaření</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ZAHRADA ══════════════════════════════════════════════════ -->
+<span class="anc" id="zahrada"></span>
+<section style="background:var(--bg3);">
+  <div class="container">
+    <div class="zahrada-layout">
+      <div class="zahrada-text">
+        <p class="section-label">Exteriér</p>
+        <h2 class="section-title">Zahrada</h2>
+        <div class="section-line"></div>
+        <p>Rozlehlá zahrada je ideálním místem pro odpočinek po výletu nebo jen pro klidné odpoledne v přírodě. Dřevěné posezení, prostor pro děti, zeleň a ticho – přesně to, co po náročném dni potřebujete.</p>
+        <p>Díky poloze v Rožmitálu u Broumova je zahrada obklopena tichým venkovem bez ruchu a hluku.</p>
+
+        <div class="zahrada-feats">
+          <div class="zahrada-feat">
+            <span class="fi">🌿</span>
+            <div><h4>Rozlehlý pozemek</h4><p>Dostatek místa pro děti i dospělé</p></div>
+          </div>
+          <div class="zahrada-feat">
+            <span class="fi">🔥</span>
+            <div><h4>Grilovací koutek</h4><p>Venkovní gril a sezení</p></div>
+          </div>
+          <div class="zahrada-feat">
+            <span class="fi">🌸</span>
+            <div><h4>Venkovský klid</h4><p>Bez ruchu města, idylická krajina</p></div>
+          </div>
+          <div class="zahrada-feat">
+            <span class="fi">🚲</span>
+            <div><h4>Přístup na trasy</h4><p>Turistika a cyklo přímo od chaty</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="big-ph ph-green" style="height:420px;">
+          <img src="images/chata-exterier-bocni.jpg" alt="Zahrada u chaty Javořinka" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <p class="section-label" style="margin-bottom:1rem;">Zahrada v detailu</p>
+    <div class="photo-strip">
+      <div class="img-card"><img src="images/chata-exterier-bocni.jpg" alt="Travnatá plocha zahrady" loading="lazy"><span class="img-cap">Travnatá plocha</span></div>
+      <div class="img-card"><img src="images/zahrada-ohniste.jpg" alt="Venkovní posezení s ohništěm" loading="lazy"><span class="img-cap">Posezení u ohniště</span></div>
+      <div class="ph-card ph-green"><span class="ph-icon">🌳</span><span class="ph-lbl">Stromy a stín</span></div>
+      <div class="ph-card ph-blue"><span class="ph-icon">🌄</span><span class="ph-lbl">Výhled ze zahrady</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<span class="anc" id="kontakt"></span>
+<footer>
+  <div class="container">
+    <div class="footer-brand">Javořinka</div>
+    <p>Rožmitál 151, 549 62 Rožmitál u Broumova</p>
+
+    <div class="footer-contacts">
+      <div class="footer-contact">
+        <span class="fc-icon">📞</span>
+        <span class="fc-label">Telefon / WhatsApp</span>
+        <a class="fc-value" href="tel:+420123456789">+420 123 456 789</a>
+      </div>
+      <div class="footer-contact">
+        <span class="fc-icon">✉️</span>
+        <span class="fc-label">E-mail</span>
+        <a class="fc-value" href="mailto:info@javorinka.cz">info@javorinka.cz</a>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5rem; color:#444;">© 2026 Chata Javořinka</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('scrollProgress');
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    el.style.width = Math.min(pct, 100) + '%';
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  KONFIGURACE OBSAZENOSTI
+  //  Přidejte / odeberte termíny pro každý apartmán.
+  //  Formát: { od: "YYYY-MM-DD", do: "YYYY-MM-DD" }
+  //  Interval je [od, do) – den 'do' je první volný den po rezervaci.
+  // ═══════════════════════════════════════════════════════════════
+  const REZERVACE = {
+    apt1: [
+      { od: "2026-07-05", do: "2026-07-13" },  // červenec – první týden
+      { od: "2026-08-02", do: "2026-08-10" },  // srpen – první týden
+      { od: "2026-08-16", do: "2026-08-17" },  // srpen – 1 den (all-3 overlap)
+      { od: "2026-09-06", do: "2026-09-15" },  // září – týden
+    ],
+    apt2: [
+      { od: "2026-07-19", do: "2026-07-27" },  // červenec – třetí týden
+      { od: "2026-08-09", do: "2026-08-24" },  // srpen – dva týdny
+      { od: "2026-09-13", do: "2026-09-29" },  // září – dva týdny
+    ],
+    apt3: [
+      { od: "2026-07-12", do: "2026-07-21" },  // červenec – přelom 2./3. týdne
+      { od: "2026-08-16", do: "2026-08-31" },  // srpen – druhá polovina
+      { od: "2026-09-06", do: "2026-09-22" },  // září – 2,5 týdne
+    ],
+  };
+
+  // Generování kalendáře
+  (function buildCalendar() {
+    const MONTHS = [
+      { year: 2026, month: 6, name: 'Červenec' },
+      { year: 2026, month: 7, name: 'Srpen' },
+      { year: 2026, month: 8, name: 'Září' },
+    ];
+    const DOW = ['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne'];
+    const today = new Date(); today.setHours(0,0,0,0);
+
+    function isOccupied(apt, date) {
+      return (REZERVACE[apt] || []).some(({ od, do: do_ }) =>
+        date >= new Date(od) && date < new Date(do_)
+      );
+    }
+
+    function renderMonth({ year, month, name }) {
+      const wrap = document.createElement('div');
+      wrap.className = 'cal-month';
+
+      const title = document.createElement('div');
+      title.className = 'cal-month-name';
+      title.textContent = `${name} ${year}`;
+      wrap.appendChild(title);
+
+      const grid = document.createElement('div');
+      grid.className = 'cal-grid';
+
+      DOW.forEach(d => {
+        const el = document.createElement('div');
+        el.className = 'cal-dow';
+        el.textContent = d;
+        grid.appendChild(el);
+      });
+
+      // prázdné buňky před 1. dnem
+      const firstDow = (new Date(year, month, 1).getDay() + 6) % 7;
+      for (let i = 0; i < firstDow; i++) {
+        const e = document.createElement('div');
+        e.className = 'cal-day empty';
+        grid.appendChild(e);
+      }
+
+      const days = new Date(year, month + 1, 0).getDate();
+      for (let d = 1; d <= days; d++) {
+        const date = new Date(year, month, d);
+        const cell = document.createElement('div');
+        cell.className = 'cal-day';
+        if (date < today) cell.classList.add('past');
+
+        const occ = {
+          apt1: isOccupied('apt1', date),
+          apt2: isOccupied('apt2', date),
+          apt3: isOccupied('apt3', date),
+        };
+        const count = [occ.apt1, occ.apt2, occ.apt3].filter(Boolean).length;
+        if (count === 3) cell.classList.add('occ-full');
+        else if (count > 0) cell.classList.add('occ-partial');
+        else cell.classList.add('occ-free');
+
+        const num = document.createElement('span');
+        num.className = 'cal-day-num';
+        num.textContent = d;
+        cell.appendChild(num);
+
+        const dots = document.createElement('div');
+        dots.className = 'cal-dots';
+        ['apt1', 'apt2', 'apt3'].forEach(apt => {
+          const dot = document.createElement('span');
+          dot.className = 'cal-dot ' + (occ[apt] ? apt : 'free');
+          dots.appendChild(dot);
+        });
+        cell.appendChild(dots);
+        grid.appendChild(cell);
+      }
+
+      wrap.appendChild(grid);
+      return wrap;
+    }
+
+    const calWrap = document.getElementById('calWrap');
+    if (calWrap) MONTHS.forEach(m => calWrap.appendChild(renderMonth(m)));
+  })();
+
+  // Active nav link based on scroll position
+  const navAnchors = [
+    { id: 'hero',        href: '#prehled' },
+    { id: 'prehled',     href: '#prehled' },
+    { id: 'dostupnost',  href: '#dostupnost' },
+    { id: 'mapa',        href: '#mapa' },
+    { id: 'apartmany',   href: '#apartmany' },
+    { id: 'spolecne',    href: '#spolecne' },
+    { id: 'vylety',      href: '#vylety' },
+    { id: 'stravovani',  href: '#stravovani' },
+    { id: 'zahrada',     href: '#zahrada' },
+    { id: 'kontakt',     href: '#kontakt' },
+  ];
+
+  function updateActiveNav() {
+    const scrollY = window.scrollY + window.innerHeight * 0.3;
+    let current = navAnchors[0].href;
+
+    for (const { id, href } of navAnchors) {
+      const el = document.getElementById(id)
+        ?? document.querySelector(`.anc[id="${id}"]`);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
+        current = href;
+      }
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === current);
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+
+  // Mobile nav toggle
+  function toggleMenu() {
+    const ul = document.querySelector('.nav-links');
+    const isOpen = ul.dataset.open === '1';
+    if (isOpen) {
+      ul.style.cssText = '';
+      ul.dataset.open = '0';
+    } else {
+      ul.style.cssText = `
+        display:flex; flex-direction:column; position:fixed;
+        top:var(--nav-h); left:0; right:0;
+        background:rgba(10,10,10,.97); padding:1.5rem 2rem;
+        gap:1.2rem; border-bottom:1px solid var(--border); z-index:999;
+      `;
+      ul.dataset.open = '1';
+    }
+  }
+
+  // Close mobile nav on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      const ul = document.querySelector('.nav-links');
+      ul.style.cssText = '';
+      ul.dataset.open = '0';
+    });
+  });
+</script>
+</body>
+</html>

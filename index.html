@@ -1462,19 +1462,24 @@
   // posun tažením kdykoliv, zoom kolečkem jen s Ctrl/⌘ (jinak hláška + scroll stránky).
   function createMapyMap(target, lon, lat, zoom) {
     const el = document.getElementById(target);
-    const map = new ol.Map({
-      target,
-      controls: ol.control.defaults.defaults({ attributionOptions: { collapsible: false } }),
-      interactions: ol.interaction.defaults.defaults({ mouseWheelZoom: false }),
-      layers: [
-        new ol.layer.Tile({
+    // Mapy.cz dlaždice jen na produkční doméně (klíč je omezen na referer);
+    // jinde (lokálně / jiná doména) fallback na OpenStreetMap.
+    const useMapy = location.hostname === 'vdubr.github.io';
+    const baseLayer = useMapy
+      ? new ol.layer.Tile({
           source: new ol.source.XYZ({
             url: `https://api.mapy.com/v1/maptiles/outdoor/256/{z}/{x}/{y}?lang=cs&apikey=${MAPY_API_KEY}`,
             attributions: '<a href="https://api.mapy.com/copyright" target="_blank" rel="noopener">© Seznam.cz a.s. a další</a>',
             maxZoom: 19,
           }),
-        }),
-      ],
+        })
+      : new ol.layer.Tile({ source: new ol.source.OSM() });
+
+    const map = new ol.Map({
+      target,
+      controls: ol.control.defaults.defaults({ attributionOptions: { collapsible: false } }),
+      interactions: ol.interaction.defaults.defaults({ mouseWheelZoom: false }),
+      layers: [baseLayer],
       view: new ol.View({ center: ol.proj.fromLonLat([lon, lat]), zoom }),
     });
     // zoom kolečkem POUZE s Ctrl/⌘
@@ -1482,12 +1487,14 @@
       condition: ol.events.condition.platformModifierKeyOnly,
     }));
 
-    // povinné logo Mapy.cz
-    const logo = document.createElement('div');
-    logo.className = 'mapy-logo';
-    logo.innerHTML = '<a href="https://mapy.com/" target="_blank" rel="noopener">' +
-      '<img src="https://api.mapy.com/img/api/logo.svg" alt="Mapy.com"></a>';
-    el.appendChild(logo);
+    // povinné logo Mapy.cz (jen u dlaždic Mapy.cz; u OSM se nezobrazuje)
+    if (useMapy) {
+      const logo = document.createElement('div');
+      logo.className = 'mapy-logo';
+      logo.innerHTML = '<a href="https://mapy.com/" target="_blank" rel="noopener">' +
+        '<img src="https://api.mapy.com/img/api/logo.svg" alt="Mapy.com"></a>';
+      el.appendChild(logo);
+    }
 
     // kooperativní nápověda: kolečko bez modifikátoru → ukázat hlášku
     const section = el.closest('.map-section');

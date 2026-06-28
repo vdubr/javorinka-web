@@ -1602,10 +1602,10 @@
       el.appendChild(logo);
     }
 
-    // Na produkční doméně víme, že klíč funguje → rovnou Mapy.cz (bez bliknutí).
-    // Jinde začneme OSM a přes fetch ověříme, zda klíč na této doméně projde
-    // (po přidání domény mezi povolené referrery u klíče); pokud ano, přepneme.
-    const startMapy = location.hostname === 'vdubr.github.io';
+    // Na doménách s povoleným klíčem víme, že Mapy.cz fungují → rovnou Mapy.cz
+    // (bez bliknutí). Jinde začneme OSM a přes fetch ověříme, zda klíč na dané
+    // doméně projde (po přidání mezi povolené referrery); pokud ano, přepneme.
+    const startMapy = ['javorinka.eu', 'vdubr.github.io'].includes(location.hostname);
     const baseLayer = new ol.layer.Tile({ source: startMapy ? mapySource() : new ol.source.OSM() });
 
     const map = new ol.Map({

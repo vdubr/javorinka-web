@@ -1583,18 +1583,30 @@
   // posun tažením kdykoliv, zoom kolečkem jen s Ctrl/⌘ (jinak hláška + scroll stránky).
   function createMapyMap(target, lon, lat, zoom) {
     const el = document.getElementById(target);
-    // Mapy.cz dlaždice jen na produkční doméně (klíč je omezen na referer);
-    // jinde (lokálně / jiná doména) fallback na OpenStreetMap.
-    const useMapy = location.hostname === 'vdubr.github.io';
-    const baseLayer = useMapy
-      ? new ol.layer.Tile({
-          source: new ol.source.XYZ({
-            url: `https://api.mapy.com/v1/maptiles/outdoor/256/{z}/{x}/{y}?lang=cs&apikey=${MAPY_API_KEY}`,
-            attributions: '<a href="https://api.mapy.com/copyright" target="_blank" rel="noopener">© Seznam.cz a.s. a další</a>',
-            maxZoom: 19,
-          }),
-        })
-      : new ol.layer.Tile({ source: new ol.source.OSM() });
+    const MAPY_TPL = `https://api.mapy.com/v1/maptiles/outdoor/256/{z}/{x}/{y}?lang=cs&apikey=${MAPY_API_KEY}`;
+    const mapySource = () => new ol.source.XYZ({
+      url: MAPY_TPL,
+      attributions: '<a href="https://api.mapy.com/copyright" target="_blank" rel="noopener">© Seznam.cz a.s. a další</a>',
+      maxZoom: 19,
+    });
+
+    // povinné logo Mapy.cz (jen když se reálně používají dlaždice Mapy.cz)
+    let logoShown = false;
+    function addLogo() {
+      if (logoShown) return;
+      logoShown = true;
+      const logo = document.createElement('div');
+      logo.className = 'mapy-logo';
+      logo.innerHTML = '<a href="https://mapy.com/" target="_blank" rel="noopener">' +
+        '<img src="https://api.mapy.com/img/api/logo.svg" alt="Mapy.com"></a>';
+      el.appendChild(logo);
+    }
+
+    // Na produkční doméně víme, že klíč funguje → rovnou Mapy.cz (bez bliknutí).
+    // Jinde začneme OSM a přes fetch ověříme, zda klíč na této doméně projde
+    // (po přidání domény mezi povolené referrery u klíče); pokud ano, přepneme.
+    const startMapy = location.hostname === 'vdubr.github.io';
+    const baseLayer = new ol.layer.Tile({ source: startMapy ? mapySource() : new ol.source.OSM() });
 
     const map = new ol.Map({
       target,
@@ -1608,13 +1620,17 @@
       condition: ol.events.condition.platformModifierKeyOnly,
     }));
 
-    // povinné logo Mapy.cz (jen u dlaždic Mapy.cz; u OSM se nezobrazuje)
-    if (useMapy) {
-      const logo = document.createElement('div');
-      logo.className = 'mapy-logo';
-      logo.innerHTML = '<a href="https://mapy.com/" target="_blank" rel="noopener">' +
-        '<img src="https://api.mapy.com/img/api/logo.svg" alt="Mapy.com"></a>';
-      el.appendChild(logo);
+    if (startMapy) {
+      addLogo();
+    } else {
+      const probe = MAPY_TPL.replace('{z}', '14').replace('{x}', '8936').replace('{y}', '5512');
+      fetch(probe, { cache: 'no-store' })
+        .then(r => {
+          if (!r.ok) return;                 // klíč na této doméně neplatí → zůstává OSM
+          baseLayer.setSource(mapySource()); // přepnutí dlaždic OSM → Mapy.cz
+          addLogo();
+        })
+        .catch(() => {});                    // offline / CORS → zůstává OSM
     }
 
     // kooperativní nápověda: kolečko bez modifikátoru → ukázat hlášku

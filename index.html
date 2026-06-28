@@ -954,14 +954,14 @@
 <nav>
   <span class="nav-brand">Javořinka</span>
   <ul class="nav-links">
-    <li><a href="#dostupnost">Termíny</a></li>
-    <li><a href="#mapa">Mapa</a></li>
     <li><a href="#prehled">O chatě</a></li>
+    <li><a href="#mapa">Mapa</a></li>
+    <li><a href="#dostupnost">Termíny</a></li>
     <li><a href="#apartmany">Apartmány</a></li>
     <li><a href="#spolecne">Prostory</a></li>
+    <li><a href="#zahrada">Zahrada</a></li>
     <li><a href="#vylety">Okolí</a></li>
     <li><a href="#stravovani">Stravování</a></li>
-    <li><a href="#zahrada">Zahrada</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
   <div class="nav-toggle" id="navToggle" onclick="toggleMenu()">
@@ -979,48 +979,6 @@
   </div>
   <div class="hero-scroll">Scroll</div>
 </section>
-
-<!-- ═══ DOSTUPNOST / KALENDÁŘ ════════════════════════════════════ -->
-<span class="anc" id="dostupnost"></span>
-<section style="background:var(--bg); min-height:100vh;">
-  <div class="container">
-    <p class="section-label">Sezóna 2026</p>
-    <h2 class="section-title">Termíny</h2>
-    <div class="section-line"></div>
-    <p style="color:var(--muted); max-width:640px;">Přehled obsazenosti apartmánů na léto a podzim 2026. Každá tečka odpovídá jednomu apartmánu – zlatá je obsazeno, tmavá je volno.</p>
-
-    <div class="cal-legend">
-      <div class="cal-legend-item"><span class="cal-dot apt1"></span> Apartmán 1</div>
-      <div class="cal-legend-item"><span class="cal-dot apt2"></span> Apartmán 2</div>
-      <div class="cal-legend-item"><span class="cal-dot apt3"></span> Apartmán 3</div>
-      <div class="cal-legend-item">
-        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(80,160,80,.25);"></span> Volno
-      </div>
-      <div class="cal-legend-item">
-        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(200,175,50,.3);"></span> Částečně obsazeno
-      </div>
-      <div class="cal-legend-item">
-        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(200,70,60,.35);"></span> Plně obsazeno
-      </div>
-    </div>
-
-    <div class="cal-wrap" id="calWrap"></div>
-  </div>
-</section>
-
-<!-- ═══ MAPA ═════════════════════════════════════════════════════ -->
-<span class="anc" id="mapa"></span>
-<div class="map-section">
-  <div id="locmap" role="application" aria-label="Turistická mapa Mapy.cz s polohou chaty Javořinka"></div>
-  <div class="map-hint"><span class="map-shield-hint"></span></div>
-  <div class="map-overlay">
-    <h2>Javořinka</h2>
-    <p>Rožmitál 151<br>549 62 Rožmitál u Broumova</p>
-    <a href="https://mapy.com/cs/zakladni?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=10"
-       target="_blank" rel="noopener"
-       style="pointer-events:auto; display:inline-block; margin-top:.8rem; font-size:.76rem; letter-spacing:.05em; color:var(--accent); border:1px solid var(--border); padding:.4rem .8rem; border-radius:5px;">Zajímavosti v okolí →</a>
-  </div>
-</div>
 
 <!-- ═══ PŘEHLED CHATY ════════════════════════════════════════════ -->
 <span class="anc" id="prehled"></span>
@@ -1072,6 +1030,48 @@
         <div class="plan-cap">2. nadzemní podlaží</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ MAPA ═════════════════════════════════════════════════════ -->
+<span class="anc" id="mapa"></span>
+<div class="map-section">
+  <div id="locmap" role="application" aria-label="Turistická mapa Mapy.cz s polohou chaty Javořinka"></div>
+  <div class="map-hint"><span class="map-shield-hint"></span></div>
+  <div class="map-overlay">
+    <h2>Javořinka</h2>
+    <p>Rožmitál 151<br>549 62 Rožmitál u Broumova</p>
+    <a href="https://mapy.com/cs/zakladni?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=10"
+       target="_blank" rel="noopener"
+       style="pointer-events:auto; display:inline-block; margin-top:.8rem; font-size:.76rem; letter-spacing:.05em; color:var(--accent); border:1px solid var(--border); padding:.4rem .8rem; border-radius:5px;">Zajímavosti v okolí →</a>
+  </div>
+</div>
+
+<!-- ═══ DOSTUPNOST / KALENDÁŘ ════════════════════════════════════ -->
+<span class="anc" id="dostupnost"></span>
+<section style="background:var(--bg); min-height:100vh;">
+  <div class="container">
+    <p class="section-label">Sezóna 2026</p>
+    <h2 class="section-title">Termíny</h2>
+    <div class="section-line"></div>
+    <p style="color:var(--muted); max-width:640px;">Přehled obsazenosti apartmánů na léto a podzim 2026. Každá tečka odpovídá jednomu apartmánu – zlatá je obsazeno, tmavá je volno.</p>
+
+    <div class="cal-legend">
+      <div class="cal-legend-item"><span class="cal-dot apt1"></span> Apartmán 1</div>
+      <div class="cal-legend-item"><span class="cal-dot apt2"></span> Apartmán 2</div>
+      <div class="cal-legend-item"><span class="cal-dot apt3"></span> Apartmán 3</div>
+      <div class="cal-legend-item">
+        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(80,160,80,.25);"></span> Volno
+      </div>
+      <div class="cal-legend-item">
+        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(200,175,50,.3);"></span> Částečně obsazeno
+      </div>
+      <div class="cal-legend-item">
+        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(200,70,60,.35);"></span> Plně obsazeno
+      </div>
+    </div>
+
+    <div class="cal-wrap" id="calWrap"></div>
   </div>
 </section>
 
@@ -1285,6 +1285,56 @@
   </div>
 </section>
 
+<!-- ═══ ZAHRADA ══════════════════════════════════════════════════ -->
+<span class="anc" id="zahrada"></span>
+<section style="background:var(--bg3);">
+  <div class="container">
+    <div class="zahrada-layout">
+      <div class="zahrada-text">
+        <p class="section-label">Exteriér</p>
+        <h2 class="section-title">Zahrada</h2>
+        <div class="section-line"></div>
+        <p>Rozlehlá zahrada je ideálním místem pro odpočinek po výletu nebo jen pro klidné odpoledne v přírodě. Dřevěné posezení, prostor pro děti, zeleň a ticho – přesně to, co po náročném dni potřebujete.</p>
+        <p>Díky poloze v Rožmitálu u Broumova je zahrada obklopena tichým venkovem bez ruchu a hluku.</p>
+
+        <div class="zahrada-feats">
+          <div class="zahrada-feat">
+            <span class="fi">🌿</span>
+            <div><h4>Rozlehlý pozemek</h4><p>Dostatek místa pro děti i dospělé</p></div>
+          </div>
+          <div class="zahrada-feat">
+            <span class="fi">🔥</span>
+            <div><h4>Grilovací koutek</h4><p>Venkovní gril a sezení</p></div>
+          </div>
+          <div class="zahrada-feat">
+            <span class="fi">🌸</span>
+            <div><h4>Venkovský klid</h4><p>Bez ruchu města, idylická krajina</p></div>
+          </div>
+          <div class="zahrada-feat">
+            <span class="fi">🚲</span>
+            <div><h4>Přístup na trasy</h4><p>Turistika a cyklo přímo od chaty</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="big-ph ph-green" style="height:420px;">
+          <img src="images/chata-exterier-bocni.jpg" alt="Zahrada u chaty Javořinka" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <p class="section-label" style="margin-bottom:1rem;">Zahrada v detailu</p>
+    <div class="photo-strip">
+      <div class="img-card"><img src="images/chata-exterier-bocni.jpg" alt="Travnatá plocha zahrady" loading="lazy"><span class="img-cap">Travnatá plocha</span></div>
+      <div class="img-card"><img src="images/zahrada-ohniste.jpg" alt="Venkovní posezení s ohništěm" loading="lazy"><span class="img-cap">Posezení u ohniště</span></div>
+      <div class="ph-card ph-green"><span class="ph-icon">🌳</span><span class="ph-lbl">Stromy a stín</span></div>
+      <div class="ph-card ph-blue"><span class="ph-icon">🌄</span><span class="ph-lbl">Výhled ze zahrady</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ VÝLETY V OKOLÍ ════════════════════════════════════════════ -->
 <span class="anc" id="vylety"></span>
 <section style="background:var(--bg2);">
@@ -1421,56 +1471,6 @@
           <li><strong style="color:var(--text);">Restaurace Otovice</strong> &nbsp;– lokální hospoda v blízké obci, domácí vaření</li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ ZAHRADA ══════════════════════════════════════════════════ -->
-<span class="anc" id="zahrada"></span>
-<section style="background:var(--bg3);">
-  <div class="container">
-    <div class="zahrada-layout">
-      <div class="zahrada-text">
-        <p class="section-label">Exteriér</p>
-        <h2 class="section-title">Zahrada</h2>
-        <div class="section-line"></div>
-        <p>Rozlehlá zahrada je ideálním místem pro odpočinek po výletu nebo jen pro klidné odpoledne v přírodě. Dřevěné posezení, prostor pro děti, zeleň a ticho – přesně to, co po náročném dni potřebujete.</p>
-        <p>Díky poloze v Rožmitálu u Broumova je zahrada obklopena tichým venkovem bez ruchu a hluku.</p>
-
-        <div class="zahrada-feats">
-          <div class="zahrada-feat">
-            <span class="fi">🌿</span>
-            <div><h4>Rozlehlý pozemek</h4><p>Dostatek místa pro děti i dospělé</p></div>
-          </div>
-          <div class="zahrada-feat">
-            <span class="fi">🔥</span>
-            <div><h4>Grilovací koutek</h4><p>Venkovní gril a sezení</p></div>
-          </div>
-          <div class="zahrada-feat">
-            <span class="fi">🌸</span>
-            <div><h4>Venkovský klid</h4><p>Bez ruchu města, idylická krajina</p></div>
-          </div>
-          <div class="zahrada-feat">
-            <span class="fi">🚲</span>
-            <div><h4>Přístup na trasy</h4><p>Turistika a cyklo přímo od chaty</p></div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="big-ph ph-green" style="height:420px;">
-          <img src="images/chata-exterier-bocni.jpg" alt="Zahrada u chaty Javořinka" loading="lazy">
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-    <p class="section-label" style="margin-bottom:1rem;">Zahrada v detailu</p>
-    <div class="photo-strip">
-      <div class="img-card"><img src="images/chata-exterier-bocni.jpg" alt="Travnatá plocha zahrady" loading="lazy"><span class="img-cap">Travnatá plocha</span></div>
-      <div class="img-card"><img src="images/zahrada-ohniste.jpg" alt="Venkovní posezení s ohništěm" loading="lazy"><span class="img-cap">Posezení u ohniště</span></div>
-      <div class="ph-card ph-green"><span class="ph-icon">🌳</span><span class="ph-lbl">Stromy a stín</span></div>
-      <div class="ph-card ph-blue"><span class="ph-icon">🌄</span><span class="ph-lbl">Výhled ze zahrady</span></div>
     </div>
   </div>
 </section>
@@ -1756,13 +1756,13 @@
   const navAnchors = [
     { id: 'hero',        href: '#prehled' },
     { id: 'prehled',     href: '#prehled' },
-    { id: 'dostupnost',  href: '#dostupnost' },
     { id: 'mapa',        href: '#mapa' },
+    { id: 'dostupnost',  href: '#dostupnost' },
     { id: 'apartmany',   href: '#apartmany' },
     { id: 'spolecne',    href: '#spolecne' },
+    { id: 'zahrada',     href: '#zahrada' },
     { id: 'vylety',      href: '#vylety' },
     { id: 'stravovani',  href: '#stravovani' },
-    { id: 'zahrada',     href: '#zahrada' },
     { id: 'kontakt',     href: '#kontakt' },
   ];
 

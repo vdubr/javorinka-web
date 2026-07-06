@@ -1,13 +1,13 @@
-// Vercel serverless funkce: přečte veřejný iCal feed Google Kalendáře
-// rezervací a vrátí JSON intervalů obsazenosti [od, do).
-// Existuje proto, že prohlížeč nemůže ICS z calendar.google.com číst
-// přímo (Google neposílá CORS hlavičky). Žádný API klíč není potřeba –
-// stačí, aby byl kalendář v Google nastavený jako veřejný.
+// Vercel serverless funkce: přečte iCal feed Google Kalendáře rezervací
+// a vrátí JSON intervalů obsazenosti [od, do) – bez názvů a detailů
+// událostí, ty zůstávají jen zde na serveru.
+//
+// Kalendář NENÍ veřejný. Čte se přes „Tajnou adresu ve formátu iCal"
+// (Nastavení kalendáře → Integrace kalendáře), uloženou v proměnné
+// prostředí OBSAZENOST_ICS_URL na Vercelu (Settings → Environment
+// Variables). Tajná adresa nesmí do repa – repo je veřejné.
 
-const ICS_URL =
-  'https://calendar.google.com/calendar/ical/' +
-  '4ef91465ed95a92782e547d289e765e0e1ac76ea539cc69c4c99e964455ea589%40group.calendar.google.com' +
-  '/public/basic.ics';
+const ICS_URL = process.env.OBSAZENOST_ICS_URL;
 
 // 'YYYYMMDD' → 'YYYY-MM-DD'
 function isoDate(v) {
@@ -45,6 +45,7 @@ function parseIcs(ics) {
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*'); // kvůli mirroru na GitHub Pages
   try {
+    if (!ICS_URL) throw new Error('OBSAZENOST_ICS_URL není nastavena');
     const r = await fetch(ICS_URL, { headers: { 'User-Agent': 'javorinka.eu obsazenost' } });
     if (!r.ok) throw new Error('ICS feed: HTTP ' + r.status);
     const intervals = parseIcs(await r.text());

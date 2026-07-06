@@ -6,7 +6,8 @@ obsah, styly i skripty jsou v jediném souboru **`index.html`** (inline CSS + JS
 
 ```
 index.html            celý web (HTML + CSS + JS)
-images/               fotky a půdorysy (pudorys-1np.png, pudorys-2np.png, …)
+api/obsazenost.js     Vercel funkce: veřejný iCal Google Kalendáře → JSON obsazenosti
+images/               fotky a půdorysy (pudorys-1np_popsane.png, …)
 data/zajimavosti.gpx  body zájmu pro mapu okolí (export z „moje mapy" Mapy.cz)
 ```
 
@@ -62,8 +63,17 @@ data/zajimavosti.gpx  body zájmu pro mapu okolí (export z „moje mapy" Mapy.c
   Společné prostory → Zahrada → Okolí (POI mapa) → Stravování → patička.
   Musí sedět s navigací (`<ul class="nav-links">`) **i** s polem `navAnchors`
   v JS (zvýrazňování aktivní položky při scrollu).
-- **Obsazenost kalendáře:** objekt `REZERVACE` v `<script>` (apt1/apt2/apt3,
-  formát `{ od: "YYYY-MM-DD", do: "YYYY-MM-DD" }`). ⚠️ Zatím **mock data**.
+- **Obsazenost kalendáře:** rezervace se zadávají jako události do veřejného
+  Google Kalendáře „Javořinka rezervace“
+  (`4ef91465…@group.calendar.google.com`). Chata se pronajímá **vcelku** –
+  jakákoli událost = obsazený den (na názvu nezáleží; kalendář je veřejný,
+  tak do názvů nepsat citlivé údaje). Web čte feed přes Vercel funkci
+  **`api/obsazenost.js`** (parsuje veřejný iCal → JSON intervalů `[od, do)`,
+  cache 15 min). GitHub Pages mirror a lokální server volají produkční
+  endpoint `https://javorinka.eu/api/obsazenost` (CORS `*`). Zobrazované
+  měsíce definuje pole `MONTHS` ve funkci `buildCalendar` v `index.html`.
+  ⚠️ Kalendář musí být v Google nastavený jako **veřejný**, jinak iCal feed
+  vrací 404 a web ukáže náhradní hlášku s odkazem na kontakt.
 - **Kontakty:** v patičce. ⚠️ Zatím **placeholdery** (`+420 123 456 789`, `info@javorinka.cz`).
 - **Galerie (lightbox):** klik na fotku ji zvětší, šipky `←/→` projdou všechny
   fotky odshora dolů. Bere `<img>` ze selektorů `.big-ph, .apt-main-photo,
@@ -77,7 +87,9 @@ data/zajimavosti.gpx  body zájmu pro mapu okolí (export z „moje mapy" Mapy.c
 ## Zbývá dodělat
 
 - [ ] Reálné **kontakty** v patičce.
-- [ ] Reálné **rezervace** v objektu `REZERVACE`.
+- [ ] **Zveřejnit Google Kalendář rezervací** (Nastavení → Oprávnění k přístupu
+      → Zpřístupnit veřejně; stačí „pouze informace o volném čase“) – do té
+      doby kalendář na webu ukazuje náhradní hlášku.
 - [ ] Doplnit chybějící **fotky** (placeholdery: koupelny, garáž, balkon, krb,
       sklep, okolí) – automaticky se zařadí do galerie.
 - [ ] (Volitelně) povolit `www.javorinka.eu` a `*.vercel.app` u mapového klíče;

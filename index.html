@@ -17,16 +17,16 @@
   <meta property="og:description" content="Klid venkova pro okamžiky s přáteli. Tři apartmány, velká zahrada a výlety po Broumovsku, Adršpachu a Teplických skalách." />
   <meta property="og:url" content="https://javorinka.eu/" />
   <meta property="og:locale" content="cs_CZ" />
-  <meta property="og:image" content="https://javorinka.eu/images/chata-exterier-predni.jpg" />
-  <meta property="og:image:width" content="1182" />
-  <meta property="og:image:height" content="665" />
-  <meta property="og:image:alt" content="Chata Javořinka – pohled zepředu" />
+  <meta property="og:image" content="https://javorinka.eu/images/exterier/dron/dron-1.jpg" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1280" />
+  <meta property="og:image:alt" content="Chata Javořinka z dronu – Broumovské stěny na obzoru" />
 
   <!-- Twitter / X karta -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Chata Javořinka – apartmány v Javoří horách u Broumova" />
   <meta name="twitter:description" content="Klid venkova pro okamžiky s přáteli. Výlety po Broumovsku, Adršpachu a Teplických skalách." />
-  <meta name="twitter:image" content="https://javorinka.eu/images/chata-exterier-predni.jpg" />
+  <meta name="twitter:image" content="https://javorinka.eu/images/exterier/dron/dron-1.jpg" />
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" sizes="any" />
@@ -42,7 +42,7 @@
     "name": "Chata Javořinka",
     "description": "Tři apartmány v Javoří horách u Broumova. Klidné ubytování s velkou zahradou, ideální pro rodiny a výlety po Broumovsku, Adršpachu a Teplických skalách.",
     "url": "https://javorinka.eu/",
-    "image": "https://javorinka.eu/images/chata-exterier-predni.jpg",
+    "image": "https://javorinka.eu/images/exterier/dron/dron-1.jpg",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Rožmitál 151",
@@ -175,9 +175,9 @@
       inset: 0;
       background:
         linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,.25) 35%, rgba(0,0,0,.6) 100%),
-        url('images/chata-exterier-predni.jpg');
+        url('images/exterier/dron/dron-1.jpg');
       background-size: cover;
-      background-position: center 40%;
+      background-position: center 55%;
     }
 
     .hero-bg::before {
@@ -535,15 +535,6 @@
       align-items: baseline;
       gap: 1.2rem;
       margin-bottom: 2rem;
-    }
-
-    .apt-num {
-      font-family: var(--serif);
-      font-size: 3.5rem;
-      line-height: 1;
-      color: var(--accent);
-      opacity: .35;
-      letter-spacing: -.02em;
     }
 
     .apt-header h3 {
@@ -923,9 +914,8 @@
     .cal-day.past { opacity: .28; }
 
     /* podbarvy dle obsazenosti */
-    .cal-day.occ-full    { background: #5c1a16; }
-    .cal-day.occ-partial { background: #4a3d08; }
-    .cal-day.occ-free    { background: #0e3318; }
+    .cal-day.occ-full { background: #5c1a16; }
+    .cal-day.occ-free { background: #0e3318; }
 
     .cal-day-num {
       font-size: .8rem;
@@ -933,22 +923,6 @@
       color: var(--text);
       font-weight: 500;
     }
-
-    .cal-dots {
-      display: flex;
-      gap: 3px;
-    }
-
-    .cal-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-    }
-
-    .cal-dot.free { background: rgba(255,255,255,.12); }
-    .cal-dot.apt1 { background: #d4a96a; box-shadow: 0 0 4px rgba(212,169,106,.6); }
-    .cal-dot.apt2 { background: #82b85a; box-shadow: 0 0 4px rgba(130,184, 90,.6); }
-    .cal-dot.apt3 { background: #6a9fd4; box-shadow: 0 0 4px rgba(106,159,212,.6); }
 
     .cal-legend {
       display: flex;
@@ -964,8 +938,6 @@
       font-size: .78rem;
       color: var(--muted);
     }
-
-    .cal-legend-item .cal-dot { width: 8px; height: 8px; }
 
     /* ─── FOOTER KONTAKTY ────────────────────────────────────── */
     .footer-contacts {
@@ -1103,9 +1075,9 @@
   <div class="hero-content">
     <p class="hero-subtitle">Javoří hory &nbsp;·&nbsp; Rožmitál u Broumova</p>
     <h1 class="hero-title">Javořinka</h1>
-    <p class="hero-desc">Tři apartmány &nbsp;·&nbsp; Zahrada &nbsp;·&nbsp; Klid v přírodě</p>
+    <p class="hero-desc">Tři apartmány &nbsp;·&nbsp; Velká zahrada &nbsp;·&nbsp; Klidné zázemí</p>
   </div>
-  <div class="hero-scroll">Scroll</div>
+  <div class="hero-scroll">Posunout</div>
 </section>
 
 <!-- ═══ PŘEHLED CHATY ════════════════════════════════════════════ -->
@@ -1115,12 +1087,12 @@
     <div class="prehled-grid">
       <div class="prehled-text">
         <p class="section-label">O chatě</p>
-        <h2 class="section-title">Tři apartmány<br>v srdci přírody</h2>
+        <h2 class="section-title">Tři apartmány<br>pro klidný pobyt</h2>
         <div class="section-line"></div>
-        <p>Chata Javořinka nabízí tři samostatné apartmány, každý s vlastní kuchyňkou a koupelnou. Ideální pro rodiny, skupiny přátel nebo ty, kdo hledají klidné místo pro odpočinek v Javoří horách.</p>
-        <p>K dispozici je také prostorná společenská místnost – skvělá pro společné večery, stolní hry nebo posezení u nápoje po celodenním výletu.</p>
-        <p>Rozlehlá zahrada, klid venkova a bezprostřední blízkost turistických tras dělají z Javořinky ideální základnu pro aktivní dovolenou i líné odpočívání.</p>
-        <p><strong style="color:var(--text);">🐾 V chatě nejsou povolena zvířata.</strong></p>
+        <p>Chata Javořinka nabízí tři samostatné apartmány s vlastní kuchyňkou a koupelnou. Vhodné pro rodiny i menší skupiny, které hledají pohodlí a soukromí v Javořích horách.</p>
+        <p>Součástí chaty je i prostorná společenská místnost pro společné večeře, hry a večerní posezení.</p>
+        <p>Velká zahrada a blízkost turistických tras dělají z Javořinky příjemné zázemí pro aktivní i odpočinkový pobyt.</p>
+        <p><strong style="color:var(--text);">V chatě nejsou povolena zvířata.</strong></p>
         <div class="prehled-links">
           <a href="#apartman-1" class="pill-link">Apartmán 1</a>
           <a href="#apartman-2" class="pill-link">Apartmán 2</a>
@@ -1131,30 +1103,35 @@
       </div>
       <div>
         <div class="big-ph ph-green" style="height:340px;">
-          <img src="images/chata-exterier-predni.jpg" alt="Chata Javořinka – pohled zepředu" loading="lazy">
+          <img src="images/exterier/3_dum.jpeg" alt="Chata Javořinka – pohled ze zahrady" loading="lazy">
         </div>
       </div>
     </div>
 
     <p class="section-label" style="margin-bottom:1rem;">Chata a okolí</p>
     <div class="photo-strip">
-      <div class="ph-card ph-green"><span class="ph-icon">🌲</span><span class="ph-lbl">Výhled z terasy</span></div>
-      <div class="img-card"><img src="images/spolecenska-mistnost.jpg" alt="Společenská místnost" loading="lazy"><span class="img-cap">Společenská místnost</span></div>
-      <div class="img-card"><img src="images/chata-exterier-bocni.jpg" alt="Zahrada u chaty" loading="lazy"><span class="img-cap">Zahrada</span></div>
-      <div class="ph-card ph-grey"><span class="ph-icon">🚲</span><span class="ph-lbl">Okolní terén</span></div>
-      <div class="ph-card ph-blue"><span class="ph-icon">⛰️</span><span class="ph-lbl">Výhled na Javoří hory</span></div>
-      <div class="img-card"><img src="images/zahrada-ohniste.jpg" alt="Grilovací místo s ohništěm" loading="lazy"><span class="img-cap">Grilovací místo</span></div>
+      <div class="img-card"><img src="images/exterier/2_dum.jpeg" alt="Chata Javořinka s terasou a garáží" loading="lazy"><span class="img-cap">Chata s terasou a garáží</span></div>
+      <div class="img-card"><img src="images/exterier/4_dum.jpeg" alt="Boční pohled na chatu" loading="lazy"><span class="img-cap">Boční pohled na chatu</span></div>
+      <div class="img-card"><img src="images/exterier/5_dum.jpeg" alt="Chata Javořinka ze zahrady" loading="lazy"><span class="img-cap">Chata ze zahrady</span></div>
+      <div class="img-card"><img src="images/exterier/6_dum.jpeg" alt="Vstup do chaty se schodištěm" loading="lazy"><span class="img-cap">Vstup do chaty</span></div>
+      <div class="img-card"><img src="images/exterier/dron/dron-1.jpg" alt="Chata z dronu – Broumovské stěny na obzoru" loading="lazy"><span class="img-cap">Z dronu – Broumovské stěny na obzoru</span></div>
+      <div class="img-card"><img src="images/exterier/dron/dron-2.jpg" alt="Chata Javořinka z ptačí perspektivy" loading="lazy"><span class="img-cap">Chata z ptačí perspektivy</span></div>
+      <div class="img-card"><img src="images/exterier/dron/dron-3.jpg" alt="Okolí chaty z výšky" loading="lazy"><span class="img-cap">Okolí chaty z výšky</span></div>
+      <div class="img-card"><img src="images/exterier/dron/dron-4.jpg" alt="Chata mezi loukami a lesy – letecký pohled" loading="lazy"><span class="img-cap">Mezi loukami a lesy</span></div>
+      <div class="img-card"><img src="images/exterier/dron/dron-5.jpg" alt="Večerní letecký pohled na chatu" loading="lazy"><span class="img-cap">Večerní pohled z dronu</span></div>
+      <div class="img-card"><img src="images/exterier/dron/dron-6.jpg" alt="Krajina Broumovska z dronu" loading="lazy"><span class="img-cap">Krajina Broumovska</span></div>
+      <div class="img-card"><img src="images/exterier/dron/dron-7.jpg" alt="Chata a zahrada z výšky" loading="lazy"><span class="img-cap">Chata a zahrada z výšky</span></div>
     </div>
 
     <div class="divider"></div>
     <p class="section-label" style="margin-bottom:1rem;">Dispozice chaty</p>
     <div class="plan-grid">
       <div class="plan-card">
-        <img src="images/pudorys-1np.png" alt="Půdorys 1. nadzemního podlaží" loading="lazy">
+        <img src="images/pudorys-1np_popsane.png" alt="Půdorys 1. nadzemního podlaží s popisem místností" loading="lazy">
         <div class="plan-cap">1. nadzemní podlaží</div>
       </div>
       <div class="plan-card">
-        <img src="images/pudorys-2np.png" alt="Půdorys 2. nadzemního podlaží" loading="lazy">
+        <img src="images/pudorys-2np_popsane.png" alt="Půdorys 2. nadzemního podlaží s popisem místností" loading="lazy">
         <div class="plan-cap">2. nadzemní podlaží</div>
       </div>
     </div>
@@ -1171,7 +1148,7 @@
     <p>Rožmitál 151<br>549 62 Rožmitál u Broumova</p>
     <a href="https://mapy.com/cs/zakladni?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=10"
        target="_blank" rel="noopener"
-       style="pointer-events:auto; display:inline-block; margin-top:.8rem; font-size:.76rem; letter-spacing:.05em; color:var(--accent); border:1px solid var(--border); padding:.4rem .8rem; border-radius:5px;">Zajímavosti v okolí →</a>
+       style="pointer-events:auto; display:inline-block; margin-top:.8rem; font-size:.76rem; letter-spacing:.05em; color:var(--accent); border:1px solid var(--border); padding:.4rem .8rem; border-radius:5px;">Tipy v okolí →</a>
   </div>
 </div>
 
@@ -1182,20 +1159,14 @@
     <p class="section-label">Sezóna 2026</p>
     <h2 class="section-title">Termíny</h2>
     <div class="section-line"></div>
-    <p style="color:var(--muted); max-width:640px;">Přehled obsazenosti apartmánů na léto a podzim 2026. Každá tečka odpovídá jednomu apartmánu – zlatá je obsazeno, tmavá je volno.</p>
+    <p style="color:var(--muted); max-width:640px;">Přehled obsazenosti pro léto a podzim 2026. Chata se pronajímá vcelku – den je buď volný, nebo obsazený.</p>
 
     <div class="cal-legend">
-      <div class="cal-legend-item"><span class="cal-dot apt1"></span> Apartmán 1</div>
-      <div class="cal-legend-item"><span class="cal-dot apt2"></span> Apartmán 2</div>
-      <div class="cal-legend-item"><span class="cal-dot apt3"></span> Apartmán 3</div>
       <div class="cal-legend-item">
         <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(80,160,80,.25);"></span> Volno
       </div>
       <div class="cal-legend-item">
-        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(200,175,50,.3);"></span> Částečně obsazeno
-      </div>
-      <div class="cal-legend-item">
-        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(200,70,60,.35);"></span> Plně obsazeno
+        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(200,70,60,.35);"></span> Obsazeno
       </div>
     </div>
 
@@ -1210,29 +1181,28 @@
     <p class="section-label">Ubytování</p>
     <h2 class="section-title">Apartmány</h2>
     <div class="section-line"></div>
-    <p style="color:var(--muted); max-width:660px;">Každý apartmán je samostatná jednotka s vlastní koupelnou a kuchyňkou vybavenou vším potřebným. Hosté mají plné soukromí a přímý přístup do společných prostor i zahrady.</p>
+    <p style="color:var(--muted); max-width:660px;">Každý apartmán má vlastní koupelnu a kuchyňku. Soukromí v apartmánu doplňuje přístup do společných prostor a na zahradu.</p>
 
     <!-- ── APARTMÁN 1 ── -->
     <span class="anc" id="apartman-1"></span>
     <div class="apt-block">
       <div class="apt-header">
-        <span class="apt-num">01</span>
         <h3>Apartmán 1</h3>
       </div>
       <div class="apt-layout">
         <div class="apt-main-photo ph-warm">
-          <img src="images/apartman-loznice.jpg" alt="Apartmán 1 – ložnice" loading="lazy">
+          <img src="images/interier/apartmany/1NP/3_obyvak.jpeg" alt="Apartmán 1 – obývací pokoj s kuchyní" loading="lazy">
         </div>
         <div class="apt-info">
           <div class="apt-meta">
             <span class="apt-badge">🏠 Spodní patro (1. NP)</span>
-            <span class="apt-badge">👤 až 7 osob (2 + 3 děti + gauč)</span>
+            <span class="apt-badge">👤 až 7 osob</span>
             <span class="apt-badge">🛁 Vlastní koupelna</span>
             <span class="apt-badge">🍳 Kuchyňka</span>
             <span class="apt-badge">🌿 Přístup na zahradu</span>
           </div>
           <p>
-            Apartmán ve spodním patře (1. nadzemní podlaží) s přímým vstupem na zahradu – ideální pro rodiny s dětmi. Ložnice s manželskou postelí a dvoupatrovou postelí pro tři děti, k tomu oddělený obývací pokoj s kuchyní a gaučem, který lze v případě potřeby rozložit na dvoulůžko. Je zde koupelna se sprchovým koutem a záchodem.
+            Apartmán v 1. NP s přímým vstupem na zahradu. Vhodný hlavně pro rodiny s dětmi: ložnice s manželskou a patrovou postelí, obývací pokoj s kuchyňkou a rozkládacím gaučem, vlastní koupelna s WC.
           </p>
           <ul class="apt-detail-list">
             <li>Ložnice: manželská postel + dvoupatrová postel pro 3 děti</li>
@@ -1246,10 +1216,13 @@
       </div>
       <p class="apt-strip-label">Fotografie apartmánu 1</p>
       <div class="photo-strip">
-        <div class="img-card"><img src="images/apartman-loznice.jpg" alt="Apartmán 1 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
-        <div class="ph-card ph-warm"><span class="ph-icon">🛁</span><span class="ph-lbl">Koupelna</span></div>
-        <div class="img-card"><img src="images/apartman-kuchyn-obyvak.jpg" alt="Apartmán 1 – kuchyňka a obývací část" loading="lazy"><span class="img-cap">Kuchyňka a obývací část</span></div>
-        <div class="ph-card ph-warm"><span class="ph-icon">🌿</span><span class="ph-lbl">Výstup do zahrady</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/1NP/1_obyvaak_3.jpeg" alt="Apartmán 1 – obývací část" loading="lazy"><span class="img-cap">Obývací část</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/1NP/2_obyvak_2.jpeg" alt="Apartmán 1 – obývací pokoj s gaučem" loading="lazy"><span class="img-cap">Obývací pokoj s gaučem</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/1NP/4_kuchyn.jpeg" alt="Apartmán 1 – kuchyňka" loading="lazy"><span class="img-cap">Kuchyňka</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/1NP/6_loznice.jpeg" alt="Apartmán 1 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/1NP/5_loznice_2.jpeg" alt="Apartmán 1 – ložnice, druhý pohled" loading="lazy"><span class="img-cap">Ložnice – druhý pohled</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/1NP/8_koupelna.jpeg" alt="Apartmán 1 – koupelna" loading="lazy"><span class="img-cap">Koupelna</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/1NP/7_koupelna_2.jpeg" alt="Apartmán 1 – koupelna se sprchovým koutem" loading="lazy"><span class="img-cap">Sprchový kout</span></div>
       </div>
     </div>
 
@@ -1257,25 +1230,24 @@
     <span class="anc" id="apartman-2"></span>
     <div class="apt-block">
       <div class="apt-header">
-        <span class="apt-num">02</span>
         <h3>Apartmán 2</h3>
       </div>
       <div class="apt-layout">
         <div class="apt-main-photo ph-green">
-          <img src="images/apartman-jidelna.jpg" alt="Apartmán 2 – jídelní kout a kuchyňka" loading="lazy">
+          <img src="images/interier/apartmany/2NP_levy/1_obyvak.jpeg" alt="Apartmán 2 – obývací část" loading="lazy">
         </div>
         <div class="apt-info">
           <div class="apt-meta">
             <span class="apt-badge">🏠 2. nadzemní podlaží</span>
             <span class="apt-badge">✨ Nejprostornější</span>
-            <span class="apt-badge">👤 až 7 osob (2 + 5 dětí)</span>
+            <span class="apt-badge">👤 až 7 osob</span>
             <span class="apt-badge">🛁 Vlastní koupelna</span>
             <span class="apt-badge">🍳 Kuchyňka</span>
             <span class="apt-badge">🪟 Výhled do přírody</span>
             <span class="apt-badge">🌅 Balkon</span>
           </div>
           <p>
-            Náš nejprostornější apartmán ve 2. nadzemním podlaží s vlastním balkonem. Ložnice s manželskou postelí, samostatný dětský pokoj a jídelna s kuchyní – ideální pro větší rodinu.
+            Nejprostornější apartmán ve 2. NP s balkonem. Nabízí ložnici s manželskou postelí, samostatný dětský pokoj, jídelnu s kuchyňkou a vlastní koupelnu.
           </p>
           <ul class="apt-detail-list">
             <li>Ložnice s manželskou postelí a vlastním balkonem</li>
@@ -1288,11 +1260,19 @@
       </div>
       <p class="apt-strip-label">Fotografie apartmánu 2</p>
       <div class="photo-strip">
-        <div class="img-card"><img src="images/apartman-jidelna.jpg" alt="Apartmán 2 – jídelní kout" loading="lazy"><span class="img-cap">Jídelní kout</span></div>
-        <div class="img-card"><img src="images/apartman-kuchyn-podkrovi.jpg" alt="Apartmán 2 – kuchyňka" loading="lazy"><span class="img-cap">Kuchyňka</span></div>
-        <div class="ph-card ph-green"><span class="ph-icon">🛏️</span><span class="ph-lbl">Ložnice</span></div>
-        <div class="ph-card ph-green"><span class="ph-icon">🛁</span><span class="ph-lbl">Koupelna</span></div>
-        <div class="ph-card ph-green"><span class="ph-icon">🪟</span><span class="ph-lbl">Výhled z okna</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/2_obyvak.jpeg" alt="Apartmán 2 – obývací pokoj" loading="lazy"><span class="img-cap">Obývací pokoj</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/3_kuchyn.jpeg" alt="Apartmán 2 – kuchyň" loading="lazy"><span class="img-cap">Kuchyň</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/4_kuchyn.jpeg" alt="Apartmán 2 – kuchyň s jídelním koutem" loading="lazy"><span class="img-cap">Kuchyň s jídelním koutem</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/4_loznice.jpeg" alt="Apartmán 2 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/5_loznice.jpeg" alt="Apartmán 2 – ložnice s manželskou postelí" loading="lazy"><span class="img-cap">Ložnice – manželská postel</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/5_1_loznice.jpeg" alt="Apartmán 2 – ložnice, další pohled" loading="lazy"><span class="img-cap">Ložnice – další pohled</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/7_balkon_z_loznice.jpeg" alt="Apartmán 2 – balkon z ložnice" loading="lazy"><span class="img-cap">Balkon z ložnice</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/8_detsky_pokoj.jpeg" alt="Apartmán 2 – dětský pokoj" loading="lazy"><span class="img-cap">Dětský pokoj</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/9_detsky_pokoj.jpeg" alt="Apartmán 2 – dětský pokoj s patrovou postelí" loading="lazy"><span class="img-cap">Dětský pokoj – patrová postel</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/10_vyhled_z_detskeho_pokoje.jpeg" alt="Apartmán 2 – výhled z dětského pokoje" loading="lazy"><span class="img-cap">Výhled z dětského pokoje</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/11_koupelna.jpeg" alt="Apartmán 2 – koupelna" loading="lazy"><span class="img-cap">Koupelna</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/12_koupelna.jpeg" alt="Apartmán 2 – koupelna se sprchovým koutem" loading="lazy"><span class="img-cap">Sprchový kout</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/13_chodbicka.jpeg" alt="Apartmán 2 – chodbička" loading="lazy"><span class="img-cap">Chodbička</span></div>
       </div>
     </div>
 
@@ -1300,12 +1280,11 @@
     <span class="anc" id="apartman-3"></span>
     <div class="apt-block">
       <div class="apt-header">
-        <span class="apt-num">03</span>
         <h3>Apartmán 3</h3>
       </div>
       <div class="apt-layout">
         <div class="apt-main-photo ph-blue">
-          <img src="images/apartman-kuchyn-roh.jpg" alt="Apartmán 3 – kuchyňka" loading="lazy">
+          <img src="images/interier/apartmany/2NP_pravy/1_jidelna_kuchyn.jpeg" alt="Apartmán 3 – jídelna s kuchyní" loading="lazy">
         </div>
         <div class="apt-info">
           <div class="apt-meta">
@@ -1316,7 +1295,7 @@
             <span class="apt-badge">👨‍👩‍👧‍👦 Rodinný</span>
           </div>
           <p>
-            Apartmán ve 2. nadzemním podlaží s kapacitou pro celou rodinu nebo skupinu přátel. Prostorný interiér se třemi lůžky a extra místem na rozkládací sedačce – nikdo nespí na zemi.
+            Prostorný apartmán ve 2. NP pro rodinu nebo menší skupinu. Nabízí ložnici, dětský pokoj, jídelní kout s kuchyňkou a vlastní koupelnu.
           </p>
           <ul class="apt-detail-list">
             <li>Tři lůžka + rozkládací sedačka (2 osoby)</li>
@@ -1329,11 +1308,15 @@
       </div>
       <p class="apt-strip-label">Fotografie apartmánu 3</p>
       <div class="photo-strip">
-        <div class="img-card"><img src="images/apartman-kuchyn-roh.jpg" alt="Apartmán 3 – kuchyňka" loading="lazy"><span class="img-cap">Kuchyňka</span></div>
-        <div class="ph-card ph-blue"><span class="ph-icon">🛏️</span><span class="ph-lbl">Ložnice</span></div>
-        <div class="ph-card ph-blue"><span class="ph-icon">🛋️</span><span class="ph-lbl">Obývací část</span></div>
-        <div class="ph-card ph-blue"><span class="ph-icon">🛁</span><span class="ph-lbl">Koupelna</span></div>
-        <div class="ph-card ph-blue"><span class="ph-icon">🍽️</span><span class="ph-lbl">Jídelní kout</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/2_jidelna_kuchyn.jpeg" alt="Apartmán 3 – jídelní kout s kuchyní" loading="lazy"><span class="img-cap">Jídelní kout s kuchyní</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/4_loznice.jpeg" alt="Apartmán 3 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/5_loznice.jpeg" alt="Apartmán 3 – ložnice, druhý pohled" loading="lazy"><span class="img-cap">Ložnice – druhý pohled</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/6_vyhled_z_loznice.jpeg" alt="Apartmán 3 – výhled z ložnice" loading="lazy"><span class="img-cap">Výhled z ložnice</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/7_detsky_pokoj.jpeg" alt="Apartmán 3 – dětský pokoj" loading="lazy"><span class="img-cap">Dětský pokoj</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/8_detsky_pokoj.jpeg" alt="Apartmán 3 – dětský pokoj, druhý pohled" loading="lazy"><span class="img-cap">Dětský pokoj – druhý pohled</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/9_koupelna.jpeg" alt="Apartmán 3 – koupelna" loading="lazy"><span class="img-cap">Koupelna</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/10_koupelna.jpeg" alt="Apartmán 3 – koupelna se sprchovým koutem" loading="lazy"><span class="img-cap">Sprchový kout</span></div>
+        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/3_chodbicka.jpeg" alt="Apartmán 3 – chodbička" loading="lazy"><span class="img-cap">Chodbička</span></div>
       </div>
     </div>
 
@@ -1351,18 +1334,18 @@
     <div class="spaces-grid">
 
       <div class="space-card">
-        <div class="space-photo ph-warm"><img src="images/spolecenska-mistnost.jpg" alt="Společenská místnost s cihlovou klenbou" loading="lazy"></div>
+        <div class="space-photo ph-warm"><img src="images/interier/spolecenska_mistnost/4_spolecenska.jpeg" alt="Společenská místnost" loading="lazy"></div>
         <div class="space-body">
           <h3>Společenská místnost</h3>
-          <p>Prostorná místnost s cihlovou klenbou pro společná setkání, stolní hry nebo večeře. Vybavena TV, jídelním stolem, společnou kuchyní s troubou a myčkou nádobí. V chladných dnech lze atmosféru zpříjemnit krbem.</p>
+          <p>Klenutá místnost pro společné večeře, hry i večerní posezení. K dispozici je TV, jídelní stůl, společná kuchyň s troubou a myčkou a v chladnějších dnech také krb.</p>
         </div>
       </div>
 
       <div class="space-card">
-        <div class="space-photo ph-green"></div>
+        <div class="space-photo ph-green"><img src="images/interier/spolecenska_mistnost/6_balkon_ze_spolecenske.jpeg" alt="Balkon ze společenské místnosti" loading="lazy"></div>
         <div class="space-body">
           <h3>Balkon</h3>
-          <p>Balkon s vchodem přímo ze společenské místnosti – příjemné posezení s výhledem do okolí.</p>
+          <p>Posezení s výhledem, přístupné přímo ze společenské místnosti.</p>
         </div>
       </div>
 
@@ -1370,15 +1353,15 @@
         <div class="space-photo ph-blue"></div>
         <div class="space-body">
           <h3>Záchod se sprchou</h3>
-          <p>Společné hygienické zázemí dostupné ze společných prostor – vhodné doplněk při větší skupině hostů.</p>
+          <p>Společná toaleta se sprchou jako praktické zázemí pro větší skupiny.</p>
         </div>
       </div>
 
       <div class="space-card">
-        <div class="space-photo ph-green"><img src="images/zahrada-ohniste.jpg" alt="Venkovní ohniště a posezení" loading="lazy"></div>
+        <div class="space-photo ph-green"><img src="images/exterier/10_gril.jpeg" alt="Venkovní gril s posezením" loading="lazy"></div>
         <div class="space-body">
           <h3>Místo pro grilování</h3>
-          <p>Venkovní ohniště s posezením a výhledem do krajiny – ideální pro letní večeře pod širým nebem.</p>
+          <p>Venkovní posezení s grilem a výhledem do krajiny.</p>
         </div>
       </div>
 
@@ -1386,7 +1369,7 @@
         <div class="space-photo ph-grey"></div>
         <div class="space-body">
           <h3>Garáž pro kola a motorky</h3>
-          <p>Uzamykatelná garáž pro bezpečné uložení jízdních kol, elektrokol nebo motorek.</p>
+          <p>Uzamykatelný prostor pro kola, elektrokola i motorky.</p>
         </div>
       </div>
 
@@ -1394,7 +1377,7 @@
         <div class="space-photo ph-grey"></div>
         <div class="space-body">
           <h3>Sklep</h3>
-          <p>Sklep je zatím stále ve výstavbě a neslouží ke skladování. Fotografii a podrobnosti doplníme, jakmile bude hotový.</p>
+          <p>Sklep zatím není k dispozici. Fotografie i podrobnosti doplníme po dokončení.</p>
         </div>
       </div>
 
@@ -1403,9 +1386,20 @@
     <div class="divider"></div>
     <p class="section-label" style="margin-bottom:1rem;">Fotografie prostor</p>
     <div class="photo-strip">
-      <div class="img-card"><img src="images/spolecenska-mistnost.jpg" alt="Společná kuchyň ve společenské místnosti" loading="lazy"><span class="img-cap">Spol. místnost a kuchyň</span></div>
-      <div class="img-card"><img src="images/zahrada-ohniste.jpg" alt="Grilovací místo" loading="lazy"><span class="img-cap">Grilovací místo</span></div>
-      <div class="ph-card ph-warm"><span class="ph-icon">🔥</span><span class="ph-lbl">Krb</span></div>
+      <div class="img-card"><img src="images/interier/spolecenska_mistnost/4_spolecenska.jpeg" alt="Společenská místnost" loading="lazy"><span class="img-cap">Společenská místnost</span></div>
+      <div class="img-card"><img src="images/interier/spolecenska_mistnost/1_kuchyn_bar.jpeg" alt="Společná kuchyň s barem" loading="lazy"><span class="img-cap">Kuchyň s barem</span></div>
+      <div class="img-card"><img src="images/interier/spolecenska_mistnost/2_kuchyn_bar.jpeg" alt="Společná kuchyň s barem, druhý pohled" loading="lazy"><span class="img-cap">Kuchyň s barem – druhý pohled</span></div>
+      <div class="img-card"><img src="images/interier/spolecenska_mistnost/3_kuchyn_bar.jpeg" alt="Barové posezení ve společenské místnosti" loading="lazy"><span class="img-cap">Barové posezení</span></div>
+      <div class="img-card"><img src="images/interier/spolecenska_mistnost/5_zadveri_spolecenske.jpeg" alt="Zádveří společenské místnosti" loading="lazy"><span class="img-cap">Zádveří společenské místnosti</span></div>
+      <div class="img-card"><img src="images/interier/spolecenska_mistnost/6_balkon_ze_spolecenske.jpeg" alt="Balkon ze společenské místnosti" loading="lazy"><span class="img-cap">Balkon ze společenské místnosti</span></div>
+      <div class="img-card"><img src="images/interier/chodby/1_vstup.jpeg" alt="Vstup do chaty" loading="lazy"><span class="img-cap">Vstup do chaty</span></div>
+      <div class="img-card"><img src="images/interier/chodby/2_schody.jpeg" alt="Schodiště" loading="lazy"><span class="img-cap">Schodiště</span></div>
+      <div class="img-card"><img src="images/interier/chodby/3_schody.jpeg" alt="Schodiště do 2. NP" loading="lazy"><span class="img-cap">Schodiště do 2. NP</span></div>
+      <div class="img-card"><img src="images/interier/chodby/4_schody.jpeg.jpeg" alt="Schodiště, další pohled" loading="lazy"><span class="img-cap">Schodiště – další pohled</span></div>
+      <div class="img-card"><img src="images/interier/chodby/5_2NP_vstup_do_apartmanu.jpeg" alt="Vstup do apartmánů ve 2. NP" loading="lazy"><span class="img-cap">Vstup do apartmánů (2. NP)</span></div>
+      <div class="img-card"><img src="images/interier/chodby/6_2NP_vstup_do_apartmanu.jpeg" alt="Chodba u apartmánů ve 2. NP" loading="lazy"><span class="img-cap">Chodba u apartmánů (2. NP)</span></div>
+      <div class="img-card"><img src="images/interier/chodby/7_dekorace.jpeg" alt="Dekorace na chodbě" loading="lazy"><span class="img-cap">Dekorace na chodbě</span></div>
+      <div class="img-card"><img src="images/interier/chodby/8_dekorace.jpeg" alt="Dekorace v interiéru" loading="lazy"><span class="img-cap">Dekorace v interiéru</span></div>
       <div class="ph-card ph-grey"><span class="ph-icon">🚲</span><span class="ph-lbl">Garáž na kola</span></div>
       <div class="ph-card ph-blue"><span class="ph-icon">🚿</span><span class="ph-lbl">Záchod se sprchou</span></div>
       <div class="ph-card ph-grey"><span class="ph-icon">🍷</span><span class="ph-lbl">Sklep</span></div>
@@ -1422,13 +1416,13 @@
         <p class="section-label">Exteriér</p>
         <h2 class="section-title">Zahrada</h2>
         <div class="section-line"></div>
-        <p>Rozlehlá zahrada je ideálním místem pro odpočinek po výletu nebo jen pro klidné odpoledne v přírodě. Dřevěné posezení, prostor pro děti, zeleň a ticho – přesně to, co po náročném dni potřebujete.</p>
-        <p>Díky poloze v Rožmitálu u Broumova je zahrada obklopena tichým venkovem bez ruchu a hluku.</p>
+        <p>Velká zahrada nabízí klid na odpočinek po výletu i prostor pro děti. Najdete tu posezení, zeleň a dostatek soukromí.</p>
+        <p>Rožmitál u Broumova zajišťuje tiché okolí bez městského ruchu.</p>
 
         <div class="zahrada-feats">
           <div class="zahrada-feat">
             <span class="fi">🌿</span>
-            <div><h4>Rozlehlý pozemek</h4><p>Dostatek místa pro děti i dospělé</p></div>
+            <div><h4>Rozlehlý pozemek</h4><p>Prostor pro děti i dospělé</p></div>
           </div>
           <div class="zahrada-feat">
             <span class="fi">🔥</span>
@@ -1436,18 +1430,18 @@
           </div>
           <div class="zahrada-feat">
             <span class="fi">🌸</span>
-            <div><h4>Venkovský klid</h4><p>Bez ruchu města, idylická krajina</p></div>
+            <div><h4>Venkovský klid</h4><p>Ticho a otevřená krajina</p></div>
           </div>
           <div class="zahrada-feat">
             <span class="fi">🚲</span>
-            <div><h4>Přístup na trasy</h4><p>Turistika a cyklo přímo od chaty</p></div>
+            <div><h4>Přístup na trasy</h4><p>Pěšky i na kole od chaty</p></div>
           </div>
         </div>
       </div>
 
       <div>
         <div class="big-ph ph-green" style="height:420px;">
-          <img src="images/chata-exterier-bocni.jpg" alt="Zahrada u chaty Javořinka" loading="lazy">
+          <img src="images/exterier/9_zahrada.jpeg" alt="Zahrada u chaty Javořinka" loading="lazy">
         </div>
       </div>
     </div>
@@ -1455,10 +1449,10 @@
     <div class="divider"></div>
     <p class="section-label" style="margin-bottom:1rem;">Zahrada v detailu</p>
     <div class="photo-strip">
-      <div class="img-card"><img src="images/chata-exterier-bocni.jpg" alt="Travnatá plocha zahrady" loading="lazy"><span class="img-cap">Travnatá plocha</span></div>
-      <div class="img-card"><img src="images/zahrada-ohniste.jpg" alt="Venkovní posezení s ohništěm" loading="lazy"><span class="img-cap">Posezení u ohniště</span></div>
-      <div class="ph-card ph-green"><span class="ph-icon">🌳</span><span class="ph-lbl">Stromy a stín</span></div>
-      <div class="ph-card ph-blue"><span class="ph-icon">🌄</span><span class="ph-lbl">Výhled ze zahrady</span></div>
+      <div class="img-card"><img src="images/exterier/8_zahrada.jpeg" alt="Travnatá plocha zahrady s výhledem do polí" loading="lazy"><span class="img-cap">Travnatá plocha</span></div>
+      <div class="img-card"><img src="images/exterier/7_zahrada.jpeg" alt="Skalka a záhony u chaty" loading="lazy"><span class="img-cap">Skalka a záhony</span></div>
+      <div class="img-card"><img src="images/exterier/11_zahrada-ohniste.jpg" alt="Venkovní posezení s ohništěm" loading="lazy"><span class="img-cap">Posezení u ohniště</span></div>
+      <div class="img-card"><img src="images/exterier/10_gril.jpeg" alt="Venkovní gril" loading="lazy"><span class="img-cap">Gril</span></div>
     </div>
   </div>
 </section>
@@ -1474,8 +1468,8 @@
         <div class="section-line"></div>
       </div>
       <div>
-        <p>Chata Javořinka leží v srdci Javoří hor na hranici s Polskem, obklopena hustými lesy a panoramatickými výhledy. Z chaty se snadno dostanete pěšky nebo na kole ke skalním městům, klášterům i příhraničním zajímavostem.</p>
-        <a href="https://mapy.com/cs/zakladni?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=10" target="_blank" rel="noopener" class="btn-outline">Otevřít mapu se zajímavostmi →</a>
+        <p>Javořinka leží na pomezí Javořích hor a Broumovska. Pěšky, na kole i autem se snadno dostanete ke skalám, klášterům i vyhlídkám v Česku a Polsku.</p>
+        <a href="https://mapy.com/cs/zakladni?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=10" target="_blank" rel="noopener" class="btn-outline">Mapa výletů →</a>
       </div>
     </div>
 
@@ -1483,62 +1477,62 @@
       <div class="poi-card">
         <div class="poi-icon">⛰️</div>
         <h3>Javoří hory</h3>
-        <p>Hřeben s rozhlednami přímo za humny. Skvělé trasy pro turisty i cyklisty.</p>
+        <p>Hřeben s výhledy a trasami pro pěší i cyklisty.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">🏛️</div>
         <h3>Broumov – Klášter</h3>
-        <p>Benediktinský klášter s barokní architekturou, prohlídky celoročně.</p>
+        <p>Barokní benediktinský klášter s celoročními prohlídkami.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">⛪</div>
         <h3>Dřevěný kostel</h3>
-        <p>Přenesený dřevěný kostelík v Broumově – unikátní kulturní skvost.</p>
+        <p>Unikátní dřevěný kostel v Broumově.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">🌊</div>
         <h3>Broumovské stěny</h3>
-        <p>Impozantní skalní útvar s vyhlídkami a sítí turistických stezek.</p>
+        <p>Skalní hřeben s vyhlídkami a sítí stezek.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">🪨</div>
         <h3>Adršpašské skály</h3>
-        <p>Jedno z nejkrásnějších skalních měst v Čechách, ~25 km od chaty.</p>
+        <p>Proslulé skalní město asi 25 km od chaty.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">🪨</div>
         <h3>Teplické skály</h3>
-        <p>Skalní labyrint propojený s Adršpachem – soutěsky a vyhlídky.</p>
+        <p>Rozsáhlý skalní labyrint navazující na Adršpach.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">⭐</div>
         <h3>Hvězda</h3>
-        <p>Rozhledna a turistický uzel na hřebenu Javoří hor.</p>
+        <p>Oblíbená vyhlídka a turistický uzel.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">🔭</div>
         <h3>Skalní okno</h3>
-        <p>Přírodní skalní okno s panoramatickým výhledem do Polska.</p>
+        <p>Přírodní vyhlídka s výhledem do Polska.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">🌸</div>
         <h3>Včelinec</h3>
-        <p>Malebná vesnička a turistické zázemí v Broumovské vrchovině.</p>
+        <p>Klidná vesnička v Broumovské vrchovině.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">🏘️</div>
         <h3>Nová Ruda</h3>
-        <p>Polský příhraniční charakter, tradiční zástavba a klidná atmosféra.</p>
+        <p>Příhraniční město s místní atmosférou.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">🏰</div>
         <h3>Stříbrná hora</h3>
-        <p>Pevnostní komplex s prohlídkami a výhledem do polských Hor Stołowych.</p>
+        <p>Pevnost s prohlídkami a výhledy.</p>
       </div>
       <div class="poi-card">
         <div class="poi-icon">🏙️</div>
         <h3>Meziměstí</h3>
-        <p>Historické říční město na hranici, vlakové spojení a místní restaurace.</p>
+        <p>Příhraniční město s restauracemi a vlakovým spojením.</p>
       </div>
     </div>
 
@@ -1561,7 +1555,7 @@
   <div class="map-hint"><span class="map-shield-hint"></span></div>
   <div class="map-overlay">
     <h2>Zajímavosti v okolí</h2>
-    <p>Tipy na výlety a místa v okolí chaty</p>
+    <p>Tipy na výlety v okolí chaty</p>
     <a href="https://mapy.com/cs/zakladni?moje-mapy&amp;cat=mista-trasy&amp;mid=68724277d5f58945524d64db&amp;x=16.3779394&amp;y=50.6436170&amp;z=10"
        target="_blank" rel="noopener"
        style="pointer-events:auto; display:inline-block; margin-top:.8rem; font-size:.76rem; letter-spacing:.05em; color:var(--accent); border:1px solid var(--border); padding:.4rem .8rem; border-radius:5px;">Otevřít v Mapy.cz →</a>
@@ -1580,24 +1574,24 @@
       <div class="food-card">
         <div class="food-icon">🍳</div>
         <h3>Vlastní vaření</h3>
-        <p>Každý apartmán má plně vybavenou kuchyňku – varná deska, mikrovlnná trouba, lednice, nádobí. Ve společenské místnosti je navíc <strong style="color:var(--text);">trouba a myčka nádobí</strong>.</p>
+        <p>Každý apartmán má vlastní kuchyňku s varnou deskou, mikrovlnnou troubou, lednicí a nádobím. Ve společenské místnosti je navíc <strong style="color:var(--text);">trouba a myčka nádobí</strong>.</p>
       </div>
 
       <div class="food-card">
         <div class="food-icon">🥩</div>
         <h3>Grilování na zahradě</h3>
-        <p>Venkovní grilovací koutek je k dispozici celý den. Ideální pro letní večeře v příjemném prostředí zahrady.</p>
+        <p>Venkovní grilovací kout je k dispozici po celý den.</p>
       </div>
 
       <div class="food-card" style="grid-column: span 2;">
         <div class="food-icon">🍽️</div>
         <h3>Restaurace v okolí</h3>
-        <p>Pokud se vám nechce vařit, v okolí chaty najdete:</p>
+        <p>Když nechcete vařit, v okolí najdete:</p>
         <ul class="restaurant-list">
           <li><strong style="color:var(--text);">Restaurace Alka – Broumov</strong> &nbsp;– tradiční česká kuchyně v centru Broumova</li>
-          <li><strong style="color:var(--text);">Střelnice – Broumov</strong> &nbsp;– pivnice a restaurace se širokým jídelním lístkem</li>
-          <li><strong style="color:var(--text);">Restaurace Sahula – Otovice</strong> &nbsp;– lokální hospoda v blízké obci, domácí vaření</li>
-          <li><strong style="color:var(--text);">Restaurace Švejk – Meziměstí</strong> &nbsp;– česká klasika v příhraničním Meziměstí</li>
+          <li><strong style="color:var(--text);">Střelnice – Broumov</strong> &nbsp;– restaurace a pivnice se širokou nabídkou jídel</li>
+          <li><strong style="color:var(--text);">Restaurace Sahula – Otovice</strong> &nbsp;– místní hospoda s domácí kuchyní</li>
+          <li><strong style="color:var(--text);">Restaurace Švejk – Meziměstí</strong> &nbsp;– česká klasika v Meziměstí</li>
         </ul>
       </div>
     </div>
@@ -1607,7 +1601,7 @@
 <!-- ═══ BANER: chata ve výstavbě ═════════════════════════════════ -->
 <div class="construction-banner" role="status">
   <span class="cb-icon" aria-hidden="true">🚧</span>
-  <span class="cb-text"><strong>Chata je ve stádiu dodělávek.</strong> Web i informace průběžně doplňujeme – některé fotografie a detaily teprve přibydou.</span>
+  <span class="cb-text"><strong>Chatu ještě průběžně dokončujeme.</strong> Některé fotografie a detaily brzy doplníme.</span>
 </div>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
@@ -1789,32 +1783,25 @@
   });
 
   // ═══════════════════════════════════════════════════════════════
-  //  KONFIGURACE OBSAZENOSTI
-  //  Přidejte / odeberte termíny pro každý apartmán.
-  //  Formát: { od: "YYYY-MM-DD", do: "YYYY-MM-DD" }
-  //  Interval je [od, do) – den 'do' je první volný den po rezervaci.
+  //  OBSAZENOST – veřejný Google Kalendář
+  //  Chata se pronajímá vcelku: jakákoli událost v kalendáři = obsazený
+  //  den. Rezervace se zadávají jako události v Google Kalendáři
+  //  „Javořinka rezervace“; web je čte přes Vercel funkci
+  //  /api/obsazenost (viz api/obsazenost.js), která parsuje veřejný
+  //  iCal feed kalendáře a vrací intervaly [od, do).
+  //  Mimo Vercel (GitHub Pages mirror, lokální server) se volá
+  //  produkční endpoint na javorinka.eu.
   // ═══════════════════════════════════════════════════════════════
-  const REZERVACE = {
-    apt1: [
-      { od: "2026-07-05", do: "2026-07-13" },  // červenec – první týden
-      { od: "2026-08-02", do: "2026-08-10" },  // srpen – první týden
-      { od: "2026-08-16", do: "2026-08-17" },  // srpen – 1 den (all-3 overlap)
-      { od: "2026-09-06", do: "2026-09-15" },  // září – týden
-    ],
-    apt2: [
-      { od: "2026-07-19", do: "2026-07-27" },  // červenec – třetí týden
-      { od: "2026-08-09", do: "2026-08-24" },  // srpen – dva týdny
-      { od: "2026-09-13", do: "2026-09-29" },  // září – dva týdny
-    ],
-    apt3: [
-      { od: "2026-07-12", do: "2026-07-21" },  // červenec – přelom 2./3. týdne
-      { od: "2026-08-16", do: "2026-08-31" },  // srpen – druhá polovina
-      { od: "2026-09-06", do: "2026-09-22" },  // září – 2,5 týdne
-    ],
-  };
+  const OBSAZENOST_URL =
+    (location.hostname === 'javorinka.eu' || location.hostname.endsWith('.vercel.app'))
+      ? '/api/obsazenost'
+      : 'https://javorinka.eu/api/obsazenost';
 
   // Generování kalendáře
-  (function buildCalendar() {
+  (async function buildCalendar() {
+    const calWrap = document.getElementById('calWrap');
+    if (!calWrap) return;
+
     const MONTHS = [
       { year: 2026, month: 6, name: 'Červenec' },
       { year: 2026, month: 7, name: 'Srpen' },
@@ -1823,10 +1810,31 @@
     const DOW = ['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne'];
     const today = new Date(); today.setHours(0,0,0,0);
 
-    function isOccupied(apt, date) {
-      return (REZERVACE[apt] || []).some(({ od, do: do_ }) =>
-        date >= new Date(od) && date < new Date(do_)
-      );
+    // 'YYYY-MM-DD' → lokální půlnoc (new Date(string) by parsovalo UTC)
+    function parseDay(s) {
+      const [y, m, d] = s.split('-').map(Number);
+      return new Date(y, m - 1, d);
+    }
+
+    // Načte intervaly obsazenosti [od, do) z /api/obsazenost
+    async function loadObsazenost() {
+      const r = await fetch(OBSAZENOST_URL);
+      if (!r.ok) throw new Error('obsazenost: HTTP ' + r.status);
+      const data = await r.json();
+      return data.map(iv => ({ od: parseDay(iv.od), do: parseDay(iv.do) }));
+    }
+
+    let rezervace;
+    try {
+      rezervace = await loadObsazenost();
+    } catch (e) {
+      calWrap.innerHTML = '<p style="color:var(--muted);">Přehled obsazenosti se nepodařilo načíst. '
+        + 'Aktuální volné termíny vám rádi sdělíme <a href="#kontakt">e-mailem nebo telefonicky</a>.</p>';
+      return;
+    }
+
+    function isOccupied(date) {
+      return rezervace.some(({ od, do: do_ }) => date >= od && date < do_);
     }
 
     function renderMonth({ year, month, name }) {
@@ -1863,29 +1871,12 @@
         cell.className = 'cal-day';
         if (date < today) cell.classList.add('past');
 
-        const occ = {
-          apt1: isOccupied('apt1', date),
-          apt2: isOccupied('apt2', date),
-          apt3: isOccupied('apt3', date),
-        };
-        const count = [occ.apt1, occ.apt2, occ.apt3].filter(Boolean).length;
-        if (count === 3) cell.classList.add('occ-full');
-        else if (count > 0) cell.classList.add('occ-partial');
-        else cell.classList.add('occ-free');
+        cell.classList.add(isOccupied(date) ? 'occ-full' : 'occ-free');
 
         const num = document.createElement('span');
         num.className = 'cal-day-num';
         num.textContent = d;
         cell.appendChild(num);
-
-        const dots = document.createElement('div');
-        dots.className = 'cal-dots';
-        ['apt1', 'apt2', 'apt3'].forEach(apt => {
-          const dot = document.createElement('span');
-          dot.className = 'cal-dot ' + (occ[apt] ? apt : 'free');
-          dots.appendChild(dot);
-        });
-        cell.appendChild(dots);
         grid.appendChild(cell);
       }
 
@@ -1893,8 +1884,7 @@
       return wrap;
     }
 
-    const calWrap = document.getElementById('calWrap');
-    if (calWrap) MONTHS.forEach(m => calWrap.appendChild(renderMonth(m)));
+    MONTHS.forEach(m => calWrap.appendChild(renderMonth(m)));
   })();
 
   // Active nav link based on scroll position
@@ -2001,13 +1991,6 @@
       im.classList.add('lb-zoomable');
       im.addEventListener('click', () => open(i));
     });
-
-    // úvodní foto (hero) otevře galerii od první fotky
-    const hero = document.getElementById('hero');
-    if (hero) {
-      hero.classList.add('lb-zoomable');
-      hero.addEventListener('click', () => open(0));
-    }
 
     lb.querySelector('.lb-close').addEventListener('click', close);
     lb.querySelector('.lb-prev').addEventListener('click', e => { e.stopPropagation(); show(idx - 1); });

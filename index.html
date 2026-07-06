@@ -916,6 +916,9 @@
     /* podbarvy dle obsazenosti */
     .cal-day.occ-full { background: #5c1a16; }
     .cal-day.occ-free { background: #0e3318; }
+    /* den příjezdu (volno → obsazeno) a odjezdu (obsazeno → volno) */
+    .cal-day.occ-in  { background: linear-gradient(135deg, #0e3318 0 50%, #5c1a16 50% 100%); }
+    .cal-day.occ-out { background: linear-gradient(135deg, #5c1a16 0 50%, #0e3318 50% 100%); }
 
     .cal-day-num {
       font-size: .8rem;
@@ -1087,12 +1090,12 @@
     <div class="prehled-grid">
       <div class="prehled-text">
         <p class="section-label">O chatě</p>
-        <h2 class="section-title">Tři apartmány<br>pro klidný pobyt</h2>
+        <h2 class="section-title">Váš klidný pobyt<br>v Javořích horách</h2>
         <div class="section-line"></div>
-        <p>Chata Javořinka nabízí tři samostatné apartmány s vlastní kuchyňkou a koupelnou. Vhodné pro rodiny i menší skupiny, které hledají pohodlí a soukromí v Javořích horách.</p>
-        <p>Součástí chaty je i prostorná společenská místnost pro společné večeře, hry a večerní posezení.</p>
+        <p>Chata Javořinka nabízí tři samostatné apartmány, každý s vlastní kuchyňkou, sprchou a toaletou. Celková kapacita chaty je <strong style="color:var(--text);">až 23 osob</strong>. Ideální pro rodiny i menší skupiny, které hledají pohodlí a soukromí v Javořích horách.</p>
+        <p>K dispozici je také společenská místnost pro setkávání všech hostů, vybavená kuchyní s troubou a kamny.</p>
         <p>Velká zahrada a blízkost turistických tras dělají z Javořinky příjemné zázemí pro aktivní i odpočinkový pobyt.</p>
-        <p><strong style="color:var(--text);">V chatě nejsou povolena zvířata.</strong></p>
+        <p><strong style="color:var(--text);">🐾 Máme rádi zvířata, ale prosíme, přijeďte bez nich.</strong></p>
         <div class="prehled-links">
           <a href="#apartman-1" class="pill-link">Apartmán 1</a>
           <a href="#apartman-2" class="pill-link">Apartmán 2</a>
@@ -1159,7 +1162,7 @@
     <p class="section-label">Sezóna 2026</p>
     <h2 class="section-title">Termíny</h2>
     <div class="section-line"></div>
-    <p style="color:var(--muted); max-width:640px;">Přehled obsazenosti pro léto a podzim 2026. Chata se pronajímá vcelku – den je buď volný, nebo obsazený.</p>
+    <p style="color:var(--muted); max-width:640px;">Přehled obsazenosti pro léto a podzim 2026.</p>
 
     <div class="cal-legend">
       <div class="cal-legend-item">
@@ -1167,6 +1170,9 @@
       </div>
       <div class="cal-legend-item">
         <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:rgba(200,70,60,.35);"></span> Obsazeno
+      </div>
+      <div class="cal-legend-item">
+        <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:linear-gradient(135deg,rgba(80,160,80,.25) 0 50%,rgba(200,70,60,.35) 50% 100%);"></span> Den příjezdu / odjezdu
       </div>
     </div>
 
@@ -1199,18 +1205,15 @@
             <span class="apt-badge">👤 až 7 osob</span>
             <span class="apt-badge">🛁 Vlastní koupelna</span>
             <span class="apt-badge">🍳 Kuchyňka</span>
-            <span class="apt-badge">🌿 Přístup na zahradu</span>
           </div>
           <p>
-            Apartmán v 1. NP s přímým vstupem na zahradu. Vhodný hlavně pro rodiny s dětmi: ložnice s manželskou a patrovou postelí, obývací pokoj s kuchyňkou a rozkládacím gaučem, vlastní koupelna s WC.
+            Apartmán v 1. NP . Vhodný hlavně pro rodiny s dětmi: ložnice s manželskou a patrovou postelí, obývací pokoj s kuchyňkou a rozkládacím gaučem, vlastní koupelna s WC.
           </p>
           <ul class="apt-detail-list">
             <li>Ložnice: manželská postel + dvoupatrová postel pro 3 děti</li>
-            <li>Obývací pokoj s kuchyní a gaučem rozložitelným na dvoulůžko</li>
-            <li>Vlastní koupelna se sprchovým koutem a WC</li>
+            <li>Obývací pokoj: gauč rozložitelný pro přespání 2 osob</li>
             <li>Kuchyňka: varná deska, mikrovlnná trouba, lednice, nádobí</li>
-            <li>Přímý výstup do zahrady</li>
-            <li>TV, Wi-Fi</li>
+            <li>Koupelna: sprchový kout a WC</li>
           </ul>
         </div>
       </div>
@@ -1240,21 +1243,21 @@
           <div class="apt-meta">
             <span class="apt-badge">🏠 2. nadzemní podlaží</span>
             <span class="apt-badge">✨ Nejprostornější</span>
-            <span class="apt-badge">👤 až 7 osob</span>
+            <span class="apt-badge">👤 až 9 osob</span>
             <span class="apt-badge">🛁 Vlastní koupelna</span>
             <span class="apt-badge">🍳 Kuchyňka</span>
             <span class="apt-badge">🪟 Výhled do přírody</span>
             <span class="apt-badge">🌅 Balkon</span>
           </div>
           <p>
-            Nejprostornější apartmán ve 2. NP s balkonem. Nabízí ložnici s manželskou postelí, samostatný dětský pokoj, jídelnu s kuchyňkou a vlastní koupelnu.
+            Nejprostornější apartmán ve 2. NP s balkonem. Nabízí ložnici s manželskou postelí, samostatný dětský pokoj, obývací část s rozkládacím gaučem, jídelnu s kuchyňkou a vlastní koupelnu.
           </p>
           <ul class="apt-detail-list">
-            <li>Ložnice s manželskou postelí a vlastním balkonem</li>
+            <li>Ložnice: manželská postel, vlastní balkon</li>
             <li>Dětský pokoj: dvoupatrová postel pro 3 děti + rozkládací postel pro 2 děti</li>
-            <li>Jídelna s plně vybavenou kuchyní</li>
-            <li>Koupelna se sprchovým koutem a WC</li>
-            <li>TV, Wi-Fi</li>
+            <li>Obývací část: gauč rozložitelný pro přespání 2 osob</li>
+            <li>Jídelna: plně vybavená kuchyň</li>
+            <li>Koupelna: sprchový kout a WC</li>
           </ul>
         </div>
       </div>
@@ -1289,7 +1292,7 @@
         <div class="apt-info">
           <div class="apt-meta">
             <span class="apt-badge">🏠 2. nadzemní podlaží</span>
-            <span class="apt-badge">👤 až 6 osob</span>
+            <span class="apt-badge">👤 až 7 osob</span>
             <span class="apt-badge">🛁 Vlastní koupelna</span>
             <span class="apt-badge">🍳 Kuchyňka</span>
             <span class="apt-badge">👨‍👩‍👧‍👦 Rodinný</span>
@@ -1298,11 +1301,11 @@
             Prostorný apartmán ve 2. NP pro rodinu nebo menší skupinu. Nabízí ložnici, dětský pokoj, jídelní kout s kuchyňkou a vlastní koupelnu.
           </p>
           <ul class="apt-detail-list">
-            <li>Tři lůžka + rozkládací sedačka (2 osoby)</li>
-            <li>Vlastní koupelna se sprchovým koutem a WC</li>
-            <li>Prostorná kuchyňka se vším vybavením</li>
-            <li>Jídelní kout pro celou skupinu</li>
-            <li>TV, Wi-Fi</li>
+            <li>Ložnice s manželskou postelí</li>
+            <li>Dětský pokoj: dvoupatrová postel pro 3 děti + rozkládací postel pro 2 děti</li>
+            <li>Jídelní kout: posezení pro celou skupinu</li>
+            <li>Kuchyňka: prostorná, se vším vybavením</li>
+            <li>Koupelna: sprchový kout a WC</li>
           </ul>
         </div>
       </div>
@@ -1337,7 +1340,7 @@
         <div class="space-photo ph-warm"><img src="images/interier/spolecenska_mistnost/4_spolecenska.jpeg" alt="Společenská místnost" loading="lazy"></div>
         <div class="space-body">
           <h3>Společenská místnost</h3>
-          <p>Klenutá místnost pro společné večeře, hry i večerní posezení. K dispozici je TV, jídelní stůl, společná kuchyň s troubou a myčkou a v chladnějších dnech také krb.</p>
+          <p>Prostor pro společná setkání všech hostů. Součástí je kuchyň s troubou, kamna, jídelní stůl i zázemí pro večerní posezení.</p>
         </div>
       </div>
 
@@ -1350,10 +1353,10 @@
       </div>
 
       <div class="space-card">
-        <div class="space-photo ph-blue"></div>
+        <div class="space-photo ph-blue"><img src="images/interier/toaleta/2_zachod.jpeg" alt="Společná toaleta se sprchou" loading="lazy"></div>
         <div class="space-body">
-          <h3>Záchod se sprchou</h3>
-          <p>Společná toaleta se sprchou jako praktické zázemí pro větší skupiny.</p>
+          <h3>Toaleta se sprchou</h3>
+          <p>Všem hostům je navíc k dispozici společná toaleta se sprchovým koutem.</p>
         </div>
       </div>
 
@@ -1362,6 +1365,22 @@
         <div class="space-body">
           <h3>Místo pro grilování</h3>
           <p>Venkovní posezení s grilem a výhledem do krajiny.</p>
+        </div>
+      </div>
+
+      <div class="space-card">
+        <div class="space-photo ph-warm"><img src="images/exterier/11_zahrada-ohniste.jpg" alt="Venkovní ohniště s posezením" loading="lazy"></div>
+        <div class="space-body">
+          <h3>Ohniště</h3>
+          <p>Venkovní ohniště s posezením na zahradě – na opékání i večery u ohně pod širým nebem.</p>
+        </div>
+      </div>
+
+      <div class="space-card">
+        <div class="space-photo ph-warm"><img src="images/interier/spolecenska_mistnost/5_zadveri_spolecenske.jpeg" alt="Zádveří společenské místnosti" loading="lazy"></div>
+        <div class="space-body">
+          <h3>Zádveří společenské místnosti</h3>
+          <p>Vstupní prostor navazující na společenskou místnost, kudy se prochází na balkon.</p>
         </div>
       </div>
 
@@ -1377,7 +1396,7 @@
         <div class="space-photo ph-grey"></div>
         <div class="space-body">
           <h3>Sklep</h3>
-          <p>Sklep zatím není k dispozici. Fotografie i podrobnosti doplníme po dokončení.</p>
+          <p>Sklípek pro posezení je momentálně ve fázi budování.</p>
         </div>
       </div>
 
@@ -1392,6 +1411,8 @@
       <div class="img-card"><img src="images/interier/spolecenska_mistnost/3_kuchyn_bar.jpeg" alt="Barové posezení ve společenské místnosti" loading="lazy"><span class="img-cap">Barové posezení</span></div>
       <div class="img-card"><img src="images/interier/spolecenska_mistnost/5_zadveri_spolecenske.jpeg" alt="Zádveří společenské místnosti" loading="lazy"><span class="img-cap">Zádveří společenské místnosti</span></div>
       <div class="img-card"><img src="images/interier/spolecenska_mistnost/6_balkon_ze_spolecenske.jpeg" alt="Balkon ze společenské místnosti" loading="lazy"><span class="img-cap">Balkon ze společenské místnosti</span></div>
+      <div class="img-card"><img src="images/interier/toaleta/2_zachod.jpeg" alt="Společná toaleta" loading="lazy"><span class="img-cap">Společná toaleta</span></div>
+      <div class="img-card"><img src="images/interier/toaleta/1_sprcha.jpeg" alt="Společná sprcha" loading="lazy"><span class="img-cap">Společná sprcha</span></div>
       <div class="img-card"><img src="images/interier/chodby/1_vstup.jpeg" alt="Vstup do chaty" loading="lazy"><span class="img-cap">Vstup do chaty</span></div>
       <div class="img-card"><img src="images/interier/chodby/2_schody.jpeg" alt="Schodiště" loading="lazy"><span class="img-cap">Schodiště</span></div>
       <div class="img-card"><img src="images/interier/chodby/3_schody.jpeg" alt="Schodiště do 2. NP" loading="lazy"><span class="img-cap">Schodiště do 2. NP</span></div>
@@ -1401,7 +1422,6 @@
       <div class="img-card"><img src="images/interier/chodby/7_dekorace.jpeg" alt="Dekorace na chodbě" loading="lazy"><span class="img-cap">Dekorace na chodbě</span></div>
       <div class="img-card"><img src="images/interier/chodby/8_dekorace.jpeg" alt="Dekorace v interiéru" loading="lazy"><span class="img-cap">Dekorace v interiéru</span></div>
       <div class="ph-card ph-grey"><span class="ph-icon">🚲</span><span class="ph-lbl">Garáž na kola</span></div>
-      <div class="ph-card ph-blue"><span class="ph-icon">🚿</span><span class="ph-lbl">Záchod se sprchou</span></div>
       <div class="ph-card ph-grey"><span class="ph-icon">🍷</span><span class="ph-lbl">Sklep</span></div>
     </div>
   </div>
@@ -1431,10 +1451,6 @@
           <div class="zahrada-feat">
             <span class="fi">🌸</span>
             <div><h4>Venkovský klid</h4><p>Ticho a otevřená krajina</p></div>
-          </div>
-          <div class="zahrada-feat">
-            <span class="fi">🚲</span>
-            <div><h4>Přístup na trasy</h4><p>Pěšky i na kole od chaty</p></div>
           </div>
         </div>
       </div>
@@ -1580,7 +1596,7 @@
       <div class="food-card">
         <div class="food-icon">🥩</div>
         <h3>Grilování na zahradě</h3>
-        <p>Venkovní grilovací kout je k dispozici po celý den.</p>
+        <p>Venkovní grilovací kout je k dispozici po celý den. Můžete využít grilu, ohniště nebo kotlíku.</p>
       </div>
 
       <div class="food-card" style="grid-column: span 2;">
@@ -1615,12 +1631,21 @@
       <div class="footer-contact">
         <span class="fc-icon">📞</span>
         <span class="fc-label">Telefon / WhatsApp</span>
-        <a class="fc-value" href="tel:+420123456789">+420 123 456 789</a>
+        <a class="fc-value" href="tel:+420123456789">+420 608 075 163</a>
       </div>
       <div class="footer-contact">
         <span class="fc-icon">✉️</span>
         <span class="fc-label">E-mail</span>
         <a class="fc-value" href="mailto:info@javorinka.cz">info@javorinka.cz</a>
+      </div>
+      <div class="footer-contact">
+        <span class="fc-icon">📍</span>
+        <span class="fc-label">Kde nás najdete</span>
+        <span class="fc-value">
+          <a href="https://mapy.com/cs/turisticka?source=coor&amp;id=16.3711580%2C50.6004763&amp;z=16" target="_blank" rel="noopener">Mapy.cz</a>
+          &nbsp;·&nbsp;
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=50.6004763%2C16.3711580" target="_blank" rel="noopener">Google Maps</a>
+        </span>
       </div>
     </div>
 
@@ -1871,7 +1896,15 @@
         cell.className = 'cal-day';
         if (date < today) cell.classList.add('past');
 
-        cell.classList.add(isOccupied(date) ? 'occ-full' : 'occ-free');
+        // večer dne d je obsazený, když se tu noc spí (d ∈ [od, do));
+        // ráno dne d je obsazené, když se spalo noc předtím (d-1 ∈ [od, do)).
+        // Den příjezdu/odjezdu tak vyjde diagonálně, navazující rezervace celá.
+        const vecer = isOccupied(date);
+        const rano = isOccupied(new Date(year, month, d - 1));
+        if (rano && vecer) cell.classList.add('occ-full');
+        else if (vecer) cell.classList.add('occ-in');
+        else if (rano) cell.classList.add('occ-out');
+        else cell.classList.add('occ-free');
 
         const num = document.createElement('span');
         num.className = 'cal-day-num';

@@ -28,6 +28,9 @@
   <meta name="twitter:description" content="Klid venkova pro okamžiky s přáteli. Výlety po Broumovsku, Adršpachu a Teplických skalách." />
   <meta name="twitter:image" content="https://javorinka.eu/images/exterier/dron/dron-1.jpg" />
 
+  <!-- Hero fotka se načte co nejdřív (je to LCP prvek stránky) -->
+  <link rel="preload" as="image" href="images/nahledy/hero.webp" type="image/webp" />
+
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
@@ -175,7 +178,7 @@
       inset: 0;
       background:
         linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,.25) 35%, rgba(0,0,0,.6) 100%),
-        url('images/exterier/dron/dron-1.jpg');
+        url('images/nahledy/hero.webp');
       background-size: cover;
       background-position: center 55%;
     }
@@ -1106,35 +1109,35 @@
       </div>
       <div>
         <div class="big-ph ph-green" style="height:340px;">
-          <img src="images/exterier/3_dum.jpeg" alt="Chata Javořinka – pohled ze zahrady" loading="lazy">
+          <img src="images/nahledy/exterier/3_dum.webp" data-full="images/exterier/3_dum.jpeg" width="1000" height="750" alt="Chata Javořinka – pohled ze zahrady" loading="lazy">
         </div>
       </div>
     </div>
 
     <p class="section-label" style="margin-bottom:1rem;">Chata a okolí</p>
     <div class="photo-strip">
-      <div class="img-card"><img src="images/exterier/2_dum.jpeg" alt="Chata Javořinka s terasou a garáží" loading="lazy"><span class="img-cap">Chata s terasou a garáží</span></div>
-      <div class="img-card"><img src="images/exterier/4_dum.jpeg" alt="Boční pohled na chatu" loading="lazy"><span class="img-cap">Boční pohled na chatu</span></div>
-      <div class="img-card"><img src="images/exterier/5_dum.jpeg" alt="Chata Javořinka ze zahrady" loading="lazy"><span class="img-cap">Chata ze zahrady</span></div>
-      <div class="img-card"><img src="images/exterier/6_dum.jpeg" alt="Vstup do chaty se schodištěm" loading="lazy"><span class="img-cap">Vstup do chaty</span></div>
-      <div class="img-card"><img src="images/exterier/dron/dron-1.jpg" alt="Chata z dronu – Broumovské stěny na obzoru" loading="lazy"><span class="img-cap">Z dronu – Broumovské stěny na obzoru</span></div>
-      <div class="img-card"><img src="images/exterier/dron/dron-2.jpg" alt="Chata Javořinka z ptačí perspektivy" loading="lazy"><span class="img-cap">Chata z ptačí perspektivy</span></div>
-      <div class="img-card"><img src="images/exterier/dron/dron-3.jpg" alt="Okolí chaty z výšky" loading="lazy"><span class="img-cap">Okolí chaty z výšky</span></div>
-      <div class="img-card"><img src="images/exterier/dron/dron-4.jpg" alt="Chata mezi loukami a lesy – letecký pohled" loading="lazy"><span class="img-cap">Mezi loukami a lesy</span></div>
-      <div class="img-card"><img src="images/exterier/dron/dron-5.jpg" alt="Večerní letecký pohled na chatu" loading="lazy"><span class="img-cap">Večerní pohled z dronu</span></div>
-      <div class="img-card"><img src="images/exterier/dron/dron-6.jpg" alt="Krajina Broumovska z dronu" loading="lazy"><span class="img-cap">Krajina Broumovska</span></div>
-      <div class="img-card"><img src="images/exterier/dron/dron-7.jpg" alt="Chata a zahrada z výšky" loading="lazy"><span class="img-cap">Chata a zahrada z výšky</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/2_dum.webp" data-full="images/exterier/2_dum.jpeg" width="1000" height="750" alt="Chata Javořinka s terasou a garáží" loading="lazy"><span class="img-cap">Chata s terasou a garáží</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/4_dum.webp" data-full="images/exterier/4_dum.jpeg" width="1000" height="750" alt="Boční pohled na chatu" loading="lazy"><span class="img-cap">Boční pohled na chatu</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/5_dum.webp" data-full="images/exterier/5_dum.jpeg" width="1000" height="750" alt="Chata Javořinka ze zahrady" loading="lazy"><span class="img-cap">Chata ze zahrady</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/6_dum.webp" data-full="images/exterier/6_dum.jpeg" width="1000" height="750" alt="Vstup do chaty se schodištěm" loading="lazy"><span class="img-cap">Vstup do chaty</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/dron/dron-1.webp" data-full="images/exterier/dron/dron-1.jpg" width="1000" height="667" alt="Chata z dronu – Broumovské stěny na obzoru" loading="lazy"><span class="img-cap">Z dronu – Broumovské stěny na obzoru</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/dron/dron-2.webp" data-full="images/exterier/dron/dron-2.jpg" width="1000" height="667" alt="Chata Javořinka z ptačí perspektivy" loading="lazy"><span class="img-cap">Chata z ptačí perspektivy</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/dron/dron-3.webp" data-full="images/exterier/dron/dron-3.jpg" width="1000" height="667" alt="Okolí chaty z výšky" loading="lazy"><span class="img-cap">Okolí chaty z výšky</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/dron/dron-4.webp" data-full="images/exterier/dron/dron-4.jpg" width="1000" height="667" alt="Chata mezi loukami a lesy – letecký pohled" loading="lazy"><span class="img-cap">Mezi loukami a lesy</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/dron/dron-5.webp" data-full="images/exterier/dron/dron-5.jpg" width="1000" height="667" alt="Večerní letecký pohled na chatu" loading="lazy"><span class="img-cap">Večerní pohled z dronu</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/dron/dron-6.webp" data-full="images/exterier/dron/dron-6.jpg" width="1000" height="667" alt="Krajina Broumovska z dronu" loading="lazy"><span class="img-cap">Krajina Broumovska</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/dron/dron-7.webp" data-full="images/exterier/dron/dron-7.jpg" width="1000" height="667" alt="Chata a zahrada z výšky" loading="lazy"><span class="img-cap">Chata a zahrada z výšky</span></div>
     </div>
 
     <div class="divider"></div>
     <p class="section-label" style="margin-bottom:1rem;">Dispozice chaty</p>
     <div class="plan-grid">
       <div class="plan-card">
-        <img src="images/pudorys-1np_popsane.png" alt="Půdorys 1. nadzemního podlaží s popisem místností" loading="lazy">
+        <img src="images/nahledy/pudorys-1np_popsane.webp" data-full="images/pudorys-1np_popsane.png" width="997" height="1200" alt="Půdorys 1. nadzemního podlaží s popisem místností" loading="lazy">
         <div class="plan-cap">1. nadzemní podlaží</div>
       </div>
       <div class="plan-card">
-        <img src="images/pudorys-2np_popsane.png" alt="Půdorys 2. nadzemního podlaží s popisem místností" loading="lazy">
+        <img src="images/nahledy/pudorys-2np_popsane.webp" data-full="images/pudorys-2np_popsane.png" width="1115" height="1200" alt="Půdorys 2. nadzemního podlaží s popisem místností" loading="lazy">
         <div class="plan-cap">2. nadzemní podlaží</div>
       </div>
     </div>
@@ -1197,7 +1200,7 @@
       </div>
       <div class="apt-layout">
         <div class="apt-main-photo ph-warm">
-          <img src="images/interier/apartmany/1NP/3_obyvak.jpeg" alt="Apartmán 1 – obývací pokoj s kuchyní" loading="lazy">
+          <img src="images/nahledy/interier/apartmany/1NP/3_obyvak.webp" data-full="images/interier/apartmany/1NP/3_obyvak.jpeg" width="1000" height="750" alt="Apartmán 1 – obývací pokoj s kuchyní" loading="lazy">
         </div>
         <div class="apt-info">
           <div class="apt-meta">
@@ -1219,13 +1222,13 @@
       </div>
       <p class="apt-strip-label">Fotografie apartmánu 1</p>
       <div class="photo-strip">
-        <div class="img-card"><img src="images/interier/apartmany/1NP/1_obyvaak_3.jpeg" alt="Apartmán 1 – obývací část" loading="lazy"><span class="img-cap">Obývací část</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/1NP/2_obyvak_2.jpeg" alt="Apartmán 1 – obývací pokoj s gaučem" loading="lazy"><span class="img-cap">Obývací pokoj s gaučem</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/1NP/4_kuchyn.jpeg" alt="Apartmán 1 – kuchyňka" loading="lazy"><span class="img-cap">Kuchyňka</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/1NP/6_loznice.jpeg" alt="Apartmán 1 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/1NP/5_loznice_2.jpeg" alt="Apartmán 1 – ložnice, druhý pohled" loading="lazy"><span class="img-cap">Ložnice – druhý pohled</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/1NP/8_koupelna.jpeg" alt="Apartmán 1 – koupelna" loading="lazy"><span class="img-cap">Koupelna</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/1NP/7_koupelna_2.jpeg" alt="Apartmán 1 – koupelna se sprchovým koutem" loading="lazy"><span class="img-cap">Sprchový kout</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/1NP/1_obyvaak_3.webp" data-full="images/interier/apartmany/1NP/1_obyvaak_3.jpeg" width="1000" height="750" alt="Apartmán 1 – obývací část" loading="lazy"><span class="img-cap">Obývací část</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/1NP/2_obyvak_2.webp" data-full="images/interier/apartmany/1NP/2_obyvak_2.jpeg" width="1000" height="750" alt="Apartmán 1 – obývací pokoj s gaučem" loading="lazy"><span class="img-cap">Obývací pokoj s gaučem</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/1NP/4_kuchyn.webp" data-full="images/interier/apartmany/1NP/4_kuchyn.jpeg" width="1000" height="750" alt="Apartmán 1 – kuchyňka" loading="lazy"><span class="img-cap">Kuchyňka</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/1NP/6_loznice.webp" data-full="images/interier/apartmany/1NP/6_loznice.jpeg" width="1000" height="750" alt="Apartmán 1 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/1NP/5_loznice_2.webp" data-full="images/interier/apartmany/1NP/5_loznice_2.jpeg" width="1000" height="750" alt="Apartmán 1 – ložnice, druhý pohled" loading="lazy"><span class="img-cap">Ložnice – druhý pohled</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/1NP/8_koupelna.webp" data-full="images/interier/apartmany/1NP/8_koupelna.jpeg" width="750" height="1000" alt="Apartmán 1 – koupelna" loading="lazy"><span class="img-cap">Koupelna</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/1NP/7_koupelna_2.webp" data-full="images/interier/apartmany/1NP/7_koupelna_2.jpeg" width="750" height="1000" alt="Apartmán 1 – koupelna se sprchovým koutem" loading="lazy"><span class="img-cap">Sprchový kout</span></div>
       </div>
     </div>
 
@@ -1237,7 +1240,7 @@
       </div>
       <div class="apt-layout">
         <div class="apt-main-photo ph-green">
-          <img src="images/interier/apartmany/2NP_levy/1_obyvak.jpeg" alt="Apartmán 2 – obývací část" loading="lazy">
+          <img src="images/nahledy/interier/apartmany/2NP_levy/1_obyvak.webp" data-full="images/interier/apartmany/2NP_levy/1_obyvak.jpeg" width="1000" height="750" alt="Apartmán 2 – obývací část" loading="lazy">
         </div>
         <div class="apt-info">
           <div class="apt-meta">
@@ -1263,19 +1266,19 @@
       </div>
       <p class="apt-strip-label">Fotografie apartmánu 2</p>
       <div class="photo-strip">
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/2_obyvak.jpeg" alt="Apartmán 2 – obývací pokoj" loading="lazy"><span class="img-cap">Obývací pokoj</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/3_kuchyn.jpeg" alt="Apartmán 2 – kuchyň" loading="lazy"><span class="img-cap">Kuchyň</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/4_kuchyn.jpeg" alt="Apartmán 2 – kuchyň s jídelním koutem" loading="lazy"><span class="img-cap">Kuchyň s jídelním koutem</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/4_loznice.jpeg" alt="Apartmán 2 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/5_loznice.jpeg" alt="Apartmán 2 – ložnice s manželskou postelí" loading="lazy"><span class="img-cap">Ložnice – manželská postel</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/5_1_loznice.jpeg" alt="Apartmán 2 – ložnice, další pohled" loading="lazy"><span class="img-cap">Ložnice – další pohled</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/7_balkon_z_loznice.jpeg" alt="Apartmán 2 – balkon z ložnice" loading="lazy"><span class="img-cap">Balkon z ložnice</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/8_detsky_pokoj.jpeg" alt="Apartmán 2 – dětský pokoj" loading="lazy"><span class="img-cap">Dětský pokoj</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/9_detsky_pokoj.jpeg" alt="Apartmán 2 – dětský pokoj s patrovou postelí" loading="lazy"><span class="img-cap">Dětský pokoj – patrová postel</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/10_vyhled_z_detskeho_pokoje.jpeg" alt="Apartmán 2 – výhled z dětského pokoje" loading="lazy"><span class="img-cap">Výhled z dětského pokoje</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/11_koupelna.jpeg" alt="Apartmán 2 – koupelna" loading="lazy"><span class="img-cap">Koupelna</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/12_koupelna.jpeg" alt="Apartmán 2 – koupelna se sprchovým koutem" loading="lazy"><span class="img-cap">Sprchový kout</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_levy/13_chodbicka.jpeg" alt="Apartmán 2 – chodbička" loading="lazy"><span class="img-cap">Chodbička</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/2_obyvak.webp" data-full="images/interier/apartmany/2NP_levy/2_obyvak.jpeg" width="750" height="1000" alt="Apartmán 2 – obývací pokoj" loading="lazy"><span class="img-cap">Obývací pokoj</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/3_kuchyn.webp" data-full="images/interier/apartmany/2NP_levy/3_kuchyn.jpeg" width="1000" height="750" alt="Apartmán 2 – kuchyň" loading="lazy"><span class="img-cap">Kuchyň</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/4_kuchyn.webp" data-full="images/interier/apartmany/2NP_levy/4_kuchyn.jpeg" width="1000" height="750" alt="Apartmán 2 – kuchyň s jídelním koutem" loading="lazy"><span class="img-cap">Kuchyň s jídelním koutem</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/4_loznice.webp" data-full="images/interier/apartmany/2NP_levy/4_loznice.jpeg" width="750" height="1000" alt="Apartmán 2 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/5_loznice.webp" data-full="images/interier/apartmany/2NP_levy/5_loznice.jpeg" width="750" height="1000" alt="Apartmán 2 – ložnice s manželskou postelí" loading="lazy"><span class="img-cap">Ložnice – manželská postel</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/5_1_loznice.webp" data-full="images/interier/apartmany/2NP_levy/5_1_loznice.jpeg" width="750" height="1000" alt="Apartmán 2 – ložnice, další pohled" loading="lazy"><span class="img-cap">Ložnice – další pohled</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/7_balkon_z_loznice.webp" data-full="images/interier/apartmany/2NP_levy/7_balkon_z_loznice.jpeg" width="1000" height="750" alt="Apartmán 2 – balkon z ložnice" loading="lazy"><span class="img-cap">Balkon z ložnice</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/8_detsky_pokoj.webp" data-full="images/interier/apartmany/2NP_levy/8_detsky_pokoj.jpeg" width="1000" height="750" alt="Apartmán 2 – dětský pokoj" loading="lazy"><span class="img-cap">Dětský pokoj</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/9_detsky_pokoj.webp" data-full="images/interier/apartmany/2NP_levy/9_detsky_pokoj.jpeg" width="1000" height="750" alt="Apartmán 2 – dětský pokoj s patrovou postelí" loading="lazy"><span class="img-cap">Dětský pokoj – patrová postel</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/10_vyhled_z_detskeho_pokoje.webp" data-full="images/interier/apartmany/2NP_levy/10_vyhled_z_detskeho_pokoje.jpeg" width="1000" height="750" alt="Apartmán 2 – výhled z dětského pokoje" loading="lazy"><span class="img-cap">Výhled z dětského pokoje</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/11_koupelna.webp" data-full="images/interier/apartmany/2NP_levy/11_koupelna.jpeg" width="750" height="1000" alt="Apartmán 2 – koupelna" loading="lazy"><span class="img-cap">Koupelna</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/12_koupelna.webp" data-full="images/interier/apartmany/2NP_levy/12_koupelna.jpeg" width="750" height="1000" alt="Apartmán 2 – koupelna se sprchovým koutem" loading="lazy"><span class="img-cap">Sprchový kout</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_levy/13_chodbicka.webp" data-full="images/interier/apartmany/2NP_levy/13_chodbicka.jpeg" width="750" height="1000" alt="Apartmán 2 – chodbička" loading="lazy"><span class="img-cap">Chodbička</span></div>
       </div>
     </div>
 
@@ -1287,7 +1290,7 @@
       </div>
       <div class="apt-layout">
         <div class="apt-main-photo ph-blue">
-          <img src="images/interier/apartmany/2NP_pravy/1_jidelna_kuchyn.jpeg" alt="Apartmán 3 – jídelna s kuchyní" loading="lazy">
+          <img src="images/nahledy/interier/apartmany/2NP_pravy/1_jidelna_kuchyn.webp" data-full="images/interier/apartmany/2NP_pravy/1_jidelna_kuchyn.jpeg" width="1000" height="750" alt="Apartmán 3 – jídelna s kuchyní" loading="lazy">
         </div>
         <div class="apt-info">
           <div class="apt-meta">
@@ -1311,15 +1314,15 @@
       </div>
       <p class="apt-strip-label">Fotografie apartmánu 3</p>
       <div class="photo-strip">
-        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/2_jidelna_kuchyn.jpeg" alt="Apartmán 3 – jídelní kout s kuchyní" loading="lazy"><span class="img-cap">Jídelní kout s kuchyní</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/4_loznice.jpeg" alt="Apartmán 3 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/5_loznice.jpeg" alt="Apartmán 3 – ložnice, druhý pohled" loading="lazy"><span class="img-cap">Ložnice – druhý pohled</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/6_vyhled_z_loznice.jpeg" alt="Apartmán 3 – výhled z ložnice" loading="lazy"><span class="img-cap">Výhled z ložnice</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/7_detsky_pokoj.jpeg" alt="Apartmán 3 – dětský pokoj" loading="lazy"><span class="img-cap">Dětský pokoj</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/8_detsky_pokoj.jpeg" alt="Apartmán 3 – dětský pokoj, druhý pohled" loading="lazy"><span class="img-cap">Dětský pokoj – druhý pohled</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/9_koupelna.jpeg" alt="Apartmán 3 – koupelna" loading="lazy"><span class="img-cap">Koupelna</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/10_koupelna.jpeg" alt="Apartmán 3 – koupelna se sprchovým koutem" loading="lazy"><span class="img-cap">Sprchový kout</span></div>
-        <div class="img-card"><img src="images/interier/apartmany/2NP_pravy/3_chodbicka.jpeg" alt="Apartmán 3 – chodbička" loading="lazy"><span class="img-cap">Chodbička</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_pravy/2_jidelna_kuchyn.webp" data-full="images/interier/apartmany/2NP_pravy/2_jidelna_kuchyn.jpeg" width="1000" height="750" alt="Apartmán 3 – jídelní kout s kuchyní" loading="lazy"><span class="img-cap">Jídelní kout s kuchyní</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_pravy/4_loznice.webp" data-full="images/interier/apartmany/2NP_pravy/4_loznice.jpeg" width="1000" height="750" alt="Apartmán 3 – ložnice" loading="lazy"><span class="img-cap">Ložnice</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_pravy/5_loznice.webp" data-full="images/interier/apartmany/2NP_pravy/5_loznice.jpeg" width="1000" height="750" alt="Apartmán 3 – ložnice, druhý pohled" loading="lazy"><span class="img-cap">Ložnice – druhý pohled</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_pravy/6_vyhled_z_loznice.webp" data-full="images/interier/apartmany/2NP_pravy/6_vyhled_z_loznice.jpeg" width="1000" height="750" alt="Apartmán 3 – výhled z ložnice" loading="lazy"><span class="img-cap">Výhled z ložnice</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_pravy/7_detsky_pokoj.webp" data-full="images/interier/apartmany/2NP_pravy/7_detsky_pokoj.jpeg" width="1000" height="750" alt="Apartmán 3 – dětský pokoj" loading="lazy"><span class="img-cap">Dětský pokoj</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_pravy/8_detsky_pokoj.webp" data-full="images/interier/apartmany/2NP_pravy/8_detsky_pokoj.jpeg" width="1000" height="750" alt="Apartmán 3 – dětský pokoj, druhý pohled" loading="lazy"><span class="img-cap">Dětský pokoj – druhý pohled</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_pravy/9_koupelna.webp" data-full="images/interier/apartmany/2NP_pravy/9_koupelna.jpeg" width="1000" height="750" alt="Apartmán 3 – koupelna" loading="lazy"><span class="img-cap">Koupelna</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_pravy/10_koupelna.webp" data-full="images/interier/apartmany/2NP_pravy/10_koupelna.jpeg" width="1000" height="750" alt="Apartmán 3 – koupelna se sprchovým koutem" loading="lazy"><span class="img-cap">Sprchový kout</span></div>
+        <div class="img-card"><img src="images/nahledy/interier/apartmany/2NP_pravy/3_chodbicka.webp" data-full="images/interier/apartmany/2NP_pravy/3_chodbicka.jpeg" width="750" height="1000" alt="Apartmán 3 – chodbička" loading="lazy"><span class="img-cap">Chodbička</span></div>
       </div>
     </div>
 
@@ -1337,7 +1340,7 @@
     <div class="spaces-grid">
 
       <div class="space-card">
-        <div class="space-photo ph-warm"><img src="images/interier/spolecenska_mistnost/4_spolecenska.jpeg" alt="Společenská místnost" loading="lazy"></div>
+        <div class="space-photo ph-warm"><img src="images/nahledy/interier/spolecenska_mistnost/4_spolecenska.webp" data-full="images/interier/spolecenska_mistnost/4_spolecenska.jpeg" width="1000" height="750" alt="Společenská místnost" loading="lazy"></div>
         <div class="space-body">
           <h3>Společenská místnost</h3>
           <p>Prostor pro společná setkání všech hostů. Součástí je kuchyň s troubou, kamna, jídelní stůl i zázemí pro večerní posezení.</p>
@@ -1345,7 +1348,7 @@
       </div>
 
       <div class="space-card">
-        <div class="space-photo ph-green"><img src="images/interier/spolecenska_mistnost/6_balkon_ze_spolecenske.jpeg" alt="Balkon ze společenské místnosti" loading="lazy"></div>
+        <div class="space-photo ph-green"><img src="images/nahledy/interier/spolecenska_mistnost/6_balkon_ze_spolecenske.webp" data-full="images/interier/spolecenska_mistnost/6_balkon_ze_spolecenske.jpeg" width="1000" height="750" alt="Balkon ze společenské místnosti" loading="lazy"></div>
         <div class="space-body">
           <h3>Balkon</h3>
           <p>Posezení s výhledem, přístupné přímo ze společenské místnosti.</p>
@@ -1353,7 +1356,7 @@
       </div>
 
       <div class="space-card">
-        <div class="space-photo ph-blue"><img src="images/interier/toaleta/2_zachod.jpeg" alt="Společná toaleta se sprchou" loading="lazy"></div>
+        <div class="space-photo ph-blue"><img src="images/nahledy/interier/toaleta/2_zachod.webp" data-full="images/interier/toaleta/2_zachod.jpeg" width="750" height="1000" alt="Společná toaleta se sprchou" loading="lazy"></div>
         <div class="space-body">
           <h3>Toaleta se sprchou</h3>
           <p>Všem hostům je navíc k dispozici společná toaleta se sprchovým koutem.</p>
@@ -1361,7 +1364,7 @@
       </div>
 
       <div class="space-card">
-        <div class="space-photo ph-green"><img src="images/exterier/10_gril.jpeg" alt="Venkovní gril s posezením" loading="lazy"></div>
+        <div class="space-photo ph-green"><img src="images/nahledy/exterier/10_gril.webp" data-full="images/exterier/10_gril.jpeg" width="1000" height="750" alt="Venkovní gril s posezením" loading="lazy"></div>
         <div class="space-body">
           <h3>Místo pro grilování</h3>
           <p>Venkovní posezení s grilem a výhledem do krajiny.</p>
@@ -1369,7 +1372,7 @@
       </div>
 
       <div class="space-card">
-        <div class="space-photo ph-warm"><img src="images/exterier/11_zahrada-ohniste.jpg" alt="Venkovní ohniště s posezením" loading="lazy"></div>
+        <div class="space-photo ph-warm"><img src="images/nahledy/exterier/11_zahrada-ohniste.webp" data-full="images/exterier/11_zahrada-ohniste.jpg" width="1000" height="750" alt="Venkovní ohniště s posezením" loading="lazy"></div>
         <div class="space-body">
           <h3>Ohniště</h3>
           <p>Venkovní ohniště s posezením na zahradě – na opékání i večery u ohně pod širým nebem.</p>
@@ -1377,7 +1380,7 @@
       </div>
 
       <div class="space-card">
-        <div class="space-photo ph-warm"><img src="images/interier/spolecenska_mistnost/5_zadveri_spolecenske.jpeg" alt="Zádveří společenské místnosti" loading="lazy"></div>
+        <div class="space-photo ph-warm"><img src="images/nahledy/interier/spolecenska_mistnost/5_zadveri_spolecenske.webp" data-full="images/interier/spolecenska_mistnost/5_zadveri_spolecenske.jpeg" width="1000" height="750" alt="Zádveří společenské místnosti" loading="lazy"></div>
         <div class="space-body">
           <h3>Zádveří společenské místnosti</h3>
           <p>Vstupní prostor navazující na společenskou místnost, kudy se prochází na balkon.</p>
@@ -1405,22 +1408,22 @@
     <div class="divider"></div>
     <p class="section-label" style="margin-bottom:1rem;">Fotografie prostor</p>
     <div class="photo-strip">
-      <div class="img-card"><img src="images/interier/spolecenska_mistnost/4_spolecenska.jpeg" alt="Společenská místnost" loading="lazy"><span class="img-cap">Společenská místnost</span></div>
-      <div class="img-card"><img src="images/interier/spolecenska_mistnost/1_kuchyn_bar.jpeg" alt="Společná kuchyň s barem" loading="lazy"><span class="img-cap">Kuchyň s barem</span></div>
-      <div class="img-card"><img src="images/interier/spolecenska_mistnost/2_kuchyn_bar.jpeg" alt="Společná kuchyň s barem, druhý pohled" loading="lazy"><span class="img-cap">Kuchyň s barem – druhý pohled</span></div>
-      <div class="img-card"><img src="images/interier/spolecenska_mistnost/3_kuchyn_bar.jpeg" alt="Barové posezení ve společenské místnosti" loading="lazy"><span class="img-cap">Barové posezení</span></div>
-      <div class="img-card"><img src="images/interier/spolecenska_mistnost/5_zadveri_spolecenske.jpeg" alt="Zádveří společenské místnosti" loading="lazy"><span class="img-cap">Zádveří společenské místnosti</span></div>
-      <div class="img-card"><img src="images/interier/spolecenska_mistnost/6_balkon_ze_spolecenske.jpeg" alt="Balkon ze společenské místnosti" loading="lazy"><span class="img-cap">Balkon ze společenské místnosti</span></div>
-      <div class="img-card"><img src="images/interier/toaleta/2_zachod.jpeg" alt="Společná toaleta" loading="lazy"><span class="img-cap">Společná toaleta</span></div>
-      <div class="img-card"><img src="images/interier/toaleta/1_sprcha.jpeg" alt="Společná sprcha" loading="lazy"><span class="img-cap">Společná sprcha</span></div>
-      <div class="img-card"><img src="images/interier/chodby/1_vstup.jpeg" alt="Vstup do chaty" loading="lazy"><span class="img-cap">Vstup do chaty</span></div>
-      <div class="img-card"><img src="images/interier/chodby/2_schody.jpeg" alt="Schodiště" loading="lazy"><span class="img-cap">Schodiště</span></div>
-      <div class="img-card"><img src="images/interier/chodby/3_schody.jpeg" alt="Schodiště do 2. NP" loading="lazy"><span class="img-cap">Schodiště do 2. NP</span></div>
-      <div class="img-card"><img src="images/interier/chodby/4_schody.jpeg.jpeg" alt="Schodiště, další pohled" loading="lazy"><span class="img-cap">Schodiště – další pohled</span></div>
-      <div class="img-card"><img src="images/interier/chodby/5_2NP_vstup_do_apartmanu.jpeg" alt="Vstup do apartmánů ve 2. NP" loading="lazy"><span class="img-cap">Vstup do apartmánů (2. NP)</span></div>
-      <div class="img-card"><img src="images/interier/chodby/6_2NP_vstup_do_apartmanu.jpeg" alt="Chodba u apartmánů ve 2. NP" loading="lazy"><span class="img-cap">Chodba u apartmánů (2. NP)</span></div>
-      <div class="img-card"><img src="images/interier/chodby/7_dekorace.jpeg" alt="Dekorace na chodbě" loading="lazy"><span class="img-cap">Dekorace na chodbě</span></div>
-      <div class="img-card"><img src="images/interier/chodby/8_dekorace.jpeg" alt="Dekorace v interiéru" loading="lazy"><span class="img-cap">Dekorace v interiéru</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/spolecenska_mistnost/4_spolecenska.webp" data-full="images/interier/spolecenska_mistnost/4_spolecenska.jpeg" width="1000" height="750" alt="Společenská místnost" loading="lazy"><span class="img-cap">Společenská místnost</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/spolecenska_mistnost/1_kuchyn_bar.webp" data-full="images/interier/spolecenska_mistnost/1_kuchyn_bar.jpeg" width="1000" height="750" alt="Společná kuchyň s barem" loading="lazy"><span class="img-cap">Kuchyň s barem</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/spolecenska_mistnost/2_kuchyn_bar.webp" data-full="images/interier/spolecenska_mistnost/2_kuchyn_bar.jpeg" width="1000" height="750" alt="Společná kuchyň s barem, druhý pohled" loading="lazy"><span class="img-cap">Kuchyň s barem – druhý pohled</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/spolecenska_mistnost/3_kuchyn_bar.webp" data-full="images/interier/spolecenska_mistnost/3_kuchyn_bar.jpeg" width="1000" height="750" alt="Barové posezení ve společenské místnosti" loading="lazy"><span class="img-cap">Barové posezení</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/spolecenska_mistnost/5_zadveri_spolecenske.webp" data-full="images/interier/spolecenska_mistnost/5_zadveri_spolecenske.jpeg" width="1000" height="750" alt="Zádveří společenské místnosti" loading="lazy"><span class="img-cap">Zádveří společenské místnosti</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/spolecenska_mistnost/6_balkon_ze_spolecenske.webp" data-full="images/interier/spolecenska_mistnost/6_balkon_ze_spolecenske.jpeg" width="1000" height="750" alt="Balkon ze společenské místnosti" loading="lazy"><span class="img-cap">Balkon ze společenské místnosti</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/toaleta/2_zachod.webp" data-full="images/interier/toaleta/2_zachod.jpeg" width="750" height="1000" alt="Společná toaleta" loading="lazy"><span class="img-cap">Společná toaleta</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/toaleta/1_sprcha.webp" data-full="images/interier/toaleta/1_sprcha.jpeg" width="750" height="1000" alt="Společná sprcha" loading="lazy"><span class="img-cap">Společná sprcha</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/chodby/1_vstup.webp" data-full="images/interier/chodby/1_vstup.jpeg" width="750" height="1000" alt="Vstup do chaty" loading="lazy"><span class="img-cap">Vstup do chaty</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/chodby/2_schody.webp" data-full="images/interier/chodby/2_schody.jpeg" width="1000" height="750" alt="Schodiště" loading="lazy"><span class="img-cap">Schodiště</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/chodby/3_schody.webp" data-full="images/interier/chodby/3_schody.jpeg" width="1000" height="750" alt="Schodiště do 2. NP" loading="lazy"><span class="img-cap">Schodiště do 2. NP</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/chodby/4_schody.jpeg.webp" data-full="images/interier/chodby/4_schody.jpeg.jpeg" width="1000" height="750" alt="Schodiště, další pohled" loading="lazy"><span class="img-cap">Schodiště – další pohled</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/chodby/5_2NP_vstup_do_apartmanu.webp" data-full="images/interier/chodby/5_2NP_vstup_do_apartmanu.jpeg" width="1000" height="750" alt="Vstup do apartmánů ve 2. NP" loading="lazy"><span class="img-cap">Vstup do apartmánů (2. NP)</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/chodby/6_2NP_vstup_do_apartmanu.webp" data-full="images/interier/chodby/6_2NP_vstup_do_apartmanu.jpeg" width="1000" height="750" alt="Chodba u apartmánů ve 2. NP" loading="lazy"><span class="img-cap">Chodba u apartmánů (2. NP)</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/chodby/7_dekorace.webp" data-full="images/interier/chodby/7_dekorace.jpeg" width="1000" height="750" alt="Dekorace na chodbě" loading="lazy"><span class="img-cap">Dekorace na chodbě</span></div>
+      <div class="img-card"><img src="images/nahledy/interier/chodby/8_dekorace.webp" data-full="images/interier/chodby/8_dekorace.jpeg" width="1000" height="750" alt="Dekorace v interiéru" loading="lazy"><span class="img-cap">Dekorace v interiéru</span></div>
       <div class="ph-card ph-grey"><span class="ph-icon">🚲</span><span class="ph-lbl">Garáž na kola</span></div>
       <div class="ph-card ph-grey"><span class="ph-icon">🍷</span><span class="ph-lbl">Sklep</span></div>
     </div>
@@ -1457,7 +1460,7 @@
 
       <div>
         <div class="big-ph ph-green" style="height:420px;">
-          <img src="images/exterier/9_zahrada.jpeg" alt="Zahrada u chaty Javořinka" loading="lazy">
+          <img src="images/nahledy/exterier/9_zahrada.webp" data-full="images/exterier/9_zahrada.jpeg" width="1000" height="750" alt="Zahrada u chaty Javořinka" loading="lazy">
         </div>
       </div>
     </div>
@@ -1465,10 +1468,10 @@
     <div class="divider"></div>
     <p class="section-label" style="margin-bottom:1rem;">Zahrada v detailu</p>
     <div class="photo-strip">
-      <div class="img-card"><img src="images/exterier/8_zahrada.jpeg" alt="Travnatá plocha zahrady s výhledem do polí" loading="lazy"><span class="img-cap">Travnatá plocha</span></div>
-      <div class="img-card"><img src="images/exterier/7_zahrada.jpeg" alt="Skalka a záhony u chaty" loading="lazy"><span class="img-cap">Skalka a záhony</span></div>
-      <div class="img-card"><img src="images/exterier/11_zahrada-ohniste.jpg" alt="Venkovní posezení s ohništěm" loading="lazy"><span class="img-cap">Posezení u ohniště</span></div>
-      <div class="img-card"><img src="images/exterier/10_gril.jpeg" alt="Venkovní gril" loading="lazy"><span class="img-cap">Gril</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/8_zahrada.webp" data-full="images/exterier/8_zahrada.jpeg" width="1000" height="750" alt="Travnatá plocha zahrady s výhledem do polí" loading="lazy"><span class="img-cap">Travnatá plocha</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/7_zahrada.webp" data-full="images/exterier/7_zahrada.jpeg" width="1000" height="750" alt="Skalka a záhony u chaty" loading="lazy"><span class="img-cap">Skalka a záhony</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/11_zahrada-ohniste.webp" data-full="images/exterier/11_zahrada-ohniste.jpg" width="1000" height="750" alt="Venkovní posezení s ohništěm" loading="lazy"><span class="img-cap">Posezení u ohniště</span></div>
+      <div class="img-card"><img src="images/nahledy/exterier/10_gril.webp" data-full="images/exterier/10_gril.jpeg" width="1000" height="750" alt="Venkovní gril" loading="lazy"><span class="img-cap">Gril</span></div>
     </div>
   </div>
 </section>
@@ -1631,7 +1634,7 @@
       <div class="footer-contact">
         <span class="fc-icon">📞</span>
         <span class="fc-label">Telefon / WhatsApp</span>
-        <a class="fc-value" href="tel:+420123456789">+420 608 075 163</a>
+        <a class="fc-value" href="tel:+420608075163">+420 608 075 163</a>
       </div>
       <div class="footer-contact">
         <span class="fc-icon">✉️</span>
@@ -2010,7 +2013,8 @@
     function show(i) {
       idx = (i + imgs.length) % imgs.length;
       const src = imgs[idx];
-      lbImg.src = src.currentSrc || src.src;
+      // na stránce jsou WebP miniatury, do lightboxu se načte originál z data-full
+      lbImg.src = src.dataset.full || src.currentSrc || src.src;
       lbImg.alt = src.alt || '';
       const card = src.closest('.img-card');
       const capText = (card && card.querySelector('.img-cap') && card.querySelector('.img-cap').textContent) || src.alt || '';

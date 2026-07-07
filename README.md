@@ -8,10 +8,11 @@ obsah, styly i skripty jsou v jediném souboru **`index.html`** (inline CSS + JS
 index.html            celý web (HTML + CSS + JS)
 api/obsazenost.js     Vercel funkce: veřejný iCal Google Kalendáře → JSON obsazenosti
 images/               fotky a půdorysy (originály, plné rozlišení)
-images/nahledy/       WebP miniatury (max 1000 px) – stránka zobrazuje JEN je;
-                      originál se načítá až v lightboxu přes atribut data-full.
-                      Nová fotka = vygenerovat i miniaturu:
-                      magick foto.jpeg -resize '1000x1000>' -quality 75 images/nahledy/…/foto.webp
+images/nahledy/       WebP miniatury (max 600 px; hero.webp 1920 px) – stránka
+                      zobrazuje JEN je; originál se načítá až v lightboxu přes
+                      atribut data-full. Nová fotka = vygenerovat i miniaturu:
+                      magick foto.jpeg -resize '600x600>' -quality 75 images/nahledy/…/foto.webp
+                      (+ aktualizovat width/height u <img> v index.html)
 data/zajimavosti.gpx  body zájmu pro mapu okolí (export z „moje mapy" Mapy.cz)
 ```
 

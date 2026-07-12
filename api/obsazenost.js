@@ -21,8 +21,9 @@ function nextDay(iso) {
   return d.toISOString().slice(0, 10);
 }
 
-// Z ICS vytáhne intervaly [od, do). Celodenní události mají DTEND už
-// exkluzivní; u událostí s časem se den konce zaokrouhlí nahoru.
+// Z ICS vytáhne intervaly [od, do). Čas událostí se ignoruje – počítají se
+// jen kalendářní dny; den příjezdu a odjezdu vyjde napůl obsazený díky
+// diagonální logice v isOccupied/renderMonth (index.html).
 // Opakované události (RRULE) se neexpandují – počítá se jen první výskyt.
 function parseIcs(ics) {
   const unfolded = ics.replace(/\r?\n[ \t]/g, ''); // rozbalení zalomených řádků
@@ -35,8 +36,7 @@ function parseIcs(ics) {
     if (!start || !end) continue;
     const od = isoDate(start[1]);
     let do_ = isoDate(end[1]);
-    if (end[3] && end[3] !== '000000') do_ = nextDay(do_); // čas > půlnoc → celý den obsazen
-    if (do_ <= od) do_ = nextDay(od); // událost kratší než den
+    if (do_ <= od) do_ = nextDay(od); // událost kratší než den nebo končí týž den
     intervals.push({ od, do: do_ });
   }
   return intervals;

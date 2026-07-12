@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
     const r = await fetch(ICS_URL, { headers: { 'User-Agent': 'javorinka.eu obsazenost' } });
     if (!r.ok) throw new Error('ICS feed: HTTP ' + r.status);
     const intervals = parseIcs(await r.text());
-    res.setHeader('Cache-Control', 's-maxage=900, stale-while-revalidate=3600');
+    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
     res.status(200).json(intervals);
   } catch (e) {
     res.status(502).json({ error: String(e.message || e) });

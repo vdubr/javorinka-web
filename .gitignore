@@ -3,5 +3,6 @@ node_modules/
 package.json
 package-lock.json
 .DS_Store
+.claude/settings.local.json
 images/exterier/dron/DJI_*.JPG
 .history/

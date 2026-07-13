@@ -14,16 +14,26 @@ function isoDate(v) {
   return v.slice(0, 4) + '-' + v.slice(4, 6) + '-' + v.slice(6, 8);
 }
 
-// posune 'YYYY-MM-DD' o +1 den
-function nextDay(iso) {
+// posune 'YYYY-MM-DD' o daný počet dní (kladný i záporný)
+function shiftDay(iso, delta) {
   const d = new Date(iso + 'T00:00:00Z');
-  d.setUTCDate(d.getUTCDate() + 1);
+  d.setUTCDate(d.getUTCDate() + delta);
   return d.toISOString().slice(0, 10);
 }
+function nextDay(iso) { return shiftDay(iso, 1); }
 
 // Z ICS vytáhne intervaly [od, do). Čas událostí se ignoruje – počítají se
 // jen kalendářní dny; den příjezdu a odjezdu vyjde napůl obsazený díky
 // diagonální logice v isOccupied/renderMonth (index.html).
+//
+// POZOR na celodenní události (VALUE=DATE, bez T... v DTSTART/DTEND):
+// Google Calendar u nich ukládá DTEND jako den PO POSLEDNÍM zobrazeném
+// dni (běžná iCal konvence pro exkluzivní konec). V UI kalendáře se ale
+// "17.–19. července" zobrazí jako 3 dny (17,18,19) a DTEND je 20. Chceme,
+// aby poslední zobrazený den (19) byl dnem odjezdu (napůl), ne 20 – proto
+// se u celodenních událostí DTEND o 1 den posouvá zpět. U událostí s
+// časem (T...) tahle korekce nedává smysl a nedělá se.
+//
 // Opakované události (RRULE) se neexpandují – počítá se jen první výskyt.
 function parseIcs(ics) {
   const unfolded = ics.replace(/\r?\n[ \t]/g, ''); // rozbalení zalomených řádků
@@ -36,6 +46,8 @@ function parseIcs(ics) {
     if (!start || !end) continue;
     const od = isoDate(start[1]);
     let do_ = isoDate(end[1]);
+    const celodenni = !end[2]; // bez T... = celodenní událost (VALUE=DATE)
+    if (celodenni) do_ = shiftDay(do_, -1); // poslední zobrazený den = den odjezdu
     if (do_ <= od) do_ = nextDay(od); // událost kratší než den nebo končí týž den
     intervals.push({ od, do: do_ });
   }

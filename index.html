@@ -1865,13 +1865,16 @@
     const calWrap = document.getElementById('calWrap');
     if (!calWrap) return;
 
-    const MONTHS = [
-      { year: 2026, month: 6, name: 'Červenec' },
-      { year: 2026, month: 7, name: 'Srpen' },
-      { year: 2026, month: 8, name: 'Září' },
-    ];
+    const MONTH_NAMES = ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen',
+      'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'];
     const DOW = ['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne'];
     const today = new Date(); today.setHours(0,0,0,0);
+
+    // 3 měsíce od toho aktuálního – kalendář se tak sám posouvá s časem
+    const MONTHS = Array.from({ length: 3 }, (_, i) => {
+      const d = new Date(today.getFullYear(), today.getMonth() + i, 1);
+      return { year: d.getFullYear(), month: d.getMonth(), name: MONTH_NAMES[d.getMonth()] };
+    });
 
     // 'YYYY-MM-DD' → lokální půlnoc (new Date(string) by parsovalo UTC)
     function parseDay(s) {

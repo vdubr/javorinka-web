@@ -945,6 +945,39 @@
       color: var(--muted);
     }
 
+    /* výzva ke kontaktu pod kalendářem */
+    .cal-cta {
+      background: var(--bg2);
+      border: 1px solid rgba(181,149,106,.35);
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      max-width: 640px;
+      margin: 2.5rem auto 0;
+    }
+
+    .cal-cta h3 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      color: var(--text);
+      margin-bottom: .6rem;
+    }
+
+    .cal-cta p {
+      color: var(--muted);
+      font-size: .92rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .cal-cta-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cal-cta .btn-outline { margin-top: 0; }
+
     /* ─── FOOTER KONTAKTY ────────────────────────────────────── */
     .footer-contacts {
       display: flex;
@@ -1180,6 +1213,15 @@
     </div>
 
     <div class="cal-wrap" id="calWrap"></div>
+
+    <div class="cal-cta">
+      <h3>Máte zájem o termín?</h3>
+      <p>Rezervace vyřizujeme telefonicky nebo e-mailem – ozvěte se nám.</p>
+      <div class="cal-cta-actions">
+        <a class="btn-outline" href="tel:+420608075163">📞 +420 608 075 163</a>
+        <a class="btn-outline" href="mailto:info@javorinka.cz">✉ Napsat e-mail</a>
+      </div>
+    </div>
   </div>
 </section>
 
